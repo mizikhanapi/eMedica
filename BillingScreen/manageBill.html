@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- header -->
+<div w3-include-html="libraries/header.html"></div>
+<!-- header -->
+</head>
+
+  <body>
+<!-- menu top -->
+<div w3-include-html="libraries/topMenus.html"></div>
+	<!-- menu top -->
+
+    <div class="container-fluid">
+      <div class="row">       
+<!-- menu side -->		
+<div w3-include-html="libraries/sideMenus.html"></div>
+<!-- menu side -->	
+		
+<!-- main -->		
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background: #f2f4f8;">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="thumbnail">
+						<h4>List of Bill</h4>
+						<form class="">
+						  <div class="radios" style="margin: 5px 0;">
+						    <label style="padding-right: 5px;">Status:</label>
+							<label class="radio-inline">
+							  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Unpaid
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Paid
+							</label>
+						  </div>
+						<div id="custom-search-input">
+                            <div class="input-group ">
+                                <input type="text" class="  search-query form-control" placeholder="Search" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class=" fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+						</form>
+						
+						<table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; border-top: none;">
+							<thead>
+								<th>Bill No.</th>
+								<th>Customer ID</th>
+								<th>Name</th>
+								<th>IC No.</th>
+								<th>Other ID</th>
+								<th>Address</th>
+								<th>Phone No.</th>
+								<th>Quantity</th>
+								<th>Amount</th>
+							</thead>
+									<tbody>
+										<tr data-status="pagado">
+											<td>yyyy/mm/dd</td>
+											<td>01</td>
+											<td>10</td>
+											<td>123456-01-9876</td>
+											<td>id</td>
+											<td>name fill</td>
+											<td>address</td>
+											<td>99999999</td>
+											<td>400.00</td>
+										</tr>
+									</tbody>
+								</table>
+						
+
+					</div>
+			</div>
+		</div>
+		
+			<div class="row">
+				<div class="col-md-12">
+					<div class="thumbnail">
+					<h4>Items 
+					<span class="pull-right">
+						<a href="#" alt="Add Items"  data-toggle="tooltip" data-placement="top" title="Add Items"><i class=" fa fa-plus" style=" padding-right: 5px;"></i></a>
+						<a href="#"  data-toggle="tooltip" data-placement="top" title="Payment"><i class=" fa fa-usd" style=" padding-right: 5px;"></i></a>
+						<a href="#"  data-toggle="tooltip" data-placement="top" title="Print Receipt"><i class=" fa fa-print" style=" padding-right: 5px;"></i></a>
+					</span>	
+					</h4>
+					<table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc;">
+					<thead>
+						<th>Transaction Date</th>
+						<th>Item Code</th>
+						<th>Item Description</th>
+						<th>Item Quantity</th>
+						<th>Unit Price</th>
+						<th>Total Amount</th>
+						<th></th>
+						<th></th>
+					</thead>
+									<tbody>
+										<tr data-status="pagado">
+											<td>yyyy/mm/dd</td>
+											<td>ABC!@#</td>
+											<td>Description goes here...</td>
+											<td>50</td>
+											<td>40.00</td>
+											<td>80.00</td>
+											<td><a href="javascript:;" class="star">
+													<a href="#" data-toggle="modal" data-target="#squarespaceModal"><i class="fa fa-pencil-square-o" aria-hidden="true" style="display: inline-block;font-size: ;color: #337ab7;" ></i></a>
+												</a></td>
+											<td><a href="javascript:;" class="star">
+													<a href="#" data-toggle="modal" data-target="#squarespaceModal"><i class="fa fa-times" aria-hidden="true" style="display: inline-block;font-size: ;color: #d9534f;" ></i></a>
+												</a></td>
+										</tr>
+										<tr data-status="pagado">
+											<td>yyyy/mm/dd</td>
+											<td>ABC!@#</td>
+											<td>Description goes here...</td>
+											<td>50</td>
+											<td>40.00</td>
+											<td>80.00</td>
+											<td><a href="javascript:;" class="star">
+													<a href="#" data-toggle="modal" data-target="#squarespaceModal"><i class="fa fa-pencil-square-o" aria-hidden="true" style="display: inline-block;font-size: ;color: #337ab7;" ></i></a>
+												</a></td>
+											<td><a href="javascript:;" class="star">
+													<a href="#" data-toggle="modal" data-target="#squarespaceModal"><i class="fa fa-times" aria-hidden="true" style="display: inline-block;font-size: ;color: #d9534f;" ></i></a>
+												</a></td>
+										</tr>
+										<tr data-status="pagado">
+											<td>yyyy/mm/dd</td>
+											<td>ABC!@#</td>
+											<td>Description goes here...</td>
+											<td>50</td>
+											<td>40.00</td>
+											<td>80.00</td>
+											<td><a href="javascript:;" class="star">
+													<a href="#" data-toggle="modal" data-target="#squarespaceModal"><i class="fa fa-pencil-square-o" aria-hidden="true" style="display: inline-block;font-size: ;color: #337ab7;" ></i></a>
+												</a></td>
+											<td><a href="javascript:;" class="star">
+													<a href="#" data-toggle="modal" data-target="#squarespaceModal"><i class="fa fa-times" aria-hidden="true" style="display: inline-block;font-size: ;color: #d9534f;" ></i></a>
+												</a></td>
+										</tr>
+										
+									</tbody>
+					</table>
+					</div>
+				</div>
+					
+			</div>
+        </div>
+<!-- main -->		
+		
+      </div>
+    </div>
+	
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script>
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip();   
+	});
+	</script>
+	
+	
+	<div w3-include-html="libraries/script.html"></div>
+	
+	<script src="http://www.w3schools.com/lib/w3data.js"></script>
+	<script>
+	w3IncludeHTML();
+	</script>
+
+  
+</body></html>

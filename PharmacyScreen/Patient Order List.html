@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- header -->
+<div w3-include-html="libraries/header.html"></div>
+<!-- header -->
+</head>
+
+  <body>
+<!-- menu top -->
+<div w3-include-html="libraries/topMenus.html"></div>
+	<!-- menu top -->
+
+    <div class="container-fluid">
+      <div class="row">       
+<!-- menu side -->		
+<div w3-include-html="libraries/sideMenus.html"></div>
+<!-- menu side -->	
+		
+<!-- main -->		
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background: #f2f4f8;">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="thumbnail">
+						<h4>
+							Patiant Information
+							<span class="pull-right">
+								<a href="#" alt="Add Items"  data-toggle="tooltip" data-placement="top" title="Add Items"><i class=" fa fa-refresh" style=" padding-right: 5px;"></i></a>
+							</span>	
+						</h4>
+						<form class="" >
+						<div id="custom-search-input">
+                            <div class="input-group ">
+                                <input type="text" class="  search-query form-control" placeholder="Search" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class=" fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+						</form>
+						
+						<table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; border-top: none;">
+							<thead>
+								<th>PMI No.</th>
+								<th>Name</th>
+								<th>Order Date</th>
+								<th>Location Code</th>
+								<th>Arrival Date</th>
+								<th>Doctor's Name</th>
+							</thead>
+									<tbody>
+										<tr data-status="pagado">
+											<td>yyyy/mm/dd</td>
+											<td>01</td>
+											<td>10</td>
+											<td>123456-01-9876</td>
+											<td>id</td>
+											<td>name fill</td>
+										</tr>
+									</tbody>
+								</table>
+						
+
+					</div>
+			</div>
+		</div>
+		
+        </div>
+<!-- main -->		
+		
+      </div>
+    </div>
+	
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<div w3-include-html="libraries/script.html"></div>
+	
+	<script src="http://www.w3schools.com/lib/w3data.js"></script>
+	<script>
+	w3IncludeHTML();
+	</script>
+
+  
+</body></html>

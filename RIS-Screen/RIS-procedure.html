@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- header -->
+<div w3-include-html="libraries/header.html"></div>
+<!-- header -->
+</head>
+
+  <body>
+<!-- menu top -->
+<div w3-include-html="libraries/topMenus.html"></div>
+	<!-- menu top -->
+
+    <div class="container-fluid">
+      <div class="row">       
+<!-- menu side -->		
+<div w3-include-html="libraries/sideMenus.html"></div>
+<!-- menu side -->	
+		
+<!-- main -->		
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background: #f2f4f8;">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="thumbnail">
+					<h4>RIS Procedure</h4>
+					<form class="form-horizontal">
+						<!-- Select Basic -->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="selectbasic">Modality</label>
+						  <div class="col-md-4">
+							<select id="selectbasic" name="selectbasic" class="form-control">
+							  <option value="1">Mobile x-ray</option>
+							  <option value="2">Inactive</option>
+							</select>
+						  </div>
+						</div>
+					
+						<!-- Text input-->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="textinput">Body System Code</label>  
+						  <div class="col-md-4">
+						  <input id="textinput" name="textinput" type="text" placeholder="Eg: 50000" class="form-control input-md">
+							
+						  </div>
+						</div>
+
+						<!-- Text input-->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="textinput">Body System Name</label>  
+						  <div class="col-md-4">
+						  <input id="textinput" name="textinput" type="text" placeholder="Eg: Mobile x-ray" class="form-control input-md">
+							
+						  </div>
+						</div>
+						
+						<!-- Text input-->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="textinput">Price (RM)</label>  
+						  <div class="col-md-2">
+						  <input id="textinput" name="textinput" type="text" placeholder="Buying Price (RM)" class="form-control input-md">
+						  </div>
+						  <div class="col-md-2">
+						  <input id="textinput" name="textinput" type="text" placeholder="Service Price (RM)" class="form-control input-md">
+						  </div>
+						</div>
+						
+						<!-- Select Basic -->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="selectbasic">Status</label>
+						  <div class="col-md-4">
+							<select id="selectbasic" name="selectbasic" class="form-control">
+							  <option value="1">Active</option>
+							  <option value="2">Inactive</option>
+							</select>
+						  </div>
+						</div>
+					</form>
+					<div class="text-center">
+						<button id="button1id" name="button1id" class="btn btn-default"><i class="fa fa-plus fa-lg"></i>&nbsp; Add</button>
+						<button id="button2id" name="button2id" class="btn btn-default"><i class="fa fa-pencil-square-o fa-lg"></i>&nbsp; Update</button>
+						<button id="button2id" name="button2id" class="btn btn-default"><i class="fa fa-ban fa-lg"></i>&nbsp; Cancel</button>
+					</div>
+					</div>
+					
+					<div class="thumbnail">
+						<h4>RIS Procedure</h4>
+						
+						<table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; ">
+							<thead>
+								<th>Modality Code</th>
+								<th>Modality Name</th>
+								<th>Status</th>
+							</thead>
+							<tbody>
+								<tr data-status="pagado" data-toggle="modal" data-id="1" data-target="#detail">
+									<td>CP0001</td>
+									<td>Chemical Pathology</td>
+									<td>Active</td>
+								</tr>
+								<tr data-status="pagado" data-toggle="modal" data-id="1" data-target="#detail">
+									<td>CP0001</td>
+									<td>Chemical Pathology</td>
+									<td>Active</td>
+								</tr>
+								<tr data-status="pagado" data-toggle="modal" data-id="1" data-target="#detail">
+									<td>CP0001</td>
+									<td>Chemical Pathology</td>
+									<td>Active</td>
+								</tr>
+							</tbody>
+						</table>
+					
+					</div>
+				</div>
+			</div>
+
+
+				
+				
+				
+		</div>
+		
+        </div>
+<!-- main -->		
+		
+      </div>
+    </div>
+
+
+
+<!-- Modal Detail -->
+<div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><i class="fa fa-times fa-lg"></i></button>
+			<h3 class="modal-title" id="lineModalLabel">Physical Exam System</h3>
+		</div>
+		<div class="modal-body">
+			
+            <!-- content goes here -->
+						<form class="" >
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Physical Exam Code">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Physical Exam Name">
+							</div>
+							<div class="form-group">
+								<select class="form-control">
+									<option>Status</option>
+									<option>Active</option>
+								</select>
+							</div>
+						</form>
+			<!-- content goes here -->
+		</div>
+		<div class="modal-footer">
+			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
+				<div class="btn-group" role="group">
+					<button type="submit" class="btn btn-primary btn-block btn-lg" role="button">Update</button>
+				</div>
+				<div class="btn-group btn-delete hidden" role="group">
+					<button type="button" id="delImage" class="btn btn-danger btn-block btn-lg" data-dismiss="modal"  role="button">Clear</button>
+				</div>
+				<div class="btn-group" role="group">
+					<button type="button" id="saveImage" class="btn btn-danger btn-block btn-lg" data-dismiss="modal" role="button">Delete</button>
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+  </div>
+</div>
+<!-- Modal -->
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	
+	<script src="http://www.w3schools.com/lib/w3data.js"></script>
+	<script>
+	w3IncludeHTML();
+	</script>
+	
+</body></html>

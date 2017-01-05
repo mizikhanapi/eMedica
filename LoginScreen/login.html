@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- header -->
+<div w3-include-html="libraries/header.html"></div>
+<link href="../assets/css/login.css" rel="stylesheet">
+<!-- header -->
+</head> 
+<body>
+ <div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <div class="profile-img-card">
+				<i class="fa fa-user-md" aria-hidden="true" style="color: #666; font-size: 100px;"></i>
+			</div>
+			<h2 style="text-align: center;">eMedica</h2>
+            <p id="profile-name" class="profile-name-card">Clinical Support System</p>
+            <form class="form-signin" action="facility.html">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="text" id="inputEmail" class="form-control" placeholder="User ID" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" href="facility.html">Sign in</button>
+            </form><!-- /form -->
+            <a href="forgot-pwd.html" class="forgot-password">
+                Forgot the password?
+            </a>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+	
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script>
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip();   
+	});
+	</script>
+	
+	
+	<div w3-include-html="libraries/script.html"></div>
+	
+	<script src="http://www.w3schools.com/lib/w3data.js"></script>
+	<script>
+	w3IncludeHTML();
+	</script>
+</body>
+</html>
