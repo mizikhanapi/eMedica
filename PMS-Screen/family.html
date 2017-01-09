@@ -21,14 +21,23 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="thumbnail">
-					<h4>Modality</h4>
+					<h4>Family Information</h4>
 					<form class="form-horizontal">
+					
+						<!-- Text input-->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="textinput">PMI No.</label>
+						  <div class="col-md-4">
+						  <input id="textinput" name="textinput" type="text" placeholder="Eg: 50000" class="form-control input-md">
+						  </div>
+						</div>
+					
 						<!-- Select Basic -->
 						<div class="form-group">
-						  <label class="col-md-4 control-label" for="selectbasic">Modality</label>
+						  <label class="col-md-4 control-label" for="selectbasic">Family Relationship</label>
 						  <div class="col-md-4">
 							<select id="selectbasic" name="selectbasic" class="form-control">
-							  <option value="1">Mobile x-ray</option>
+							  <option value="1">Select Family Relationship</option>
 							  <option value="2">Inactive</option>
 							</select>
 						  </div>
@@ -36,7 +45,7 @@
 					
 						<!-- Text input-->
 						<div class="form-group">
-						  <label class="col-md-4 control-label" for="textinput">Body System Code</label>  
+						  <label class="col-md-4 control-label" for="textinput">PMI No Family</label>  
 						  <div class="col-md-4">
 						  <input id="textinput" name="textinput" type="text" placeholder="Eg: 50000" class="form-control input-md">
 							
@@ -45,55 +54,56 @@
 
 						<!-- Text input-->
 						<div class="form-group">
-						  <label class="col-md-4 control-label" for="textinput">Body System Name</label>  
+						  <label class="col-md-4 control-label" for="textinput">Family Member's Name</label>  
 						  <div class="col-md-4">
 						  <input id="textinput" name="textinput" type="text" placeholder="Eg: Mobile x-ray" class="form-control input-md">
 							
 						  </div>
 						</div>
 
-						<!-- Select Basic -->
+						<!-- Text input-->
 						<div class="form-group">
-						  <label class="col-md-4 control-label" for="selectbasic">Status</label>
+						  <label class="col-md-4 control-label" for="textinput">Occupation</label>
 						  <div class="col-md-4">
-							<select id="selectbasic" name="selectbasic" class="form-control">
-							  <option value="1">Active</option>
-							  <option value="2">Inactive</option>
-							</select>
+						  <input id="textinput" name="textinput" type="text" placeholder="Eg: Mobile x-ray" class="form-control input-md">
 						  </div>
 						</div>
+						
 					</form>
 					<div class="text-center">
 						<button id="button1id" name="button1id" class="btn btn-default"><i class="fa fa-plus fa-lg"></i>&nbsp; Add</button>
-						<button id="button2id" name="button2id" class="btn btn-default"><i class="fa fa-pencil-square-o fa-lg"></i>&nbsp; Update</button>
 						<button id="button2id" name="button2id" class="btn btn-default"><i class="fa fa-ban fa-lg"></i>&nbsp; Cancel</button>
 					</div>
 					</div>
 					
 					<div class="thumbnail">
-						<h4>Modality Lists</h4>
+						<h4>List of Family</h4>
 						
 						<table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; ">
 							<thead>
-								<th>Modality Code</th>
-								<th>Modality Name</th>
-								<th>Status</th>
+								<th>Family Member's Name</th>
+								<th>Relationship</th>
+								<th>Update</th>
+								<th>Delete</th>
 							</thead>
 							<tbody>
 								<tr data-status="pagado" data-toggle="modal" data-id="1" data-target="#detail">
 									<td>CP0001</td>
 									<td>Chemical Pathology</td>
-									<td>Active</td>
+									<td><a href="#" data-toggle="modal" data-target="#squarespaceModal"><i class="fa fa-pencil-square-o" aria-hidden="true" style="display: inline-block;font-size: ;color: #337ab7;"></i></a></td>
+									<td><a href="#" data-toggle="modal" data-target="#squarespaceModal"><i class="fa fa-times" aria-hidden="true" style="display: inline-block;font-size: ;color: #d9534f;"></i></a></td>
 								</tr>
 								<tr data-status="pagado" data-toggle="modal" data-id="1" data-target="#detail">
 									<td>CP0001</td>
 									<td>Chemical Pathology</td>
-									<td>Active</td>
+									<td><a href="#" data-toggle="modal" data-target="#squarespaceModal"><i class="fa fa-pencil-square-o" aria-hidden="true" style="display: inline-block;font-size: ;color: #337ab7;"></i></a></td>
+									<td><a href="#" data-toggle="modal" data-target="#squarespaceModal"><i class="fa fa-times" aria-hidden="true" style="display: inline-block;font-size: ;color: #d9534f;"></i></a></td>
 								</tr>
 								<tr data-status="pagado" data-toggle="modal" data-id="1" data-target="#detail">
 									<td>CP0001</td>
 									<td>Chemical Pathology</td>
-									<td>Active</td>
+									<td><a href="#" data-toggle="modal" data-target="#squarespaceModal"><i class="fa fa-pencil-square-o" aria-hidden="true" style="display: inline-block;font-size: ;color: #337ab7;"></i></a></td>
+									<td><a href="#" data-toggle="modal" data-target="#squarespaceModal"><i class="fa fa-times" aria-hidden="true" style="display: inline-block;font-size: ;color: #d9534f;"></i></a></td>
 								</tr>
 							</tbody>
 						</table>
