@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 1, 2016, 12:28:30 AM
+    Author     : Asyraf
+*/
+.login_area
+{
+    background-color: white; 
+    margin-top: 10%;
+    padding: 1%;
+}
+.register_header
+{
+    margin-top: 2%; 
+    background-color: #a6e1ec; 
+    text-align: center;
+}
+.register_area
+{
+    background-color: white;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding:1%;
+}
+
