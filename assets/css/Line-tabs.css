@@ -1,7 +1,6 @@
 /* Tabs panel */
 .tabbable-panel {
-  border:1px solid #eee;
-  padding: 10px;
+	
 }
 
 /* Default mode */
@@ -47,9 +46,7 @@
 }
 .tabbable-line > .tab-content {
   margin-top: -3px;
-  background-color: #fff;
   border: 0;
-  border-top: 1px solid #eee;
   padding: 15px 0;
 }
 .portlet .tabbable-line > .tab-content {

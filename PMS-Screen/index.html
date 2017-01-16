@@ -20,54 +20,67 @@
     
     <!-- main -->
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background: #f2f4f8;">
-      <div class="row">
+	  
+	  <div class="row">
         <div class="col-md-12">
-          <div class="thumbnail">
-            <h4>Search Patient</h4>
-            <form class="">
-              <div class="radios" style="margin: 5px 0;">
-                <label style="padding-right: 5px;">Status:</label>
-                <label class="radio-inline">
-                  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                  Unpaid </label>
-                <label class="radio-inline">
-                  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                  Paid </label>
-				  
-				  <span class="pull-right"> <a href="#" alt="Add Items" data-toggle="tooltip" data-placement="top" title="Add Items"><i class=" fa fa-id-card-o" style=" padding-right: 5px;" aria-hidden="true"></i> Read MyKAD Info</a> </span>
-				  
-              </div>
-              <div id="custom-search-input">
-                <div class="input-group ">
-                  <input type="text" class="  search-query form-control" placeholder="Search" />
-                  <span class="input-group-btn">
-                  <button class="btn btn-default" type="button"> <i class=" fa fa-search"></i> </button>
-                  </span> </div>
-              </div>
-            </form>
-          </div>
+		  <div class="tabbable-line">
+				<ul class="nav nav-tabs ">
+                  <li class="active"> <a href="#tab_default_1" data-toggle="tab"> Registration </a> </li>
+                  <li> <a href="#tab_default_2" data-toggle="tab"> Patient Master Index </a> </li>
+                  <li> <a href="#tab_default_3" data-toggle="tab"> Employment </a> </li>
+				  <li> <a href="#tab_default_4" data-toggle="tab"> Next of Kin </a> </li>
+				  <li> <a href="#tab_default_5" data-toggle="tab"> Family </a> </li>
+				  <li> <a href="#tab_default_6" data-toggle="tab"> Medical Insurance </a> </li>
+                </ul>
+				</div>
         </div>
       </div>
+	  
       <div class="row">
         <div class="col-md-12">
-          <div class="thumbnail">
-            <h4>Registration</h4>
-            
             <!-- Tab Menu -->
             
             <div class="tabbable-panel">
               <div class="tabbable-line">
-                <ul class="nav nav-tabs ">
-                  <li class="active"> <a href="#tab_default_1" data-toggle="tab"> Basic Info </a> </li>
-                  <li> <a href="#tab_default_2" data-toggle="tab"> Registration Info </a> </li>
-                  <li> <a href="#tab_default_3" data-toggle="tab"> Registration Details </a> </li>
-                </ul>
                 <!-- tab content -->
                 <div class="tab-content">
                   <div class="tab-pane active" id="tab_default_1">
+				  
+				  <div class="thumbnail">
+            <h4>
+			Search Patient
+			<button id="button2id" name="button2id" class="btn btn-success pull-right"><i class="fa fa-user fa-lg"></i>&nbsp; Read MyKad Info</button>
+			</h4>
+            <form class="form-horizontal">
+			<!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="selectbasic">ID Type</label>
+                        <div class="col-md-4">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Select ID Type</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+			
+			<!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">IC No. / ID No.</label>
+                        <div class="col-md-4">
+                          <input id="textinput" name="textinput" type="text" placeholder="Search" class="form-control input-md">
+                        </div>
+                      </div>
+					  <div class="text-center">
+						<button id="button1id" name="button1id" class="btn btn-default"><i class="fa fa-search fa-lg"></i>&nbsp; Search</button>
+						<button id="button2id" name="button2id" class="btn btn-default"><i class="fa fa-ban fa-lg"></i>&nbsp; Clear</button>
+					</div>
+            </form>
+          </div>
+				  
+				  <div class="thumbnail">
                     <h4>Basic Info</h4>
 					<hr/>
-                    <form style=" margin: 0 auto;" class="form-horizontal">
+                    <form class="form-horizontal">
                     <div class="row">
 					  <div class="col-md-6">
 					  <!-- Text input-->
@@ -123,11 +136,11 @@
                       </div>
 					</div>
 				</div>
-                    </form>
+                   
                   
 					<h4>Registration Info</h4>
 					<hr/>
-                    <form class="form-horizontal">
+                    
 				<div class="row">
 					<div class="col-md-6">
 					<!-- Text input-->
@@ -205,15 +218,50 @@
                           </select>
                         </div>
                       </div>
+					  
+					  <div class="form-group">
+						<label class="col-md-4 control-label" for="selectbasic">Please select the following action</label>
+					</div>
+					  
+					  <!-- Select Basic -->
+                      <div class="form-group">
+						<label class="col-md-4 control-label" for="selectbasic">&nbsp;</label>
+                        <div class="col-md-4">
+							<label class="radio">
+							<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+							Consultation Room 
+							<select id="selectbasic" name="selectbasic" class="form-control">
+								<option value="1">Select ID Type</option>
+								<option value="2">Inactive</option>
+							</select>
+							
+							</label>
+							<label class="radio">
+							<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+							Queue
+							<select id="selectbasic" name="selectbasic" class="form-control">
+								<option value="1">Select ID Type</option>
+								<option value="2">Inactive</option>
+							</select>
+							</label>
+							<label class="radio">
+							<input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+							Doctor
+							<select id="selectbasic" name="selectbasic" class="form-control">
+								<option value="1">Select ID Type</option>
+								<option value="2">Inactive</option>
+							</select>
+							</label>
+                        </div>
+                      </div>
 					
 					</div>
 				</div>
-					  
-                    </form>
 				  
 					<h4>Registration Details</h4>
 					<hr/>
-                    <form class="form-horizontal">
+					<div class="row">
+					<div class="col-md-6">
 					<!-- Select Basic -->
                       <div class="form-group">
                         <label class="col-md-4 control-label" for="selectbasic">Priority Group *</label>
@@ -224,31 +272,50 @@
                           </select>
                         </div>
                       </div>
+					  </div>
+					</div>
 					  <div class="text-center">
-						  <button class="btn btn-primary btn-lg " type="button"> Register</button>
-						  <button class="btn btn-default btn-lg " type="button"> Appointment List</button>
-						  <button class="btn btn-default btn-lg " type="button"> Clear</button>
+						  <button class="btn btn-primary" type="button"> Register</button>
+						  <button class="btn btn-default" type="button"> Appointment List</button>
+						  <button class="btn btn-default" type="button"> Clear</button>
 					  </div>
 					</form>
 				  </div>
 				  
+				  </div>
+				  
 				  
                   <div class="tab-pane" id="tab_default_2">
-                    <h4 class="text-center">Registration Info</h4>
+                    <h4 class="text-center">Patient Master Index</h4>
+                    
+                  </div>
+				  
+				  <div class="tab-pane" id="tab_default_3">
+                    <h4 class="text-center">Employment</h4>
+                    
+                  </div>
+				  
+				  <div class="tab-pane" id="tab_default_4">
+                    <h4 class="text-center">Next of Kin</h4>
+                    
+                  </div>
+				  
+				  <div class="tab-pane" id="tab_default_5">
+                    <h4 class="text-center">Family</h4>
+                    
+                  </div>
+				  
+				  <div class="tab-pane" id="tab_default_6">
+                    <h4 class="text-center">Medical Insurance</h4>
                     
                   </div>
 				  
 				  
-                  <div class="tab-pane" id="tab_default_3">
-                    
-                  </div>
                 </div>
               </div>
             </div>
             
             <!-- Tab Menu --> 
-            
-          </div>
         </div>
       </div>
     </div>
