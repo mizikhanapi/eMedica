@@ -1,0 +1,241 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 14, 2016, 3:10:48 PM
+    Author     : Asyraf
+*/
+#header
+{
+    background-color: #595959;
+    padding-top:1%;
+    padding-left:15%;
+    text-align: center;
+}
+.bodyAuthenticate
+{
+    background-color: #a6e1ec;
+}
+.bodyContent
+{
+    margin-top: 1%;
+}
+.bodyContentReminder
+{
+    margin-top: 3%;
+    padding-top: 2%;
+}
+.buttonAuthenticate
+{
+    background-color: #669999;
+}
+.col_image
+{
+    background-color: #595959; 
+    padding-top:1%; 
+    /*padding-left: 9%*/
+}
+.img-responsive
+{
+    height: 13%; 
+    width: 18%; 
+    float:left;
+}
+#UTeMImage
+{
+    margin-left: 8%;
+}
+img
+{
+    max-width: 100%;
+    height: auto;
+}
+#left_column
+{
+    /*padding-left:3%;*/
+    color: white;
+    padding-left: 5%;
+}
+#right_column_signinup
+{
+    /*padding-top:0.4%;*/
+   padding-left: 0%;
+/*   margin-left: 0.1%*/
+}
+#rowSignInUp
+{
+    background-color: #595959;
+}
+.googleMap 
+{
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        /*padding-top: 4%;*/
+        height: 0;
+}
+.googleMap  iframe
+{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 90%;
+        height: 100%;
+        padding-bottom: 2%;
+} 
+.google_map 
+{
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        padding-top: 25px;
+        height: 0;
+}
+.google_map  iframe
+{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding-bottom: 2%;
+} 
+.large_map
+{
+    color:#0000FF;
+    text-align:left;
+    padding-bottom: 1%;
+}
+.headerTitle
+{
+    color: orange;
+    margin-bottom: 3%;
+    /*margin-top: 3%*/
+}
+.headerUL
+{
+    color: #000000; 
+    font-weight: bold; 
+    padding-top: 2%;
+}
+.bodyUL
+{
+    text-decoration: none; 
+    color: #000000;
+}
+.bodyUL:hover
+{
+    text-decoration: none; 
+}
+.footer
+{
+    background-color: #595959;
+    text-align: center;
+    color:white;
+    padding:1%;
+    margin-top: 5%;
+    position: relative;
+    bottom: 0px; 
+    center: 0px;
+    /*position: absolute;*/
+    /*z-index: 1;*/
+    
+}
+#tab
+{
+    background-color:#ffcc00; 
+    border-top-left-radius: 10px; 
+    border-bottom-right-radius: 10px; 
+    margin-top:3%;
+    margin-right:0.5%;
+    width: 100%;
+    float: left;
+    /*border: solid;*/
+    /*background-color: red;*/
+}
+.editTab
+{
+    color: #006699;
+}
+.editTab:hover, .editTab:active
+{
+    background-color: #ff9900  !important;
+    border-top-left-radius: 10px; 
+    border-bottom-right-radius: 10px;
+}
+
+#menu ul 
+{
+    margin: 0px;
+    list-style: none;
+}
+
+#menu li 
+{
+	display: inline;
+}
+#menu a 
+{
+    text-decoration: none;
+}
+.navbar
+{
+    /*border:solid;*/
+    margin-left: -10%;
+    border:none;
+    /*background-color: red !important;*/
+    /*margin-right: 10%;*/
+    /*width:130%;*/
+}
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover
+.navbar-inverse .navbar-nav > .active > a:focus
+{
+    color: #555;
+    background-color: #ff9900;
+}
+.navbar-collapse .navbar-nav > .active > a,
+.navbar-collapse .navbar-nav > .active > a:hover,
+.navbar-collapse .navbar-nav > .active > a:focus
+{
+    color: #006699;
+    background-color: #ff9900;
+}
+
+.dropdown-toggle[aria-expanded="true"] 
+{
+  background: #ff9900 !important;
+  color:#555 !important;
+}
+.navbar-inverse .navbar-toggle .icon-bar
+{
+    background-color: #CCC;
+}
+.navbar-inverse .navbar-toggle
+{
+    background-color: #006699;
+}
+/*.navbar-fixed-top 
+{
+    height: 70%;  Whatever you want. 
+    width:30%;
+}*/
+.incoming_date_area
+{
+     background-color: #8cff66;
+}
+.past_date_area
+{
+     background-color: #ff3300;
+     color: white;
+}
+.test
+{
+    background-color:yellowgreen;
+}
+/*.buttonMainPage
+{
+    position: fixed; 
+    bottom: 0px; 
+    center: 0px;
+}*/
