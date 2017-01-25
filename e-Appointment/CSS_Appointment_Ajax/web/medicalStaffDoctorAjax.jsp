@@ -38,12 +38,12 @@
     String sqlDisDesc = "select description from lookup_detail where Detail_Ref_code = '" + discipline + "' AND Master_Ref_code = '0033'";
     ArrayList<ArrayList<String>> disDesc = Conn.getData(sqlDisDesc);
     discipline = disDesc.get(0).get(0);
-    out.print(discipline);
+    //out.print(discipline);
 
     String sqlSubDesc = "select description from lookup_detail where Master_Ref_code = '0071' AND Detail_Ref_code = '" + subdiscipline + "'";
     ArrayList<ArrayList<String>> subDesc = Conn.getData(sqlSubDesc);
     subdiscipline = subDesc.get(0).get(0);
-    out.print(subdiscipline);
+   // out.print(subdiscipline);
 
     String hfcCode = "SELECT Detail_Ref_code "
             + "FROM lookup_detail "

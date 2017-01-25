@@ -34,7 +34,7 @@
     String subdiscipline = (String)session.getAttribute("SUBDISCIPLINE_CODE");
 
     
-    out.print(hfc);
+    //out.print(hfc);
     
     if(discipline == null)
     {
@@ -115,7 +115,7 @@
     {
         adminUsername = null;
     }
-out.print(adminUsername);
+//out.print(adminUsername);
 
     String sqlDoctorAvailable = "SELECT doc.*,DATE(pdr.start_date),DATE(pdr.end_date) "
             + "from pms_duty_roster pdr, "
@@ -1671,12 +1671,12 @@ out.print(adminUsername);
                                         <div class="form-group" >
                                             <label class="control-label col-sm-2" for="pmiNo">PMI No : </label>  
                                             <div class="col-sm-10">   
-                                                  <input type="text" name="role" value="<%=title%>" id="role">
-                                                  <input type="text" name="disciple" value="<%=discipline%>" id="disciple">
-                                                  <input type="text" name="subdiscipline" value="<%=subdiscipline%>" id="subdisciplineAppointment">
-                                                  <input type="text" name="HFCCode" value="<%=hfc%>" id="HFCCode">
+                                                  <input type="hidden" name="role" value="<%=title%>" id="role">
+                                                  <input type="hidden" name="disciple" value="<%=discipline%>" id="disciple">
+                                                  <input type="hidden" name="subdiscipline" value="<%=subdiscipline%>" id="subdisciplineAppointment">
+                                                  <input type="hidden" name="HFCCode" value="<%=hfc%>" id="HFCCode">
                                                 <input name="pmiNo" value=""  id="pmiNo" type="text" class="form-control" readonly>
-                                                <input type="text" name="ic"  id="ic">
+                                                <input type="hidden" name="ic"  id="ic">
                                     
                
                                             </div>
