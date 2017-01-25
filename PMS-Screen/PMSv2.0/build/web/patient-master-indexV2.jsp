@@ -551,7 +551,7 @@
                 <div class="text-center">
                     <!--                    <button class="btn btn-primary " type="button" disabled="">Save</button>-->
                     <button class="btn btn-primary " type="button" id="updatePatient"><i class="fa fa-floppy-o fa-lg"></i>&nbsp; Save</button>
-                    <button class="btn btn-default " type="button"> Appointment List</button>
+<!--                    <button class="btn btn-default " type="button"> Appointment List</button>-->
                     <button class="btn btn-default " type="button" id="clearPMI"> <i class="fa fa-ban fa-lg"></i>&nbsp; Clear</button>
                 </div>
             </form>

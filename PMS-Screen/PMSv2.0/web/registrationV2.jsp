@@ -344,7 +344,9 @@
 </div>
 <div class="modalLoad"><!-- Place at bottom of page --></div>
 <script>w3IncludeHTML();</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script> 
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script> -->
+<script src="assets/js/bootbox.min.js"></script> 
+
 <script>
     // w3IncludeHTML();
 
@@ -359,47 +361,79 @@
     $('#select-1').hide();
     $('select[id=select-2]').hide();
     var $body = $('body');
-    //yyyy-MM-dd HH:mm:ss
-    var nowDate = new Date();
-    var ZeroMinutes, ZeroSeconds, ZeroDay, ZeroMonth;
-    //months
-    var month = (nowDate.getMonth() + 1);
-    if (month < 10) {
-        ZeroMonth = "0" + month;
-    } else {
-        ZeroMonth = month;
+    var yyyyMMddHHmmss;
+    var HHmmss;
+    var yyyyMMdd;
+
+    var tahun, bulan, hari, ICbday;
+    //function get birth date
+    function getBday() {
+        var option = $('#idType').find(":selected").val();
+        var newIc = $('#idInput').val();
+        if (option === "icnew") {
+            if (newIc.length === 12) {
+                tahun = newIc.substr(0, 2);
+                bulan = newIc.substr(2, 2);
+                hari = newIc.substr(4, 2);
+
+                if (tahun >= 00 && tahun < 50)
+                {
+
+                    ICbday = "20"+tahun+"-"+bulan+"-"+hari;
+                } else
+                {
+                    ICbday = "19"+tahun+"-"+bulan+"-"+hari;
+                }
+            }
+        }
     }
 
-    //days
-    var day = (nowDate.getDate());
-    if (day < 10) {
-        ZeroDay = "0" + day;
-    } else {
-        ZeroDay = day;
+    //function to get date 
+    function getDateNow() {
+        //yyyy-MM-dd HH:mm:ss
+        var nowDate = new Date();
+
+        var ZeroMinutes, ZeroSeconds, ZeroDay, ZeroMonth;
+        //months
+        var month = (nowDate.getMonth() + 1);
+        if (month < 10) {
+            ZeroMonth = "0" + month;
+        } else {
+            ZeroMonth = month;
+        }
+
+        //days
+        var day = (nowDate.getDate());
+        if (day < 10) {
+            ZeroDay = "0" + day;
+        } else {
+            ZeroDay = day;
+        }
+
+        //years
+        var year = (nowDate.getFullYear());
+        //hours
+        var hours = nowDate.getHours();
+        //minutes
+        var minutes = nowDate.getMinutes();
+        if (minutes < 10) {
+            ZeroMinutes = "0" + minutes;
+        } else {
+            ZeroMinutes = minutes;
+        }
+        //seconds
+        var seconds = nowDate.getSeconds();
+        if (seconds < 10) {
+            ZeroSeconds = "0" + seconds;
+        } else {
+            ZeroSeconds = seconds;
+        }
+        //complete day
+        yyyyMMddHHmmss = year + "-" + ZeroMonth + "-" + ZeroDay + " " + hours + ":" + ZeroMinutes + ":" + ZeroSeconds;
+        HHmmss = hours + ":" + ZeroMinutes + ":" + ZeroSeconds;
+        yyyyMMdd = year + "-" + ZeroMonth + "-" + ZeroDay;
     }
 
-    //years
-    var year = (nowDate.getFullYear());
-    //hours
-    var hours = nowDate.getHours();
-    //minutes
-    var minutes = nowDate.getMinutes();
-    if (minutes < 10) {
-        ZeroMinutes = "0" + minutes;
-    } else {
-        ZeroMinutes = minutes;
-    }
-    //seconds
-    var seconds = nowDate.getSeconds();
-    if (seconds < 10) {
-        ZeroSeconds = "0" + seconds;
-    } else {
-        ZeroSeconds = seconds;
-    }
-    //complete day
-    var yyyyMMddHHmmss = year + "-" + ZeroMonth + "-" + ZeroDay + " " + hours + ":" + ZeroMinutes + ":" + ZeroSeconds;
-    var HHmmss = hours + ":" + ZeroMinutes + ":" + ZeroSeconds;
-    var yyyyMMdd = year + "-" + ZeroMonth + "-" + ZeroDay;
     //event when radio button is change
     $('input:radio[name="radios"]').change(
             function () {
@@ -424,7 +458,7 @@
         $('#myForm2')[0].reset();
         $('#formPMI')[0].reset();
         if (opt === true) {
-            alert('hai');
+            //alert('hai');
         }
         if ($('#idInput').val() === "" || $('#idInput').val() === " ") {
             alert('Please key in PMI no. or IC no. or IDENTIFICATION no. to continue seaching process');
@@ -489,9 +523,12 @@
                                         data: {'idInput': idInput}, // Send input
                                         timeout: 10000,
                                         success: function (list) {
+                                            getBday();
                                             //pmi
                                             $('input[id=PMIpmino]').val($.trim(list));
                                             $('#PMInic').val($.trim(idInput));
+                                             $('#PMIbday').val($.trim(ICbday));
+                                             console.log(ICbday);
                                             //registration
                                             $('input[id=pmino]').val($.trim(list));
                                             $('input[id=pnic]').val($.trim(idInput));
@@ -610,6 +647,19 @@
                                 $('#listEMP').html(returnhtml);
                             }
                         });
+                        
+                         // set value in employment page
+                        $('input[id=KINpmino]').val($.trim(pmino));
+                        $.ajax({
+                            url: "listKin.jsp",
+                            type: "post",
+                            data: {'KINpmino': EMPpminos},
+                            timeout: 3000,
+                            success: function (returnhtml) {
+                                //console.log(returnhtml);
+                                $('#listKIN').html(returnhtml);
+                            }
+                        });
                         $('#radios-1').prop('checked', true);
                         $('#select-1').show();
                         $('#patCat').val('General Outpatient');
@@ -641,11 +691,16 @@
     $('#searchPatient').click(function () {
         searchPatient();
     });
+
+
+
     //register patient
     $('#registerQueue').click(function () {
+        getDateNow();
+        setInterval(getDateNow, 1000);
         if ($('#pmino').val() === " " || $('#pmino').val() === "") {
             bootbox.alert('Please use a proper PMI no.');
-            
+
         } else {
             //var r = confirm("Are you sure want to REGISTER PATIENT?");
 
@@ -764,12 +819,12 @@
                                 $body.removeClass("loading");
                                 if ($.trim(list) === "Success") {
 
-                                    alert("Patient has been register successfully");
+                                    bootbox.alert("Patient has been register successfully");
                                 } else if ($.trim(list) === "already") {
-                                    alert("Patient is already registered");
+                                    bootbox.alert("Patient is already registered");
                                 }
                             }, error: function () {
-                                alert("There is an error!");
+                                bootbox.alert("There is an error!");
                             }
                         });
                     }
@@ -804,6 +859,8 @@
 
 
     });
+
+
 
 
 

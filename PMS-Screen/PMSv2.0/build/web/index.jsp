@@ -71,7 +71,7 @@
                                         next of kin tab
                                     -->
                                     <div class="tab-pane" id="tab_default_4">
-                                        <div w3-include-html="kin (2).html"></div>
+                                        <div id="nextOfKin"></div>
                                     </div>
                                     
                                     <!--
@@ -119,6 +119,7 @@
         $("#registration").load("registrationV2.jsp");
         $("#patientMasterIndex").load("patient-master-indexV2.jsp");
         $("#employment").load("EmploymentV2.jsp");
+        $("#nextOfKin").load("kinV2.jsp");
         $("#sidemenus").load("libraries/sideMenus.jsp");
         
         w3IncludeHTML();
