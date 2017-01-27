@@ -9,6 +9,7 @@
 <%@page import="dBConn.Conn"%>
 <%@page import="main.RMIConnector"%>
 <%
+    Conn Conn = new Conn();
         RMIConnector rmic = new RMIConnector();
         String sqlUpdate = "UPDATE pms_appointment "
                 + "SET status='inactive' "

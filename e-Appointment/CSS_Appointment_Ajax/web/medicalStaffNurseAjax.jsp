@@ -20,7 +20,16 @@
 </script>
 
 <%
-
+        //untuk IE
+    response.addHeader("Pragma", "no-cache");
+    response.addHeader("Cache-Control", "no-cache");
+    response.addHeader("Cache-Control", "no-store");
+    response.addHeader("Cache-Control", "must-revalidate");
+    response.addHeader("Cache-Control", "Post-Check=0");
+    response.addHeader("Cache-Control", "Pre-Check=0");
+    response.addHeader("Expires", "Mon, 1 Jan 2006 05:00:00 GMT");//in the past
+    
+Conn Conn = new Conn();
     String username = (String) session.getAttribute("username");
     String hfc = (String) session.getAttribute("HEALTH_FACILITY_CODE");
     String name = (String) session.getAttribute("USER_NAME");
@@ -434,7 +443,7 @@
                                     <input type="hidden" name="startLeaveBefore" value="" id="startLeaveBefore">
                                     <div class="col-sm-10">
 
-                                        <input  class="form-control" name="start_leave" value="" type="date" id="startDateLeave" required>
+                                        <input  class="form-control" name="start_leave" value="" type="text" id="startDateLeave" required>
 
                                     </div>
                                 </div>
@@ -442,7 +451,7 @@
                                     <label class="control-label col-sm-2" for="endLeave">End Leave </label>
                                     <div class="col-sm-10">
 
-                                        <input  class="form-control" name="end_leave" value="" type="date" id="endDateLeave" required>
+                                        <input  class="form-control" name="end_leave" value="" type="text" id="endDateLeave" required>
 
                                     </div>
                                 </div>
@@ -533,7 +542,7 @@
                                     <form>
                                         <!--<div class="form-inline" >-->
                                         <div class="form-group">
-                                            <input type="date" name="searchDateAvailability"  id="dateDoctorA" class="form-control" placeholder="Search Appointment Date" required="required"/>
+                                            <input type="text" name="searchDateAvailability"  id="dateDoctorA" class="form-control" placeholder="Search Appointment Date" required="required"/>
                                         </div>
                                         <div class="form-group"> 
                                             <!--<div class="col-sm-10">--> 
@@ -763,7 +772,7 @@
                                             <label class="control-label col-sm-2" for="appDate">*Appointment Date : </label>  
                                             <div class="col-sm-10">   
                                                 <%if (appDate == null) {%>
-                                                <input  name="appDate" type="date" id="datepicker" class="form-control" required>
+                                                <input  name="appDate" type="text" id="datepicker" class="form-control" required>
                                                 <%} else {%>
                                                 <input name="appDate" value="<%= appDate%>" type="date"  class="form-control" required>
                                                 <%}%>
@@ -924,7 +933,7 @@
                                         <div class="form-inline" >
                                             <div class="form-group">
                                                 <!--<label>PMI No :</label>-->
-                                                <input type="date" name="searchAppointmentDate"  id="searchAppointmentDate" class="form-control" placeholder="Search Appointment Date"/>
+                                                <input type="text" name="searchAppointmentDate"  id="searchAppointmentDate" class="form-control" placeholder="Search Appointment Date"/>
                                             </div>
                                             <div class="form-group">
                                                 <button class="btn btn-xs btn-success" id="searchDateView">Search</button>
@@ -1104,5 +1113,17 @@
         <script src="<%=Config.getBase_url(request)%>jsfile/ViewAppointment.js"></script> 
         <script src="<%=Config.getBase_url(request)%>jsfile/CancelAppointment.js"></script>
         <script src="<%=Config.getBase_url(request)%>jsfile/MakeAppointment.js"></script> 
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#startDateLeave').datepicker({dateFormat:'dd/mm/yy'});
+                $('#endDateLeave').datepicker({dateFormat:'dd/mm/yy'});
+                $('#dateDoctorA').datepicker({dateFormat:'dd/mm/yy'});
+                $('#datepicker').datepicker({dateFormat:'dd/mm/yy'});
+                 $('#searchAppointmentDate').datepicker({dateFormat:'dd/mm/yy'});
+                
+            });
+            
+            </script>
     </body>
 </html>

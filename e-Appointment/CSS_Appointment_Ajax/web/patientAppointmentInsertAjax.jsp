@@ -13,6 +13,7 @@
 <%@page import="main.RMIConnector"%>
 
 <%
+    Conn Conn = new Conn();
   try{
     String pmiNo = request.getParameter("pmiNo");
     String dataUserId = request.getParameter("dataUserId");

@@ -8,7 +8,7 @@
 <%@page import="java.util.*"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Config.connect"%>
+
 <%@page import="dBConn.Conn"%>
 <%@page import="main.RMIConnector"%>
 
@@ -21,7 +21,7 @@
 </script>
 
 <%
-
+Conn Conn = new Conn();
     String username = (String) session.getAttribute("username");
     String ic = (String) session.getAttribute("ic");
     String name = (String) session.getAttribute("USER_NAME");

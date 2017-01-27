@@ -15,7 +15,7 @@
       
  //       String stateCode=request.getParameter("state");
  //       String hfcName=request.getParameter("hfcName");
-  
+  Conn Conn = new Conn();
       String stateCode="04";
         String hfcName="Klinik UTeM Induk";
         

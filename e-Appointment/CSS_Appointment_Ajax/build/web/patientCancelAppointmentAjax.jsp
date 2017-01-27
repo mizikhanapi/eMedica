@@ -9,6 +9,7 @@
 <%@page import="dBConn.Conn"%>
 <%@page import="main.RMIConnector"%>
 <%
+    Conn Conn = new Conn();
     String ic = (String)session.getAttribute("ic");
     String PMI_NO = request.getParameter("pmiNo");
     String HFC_CODE = request.getParameter("hfcCode");

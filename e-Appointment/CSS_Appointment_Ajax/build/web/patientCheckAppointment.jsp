@@ -13,6 +13,7 @@
 <%@page import="main.RMIConnector"%>
 
 <%
+    Conn Conn = new Conn();
         String ic = (String)session.getAttribute("ic");
         String appDate= request.getParameter("appDate");
         String appTime = request.getParameter("appTime");

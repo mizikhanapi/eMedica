@@ -10,7 +10,7 @@
 <%@page import="main.RMIConnector"%>
 
 <%
-    
+    Conn Conn = new Conn();
             //Check The Existance of Data in DB.
             //out.print(data.size()); 
             //if (true) { return; }
@@ -46,12 +46,8 @@
             
             //already registered
             if (data1.size() > 0) 
-            {%>
-                <script>
-                    alert("You already a registered user and just login into the system");  
-                    window.location.href="login.jsp";
-                </script>                
-                <%    
+            {
+                out.print("alreadyRegister");
             } 
             else 
             {
@@ -97,47 +93,38 @@
                 if(insert)
                 {
                     RMIConnector rmic = new RMIConnector();
-                    String sqlInsertSgt = "INSERT INTO emedica.adm_signup_tbl (ic_no, username,password, email, mobile_no) "
+                    String sqlInsertSgt = "INSERT INTO adm_signup_tbl (ic_no, username,password, email, mobile_no) "
                               + "VALUES ('" + ic_no + "' , '" + username + "','" + password + "','" + email + "','"+mobile_no+"')";
 
                     boolean isInsertSgt = rmic.setQuerySQL(Conn.HOST, Conn.PORT, sqlInsertSgt);
 
-                    String sqlInsertPb = "UPDATE emedica.pms_patient_biodata "
+                    String sqlInsertPb = "UPDATE pms_patient_biodata "
                             + "SET MOBILE_PHONE = '"+mobile_no+"', EMAIL_ADDRESS = '"+email+"' "
                             + "WHERE NEW_IC_NO = '"+ic_no+"'";
 
                     boolean isInsertPb = rmic.setQuerySQL(Conn.HOST, Conn.PORT, sqlInsertPb);
 
                     if(isInsertSgt) 
-                    {%>
-                        <script>
-                            alert("You have successfully register!!!");  
-                            window.location.href="login.jsp";
-                        </script>
-                <% } 
+                    {
+                        out.print("success");
+} 
                 }
                 else
                 {
                     if(uname)
                     {
-                        %><script language='javascript'>
-                            alert("Register fail! Username has been used..");  
-                            window.location.href="register.jsp";
-                        </script> <% 
+                        out.print("fail");
+
                     }
                     else if(mobile)
                     {
-                        %><script language='javascript'>
-                            alert("The mobile no has been registered. You have to used other mobile no");  
-                            window.location.href="register.jsp";
-                        </script> <%
+                        out.print("mobile");
+
                     }
                     else
                     {
-                        %><script language='javascript'>
-                            alert("The email has been registered. You have to used other email account");  
-                            window.location.href="register.jsp";
-                        </script> <%
+                        out.print("email");
+
                     }
                 }
 
@@ -145,12 +132,9 @@
             }
         } 
         else   
-        {%>
-            <script>
-                alert("You have to register yourself at the UTeM Clinic as First Registration!");  
-                 window.history.back();
-            </script>
-       <% }
+        {
+                        out.print("register");
+    }
 %>   
 
 

@@ -6,7 +6,7 @@
 //    String hfc = dataStaff.get(0).get(1) ;
 //    session.setAttribute("HEALTH_FACILITY_CODE", hfc);
     
-    
+    Conn Conn = new Conn();
     //String username = (String)session.getAttribute("username"); 
     String hfc = (String)session.getAttribute("HEALTH_FACILITY_CODE");
 

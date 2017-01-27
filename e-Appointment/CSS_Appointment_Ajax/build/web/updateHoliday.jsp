@@ -10,6 +10,7 @@
 <%@page import="main.RMIConnector"%>
 
 <%
+    Conn Conn = new Conn();
         String state_code = request.getParameter("state");
         String holiday_date = request.getParameter("date");
         String holiday_desc = request.getParameter("desc");

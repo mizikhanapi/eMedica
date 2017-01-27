@@ -12,7 +12,7 @@
     <select class="form-control" id="test_drop" name="test_drop" required>
         <option></option>
         <% 
-      
+      Conn Conn = new Conn();
         String stateCode=request.getParameter("state");
         
         String hfcCode = " SELECT * FROM lookup_detail "

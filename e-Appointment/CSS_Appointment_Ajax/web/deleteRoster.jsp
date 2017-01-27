@@ -9,6 +9,7 @@
 <%@page import="dBConn.Conn"%>
 <%@page import="main.RMIConnector"%>
 <%
+    Conn Conn = new Conn();
     String e15 = request.getParameter("e15");
     String e14 = request.getParameter("e14");
     String e17 = request.getParameter("e17");

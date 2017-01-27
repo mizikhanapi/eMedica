@@ -10,7 +10,7 @@
 <%@page import="main.RMIConnector"%>
 
 <%
-    
+    Conn Conn = new Conn();
             //Check The Existance of Data in DB.
             //out.print(data.size()); 
             //if (true) { return; }

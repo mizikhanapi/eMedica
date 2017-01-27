@@ -39,7 +39,7 @@
 //    out.print("|" + host_server + "|" + host_port + "|" + error + "|");
 //    
 //    if (true) { return; }
-    
+    Conn Conn = new Conn();
 %>
 
 <!DOCTYPE html>

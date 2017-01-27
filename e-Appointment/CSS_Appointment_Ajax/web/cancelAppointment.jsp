@@ -8,6 +8,7 @@
 <%@page import="dBConn.Conn"%>
 <%@page import="main.RMIConnector"%>
 <%       
+    Conn Conn = new Conn();
     //String username = (String) session.getAttribute("username");
     String hfc = (String)session.getAttribute("HEALTH_FACILITY_CODE");
  

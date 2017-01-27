@@ -10,6 +10,7 @@
 <%@page import="main.RMIConnector"%>
 
 <%   
+    Conn Conn = new Conn();
         String state_code = request.getParameter("state_code");
         String hfc_code = request.getParameter("hfc_code");
         String discipline = request.getParameter("discipline");

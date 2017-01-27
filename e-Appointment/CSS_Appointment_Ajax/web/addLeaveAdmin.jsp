@@ -14,6 +14,7 @@
 
 
 <%
+    Conn Conn = new Conn();
         String staffName = request.getParameter("staffID");
         String startLeave= request.getParameter("start_leave");
         String endLeave = request.getParameter("end_leave"); 

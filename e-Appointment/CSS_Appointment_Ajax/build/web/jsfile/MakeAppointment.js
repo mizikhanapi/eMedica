@@ -16,7 +16,7 @@ $(document).ready(function () {
             data: data,
             timeout: 10000,
             success: function (result) {
-                console.log(result);
+                //console.log(result);
                 alert("Your Appointment is success added");
                 emptyField();
             }
@@ -27,7 +27,10 @@ $(document).ready(function () {
     //function for check appointment
     $("#check").click(function (e) {
         e.preventDefault();
-   
+        
+        var dateAppointment = $("#datepicker").datepicker().val();
+        dateAppointment = dateAppointment.split('/');
+        dateAppointment = dateAppointment[2]+ "-"+dateAppointment[1]+"-"+ dateAppointment[0];
         var _pmiNo = $("#pmiNo").val();
         var _role = $("#role").val();
         var _dataUserId = $("#idNo").val();
@@ -39,7 +42,7 @@ $(document).ready(function () {
         var _HFCCode = $("#HFCCode").val();
 
         var _doctor = $("#doctorApp").val();
-        var _dateAppointment = $("#datepicker").val();
+        var _dateAppointment = dateAppointment;
         var _timeAppointment = $("#timepicker").find(":selected").text();
         var _typeAppointment = $("#typeAppointment").find(":selected").text();
 
@@ -66,7 +69,7 @@ $(document).ready(function () {
             success: function (result) {
 
                 result = result.trim();
-                console.log(result);
+                //console.log(result);
                 if (result === "clinicOff") {
                     alert("The clinic is off. Please pick other date");
                 } else if (result === "datePicked") {
@@ -104,6 +107,9 @@ $(document).ready(function () {
 
                         terusInsert(data);
                         $("#appointmentTable").load("patientAppointmentAjax.jsp #appointmentTable");
+                        $("#appointmentTable").load("adminAppointmentAjax.jsp #appointmentTable");
+                        $("#appointmentTable").load("medicalStaffNurseAjax.jsp #appointmentTable");
+                        $("#appointmentTable").load("medicalStaffDoctorAjax.jsp #appointmentTable");
                     } else {
                         alert("Your Appointment not been added");
                         return false;

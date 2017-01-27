@@ -12,6 +12,7 @@
 <%@page import="main.RMIConnector"%>
 
 <%
+    Conn Conn = new Conn();
         String pmiNo = request.getParameter("pmiNo");
         String patientName = request.getParameter("patientName");
         String idNo = request.getParameter("idNo");

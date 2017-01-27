@@ -9,6 +9,7 @@
 <%@page import="dBConn.Conn"%>
 <%@page import="main.RMIConnector"%>
 <%
+    Conn Conn = new Conn();
     String  staffId = request.getParameter("staffId");
     String hfc = request.getParameter("hfc");
     String startDate = request.getParameter("startDate");

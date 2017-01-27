@@ -17,7 +17,7 @@ $(document).ready(function(e){
                timeout: 10000,
                success: function(result){                            
                    response = result.trim();
-                   console.log(response);
+                  // console.log(response);
                    $('#viewHoliday').remove();
                    $('#viewAllHoliday').append(response);
                },

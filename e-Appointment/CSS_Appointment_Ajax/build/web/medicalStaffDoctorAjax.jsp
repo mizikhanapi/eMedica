@@ -20,7 +20,16 @@
 </script>
 
 <%
-
+        //untuk IE
+    response.addHeader("Pragma", "no-cache");
+    response.addHeader("Cache-Control", "no-cache");
+    response.addHeader("Cache-Control", "no-store");
+    response.addHeader("Cache-Control", "must-revalidate");
+    response.addHeader("Cache-Control", "Post-Check=0");
+    response.addHeader("Cache-Control", "Pre-Check=0");
+    response.addHeader("Expires", "Mon, 1 Jan 2006 05:00:00 GMT");//in the past
+    
+Conn Conn = new Conn();
     String username = (String) session.getAttribute("username");
     String hfc = (String) session.getAttribute("HEALTH_FACILITY_CODE");
     String name = (String) session.getAttribute("USER_NAME");
@@ -38,12 +47,12 @@
     String sqlDisDesc = "select description from lookup_detail where Detail_Ref_code = '" + discipline + "' AND Master_Ref_code = '0033'";
     ArrayList<ArrayList<String>> disDesc = Conn.getData(sqlDisDesc);
     discipline = disDesc.get(0).get(0);
-    out.print(discipline);
+    //out.print(discipline);
 
     String sqlSubDesc = "select description from lookup_detail where Master_Ref_code = '0071' AND Detail_Ref_code = '" + subdiscipline + "'";
     ArrayList<ArrayList<String>> subDesc = Conn.getData(sqlSubDesc);
     subdiscipline = subDesc.get(0).get(0);
-    out.print(subdiscipline);
+   // out.print(subdiscipline);
 
     String hfcCode = "SELECT Detail_Ref_code "
             + "FROM lookup_detail "

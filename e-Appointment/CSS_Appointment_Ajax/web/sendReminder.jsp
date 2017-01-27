@@ -17,6 +17,7 @@
 <%@include file="header.jsp"%>
 
 <%
+    Conn Conn = new Conn();
 //    response.addHeader("Access-Control-Allow-Origin", "*");
 //    if ("OPTIONS".equalsIgnoreCase(request.getMethod())) 
 //    {
@@ -167,7 +168,7 @@
                     <span style="color: red">**The reminder was sent 3 days before the appointment day</span><br><br>
                 </div>
                 <div class="col-md-2 col-md-offset-4 col-sm-2 col-sm-offset-4 col-xs-3">
-                    <button class="btn btn-xs" onclick="window.location.href = 'adminAppointment.jsp'">Main Page</button>
+                    <button class="btn btn-xs" onclick="window.location.href = 'adminAppointmentAjax.jsp'">Main Page</button>
                 </div>
             </div> 
              Today's Date : <%out.print(todaysDate);%>

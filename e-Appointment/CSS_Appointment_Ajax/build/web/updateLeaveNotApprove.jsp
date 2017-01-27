@@ -14,6 +14,7 @@
 <%@page import="main.RMIConnector"%>
 
 <%
+    Conn Conn = new Conn();
     String hfcCode = request.getParameter("hfcCode");
     String userId = request.getParameter("userId");
     String leaveDate = request.getParameter("leaveDate");

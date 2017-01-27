@@ -21,7 +21,7 @@
     }
 </script>
 <%
-   
+   Conn Conn = new Conn();
     String username = (String)session.getAttribute("username");
     String hfc = (String)session.getAttribute("HEALTH_FACILITY_CODE");
     String name = (String)session.getAttribute("USER_NAME");

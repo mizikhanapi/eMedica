@@ -8,7 +8,6 @@
 <%@page import="java.util.*"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Config.connect"%>
 <%@page import="dBConn.Conn"%>
 <%@page import="main.RMIConnector"%>
 
@@ -21,7 +20,16 @@
 </script>
 
 <%
-
+        //untuk IE
+    response.addHeader("Pragma", "no-cache");
+    response.addHeader("Cache-Control", "no-cache");
+    response.addHeader("Cache-Control", "no-store");
+    response.addHeader("Cache-Control", "must-revalidate");
+    response.addHeader("Cache-Control", "Post-Check=0");
+    response.addHeader("Cache-Control", "Pre-Check=0");
+    response.addHeader("Expires", "Mon, 1 Jan 2006 05:00:00 GMT");//in the past
+    
+Conn Conn = new Conn();
     String username = (String) session.getAttribute("username");
     String ic = (String) session.getAttribute("ic");
     String name = (String) session.getAttribute("USER_NAME");
@@ -335,7 +343,7 @@
                                     <form>
                                         <!--<div class="form-inline" >-->
                                         <div class="form-group">
-                                            <input type="date" name="searchDateAvailability"  id="dateDoctorA" class="form-control" placeholder="Search Appointment Date" required="required"/>
+                                            <input type="text" name="searchDateAvailability"  id="dateDoctorA" class="form-control" placeholder="Search Appointment Date" required="required"/>
                                         </div>
                                         <div class="form-group"> 
                                             <!--<div class="col-sm-10">--> 
@@ -621,7 +629,7 @@
                                             <label class="control-label col-sm-2" for="appDate">*Appointment Date : </label>  
                                             <div class="col-sm-10">   
                                                 <%if (e32 == null) {%>
-                                                <input  name="appDate" type="date" id="datepicker"  class="form-control" required>
+                                                <input  name="appDate" type="text" id="datepicker"  class="form-control" required>
                                                 <%} else {%>
                                                 <input name="appDate" value="<%= e32%>" type="date" id="datepicker" class="form-control" required>
                                                 <%}%>
@@ -744,10 +752,9 @@
                             <p><b>PMI No : </b><% out.print(pmi);%> </p>
                             <p><b>ID No : </b><% out.print(idPatient); %></p>
                             <p><b>Patient Name : </b><% out.print(patientName); %></p>
-                             <p><b>Patient Name : </b><% out.print(title); %></p>
                             
-                                <p><b>Date From : </b><input type="date" name="dateFrom" value="" id="dateFrom" required></p>
-                                <p><b>Date To : </b><input type="date"  name="dateTo" value="" id="dateTo" required>
+                                <p><b>Date From : </b><input type="text" name="dateFrom" value="" id="dateFrom" required></p>
+                                <p><b>Date To : </b><input type="text"  name="dateTo" value="" id="dateTo" required>
 <!--                                    <button class="btn btn-xs btn-success" type="submit" value="Check Your Date" formaction="patientAppointmentSelectDate.jsp">Check Your Date</button></p>-->
                                 <button class="btn btn-xs btn-success" value="Check Your Date" id="checkDate">Check Your Date</button></p>
                              
@@ -940,19 +947,18 @@
       <script type="text/javascript">
         $(document).ready(function(){
             
-//            function terusInsert(data)
-//            {
-//                $.ajax({
-//                    url: "patientInsertAppointmentAjax.jsp",
-//                    type: "post",
-//                    data: data,
-//                    timeout: 10000,
-//                    success: function(result){
-//                        alert("Your Appointment is success added");
-//                        emptyField();
-//                    }
-//                });
-//            };
+            $(function(){
+                $('#datepicker').datepicker({dateFormat:'dd/mm/yy'});
+            });
+            $(function(){
+                $('#dateDoctorA').datepicker({dateFormat:'dd/mm/yy'});
+            });
+          $(function(){
+                $('#dateFrom').datepicker({dateFormat:'dd/mm/yy'});
+            });
+          $(function(){
+                $('#dateTo').datepicker({dateFormat:'dd/mm/yy'});
+            });
             
             function searchAppFromTo(dfrom,dto)
             {
@@ -962,7 +968,7 @@
                 var to   = new Date(dto);
 
                 console.log("From date : "+from);
-                console.log("To date : "+to);
+               console.log("To date : "+to);
 
                 var targetTable = document.getElementById('appTableBody');
                 //console.log(targetTable.rows.length);
@@ -980,14 +986,14 @@
                         rowData.push(targetTable.rows.item(rowIndex).cells.item(colIndex).textContent);
                         
                     }
-                    console.log(rowData[1]);
+                    //console.log(rowData[1]);
                     var dateSplit = rowData[1].split("/");
-                    console.log(dateSplit);
+                    //console.log(dateSplit);
                     var check = new Date(dateSplit[2],dateSplit[1]-1,dateSplit[0]);
                     
                     if ((check >= from) && (check <= to)){
                         targetTable.rows.item(rowIndex).style.display = 'table-row';
-                        console.log(rowIndex);
+                        //console.log(rowIndex);
                     }
                     else{
                         targetTable.rows.item(rowIndex).style.display = 'none'; 
@@ -1003,122 +1009,7 @@
                 $("#typeAppointment").val("");
             }
             
-          console.log(<% out.print(e34);%>);
-//          $("#check").click(function(){
-//              var _pmiNo = $("#pmiNo").val();
-//              var _dataUserId = $("#idNo").val();
-//              var _patientName = $("#patientName").val() ;
-//              var _ic = $("#ic").val() ;;
-//              var _discipline = $("#disciple").val();
-//              var _subdiscipline = $("#subdiscipline").val();
-//              var _HFCCode = $("#HFCCode").val();
-//              
-//              var _doctor = $("#doctorApp").val();
-//              var _dateAppointment = $("#datepicker").val();
-//              var _timeAppointment = $("#timepicker").find(":selected").text();
-//              var _typeAppointment = $("#typeAppointment").find(":selected").text();
-//              
-//              
-//              
-//              var data = {
-//                  pmiNo:_pmiNo,
-//                  dataUserId:_dataUserId,
-//                  patientName: _patientName,
-//                  ic :_ic,
-//                  discipline :_discipline,
-//                  subdiscipline : _subdiscipline,
-//                  doctor : _doctor,
-//                  dateAppointment: _dateAppointment,
-//                  timeAppointment: _timeAppointment,
-//                  typeAppointment: _typeAppointment,
-//                  HfcCode: _HFCCode
-//              };
-//              console.log(data);
-//    
-//              $.ajax({
-//                  url:"patientCheckAppointmentAjax.jsp",
-//                  type:"post",
-//                  data: data,
-//                  timeout: 10000,
-//                  success: function(result) {
-//                      
-//                      result = result.trim();
-//                      console.log(result);
-//                      if(result == "clinicOff"){
-//                          alert("The clinic is off. Please pick other date");
-//                      }
-//                      else if (result == "datePicked"){
-//                          alert("Date Picked");
-//                      }
-//                      else if (result == "slotPicked"){
-//                          alert("slotPicked");
-//                      }
-//                      else if (result == "appointmentInsert"){
-//                          alert("appointmentInsert");
-//                      }
-//                      else if (result == "appointmentAlreadyInsert"){
-//                          var confirmation = confirm("By clicking OK you are directly Save the info");
-//                          if(confirmation == true){               
-//                              terusInsert(data);
-//                              $("#appointmentTable").load("patientAppointmentAjax.jsp #appointmentTable" );
-//                          }
-//                          else{
-//                              alert("Your Appointment not been added");
-//                              return false;
-//                          }
-//                          
-//                      }
-//                      else if (result == "appointmentInsertstatusActivestatusInactive"){
-//                          var confirmation = confirm("By clicking OK you are directly Save the info");
-//                          if(confirmation == true){
-//                              
-//                              terusInsert(data);
-//                              $("#appointmentTable").load("patientAppointmentAjax.jsp #appointmentTable" );
-//                          }
-//                          else{
-//                              alert("Your Appointment not been added");
-//                              return false;
-//                          }
-//                          
-//                      }
-//                      else if (result == "appointmentInsertstatusCanceled"){
-//                          var confirmation = confirm("The chosen date has been canceled before. Click Ok if you want to proceed with make the appointment on that date");
-//                          if(confirmation == true){
-//                              
-//                              terusInsert(data);
-//                              $("#appointmentTable").load("patientAppointmentAjax.jsp #appointmentTable" );
-//                          }
-//                          else{
-//                              alert("Your Appointment not been added");
-//                              return false;
-//                          }
-//                          
-//                          
-//            //alert("appointmentInsertstatusCanceled");
-//                      }
-//
-//                      else if (result == "doctorOnLeave"){
-//                          alert("The doctor is on leave. Please choose other doctor");
-//                      }
-//                      
-//                      else if (result == "doctorNotDuty"){
-//                          alert("The doctor is not in their duty. Please choose other doctor");
-//                      }
-//                      
-//                      else if (result == "holiday"){
-//                          alert("The picked date is Holiday. Please view holiday in the View Holiday tab");
-//                      }
-//                      
-//                      
-//                  },
-//                  error: function(err){
-//                      alert("error");
-//                      //console.log(err);
-//                  }
-//              });
-//             
-//              
-//          });
+  
           
 
           $('#viewApp').click(function(e){
@@ -1128,9 +1019,14 @@
               
               e.preventDefault();
              
-            var _dateFrom = $("#dateFrom").val();
-            var _dateTo = $("#dateTo").val();
-            
+            var _dateFrom = $("#dateFrom").datepicker().val();
+            var _dateTo = $("#dateTo").datepicker().val();
+            _dateFrom  = _dateFrom.split('/');
+            _dateFrom = _dateFrom[1]+"/"+_dateFrom[0]+"/"+_dateFrom[2];
+           _dateTo  = _dateTo.split('/');
+            _dateTo = _dateTo[1]+"/"+_dateTo[0]+"/"+_dateTo[2];
+            console.log(_dateFrom);
+            console.log(_dateTo);
             searchAppFromTo(_dateFrom,_dateTo);
 
           });

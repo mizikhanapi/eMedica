@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 function searchByDate (){
+    var date = $('#searchAppointmentDate').val().split('/');
+    date = date[2]+'-'+date[1]+'-'+date[0];
     var dataSearch = {
-            searchAppointmentDate: $('#searchAppointmentDate').val()
+            searchAppointmentDate: date
         };
         console.log(dataSearch);
         $.ajax({
@@ -14,7 +16,7 @@ function searchByDate (){
             data:dataSearch,
             timeout:10000,
             success:function(result){
-                console.log(result);
+                        //console.log(result);
                 $('#viewAppointmentTable').html(result);
             }
         });
@@ -24,14 +26,14 @@ function searchByPatient() {
      var dataSearch = {
             searchAppointmentPatient: $('#searchAppointmentPatient').val()
         };
-        console.log(dataSearch);
+        //console.log(dataSearch);
         $.ajax({
             url:'AppointmentViewPatient.jsp',
             method:'post',
             data:dataSearch,
             timeout:10000,
             success:function(result){
-                console.log(result);
+                //console.log(result);
                 $('#viewAppointmentTable').html(result);
             }
         });
@@ -41,14 +43,14 @@ function searchByDoctor(){
      var dataSearch = {
             searchAppointmentDoctor: $('#searchAppointmentDoctor').val()
         };
-        console.log(dataSearch);
+        //console.log(dataSearch);
         $.ajax({
             url:'AppointmentViewDoctor.jsp',
             method:'post',
             data:dataSearch,
             timeout:10000,
             success:function(result){
-                console.log(result);
+                //console.log(result);
                 $('#viewAppointmentTable').html(result);
             }
         });

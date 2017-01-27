@@ -13,6 +13,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
+    Conn Conn = new Conn();
     String pmiNo = request.getParameter("pmiNo");
     String icNo = request.getParameter("icNo");
     String idNo = request.getParameter("idNo");

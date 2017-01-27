@@ -14,6 +14,7 @@
 <%@page import="main.RMIConnector"%>
 
 <%
+    Conn Conn = new Conn();
     String staffID = request.getParameter("staffId");
     String roster_category = request.getParameter("roster_category");
     String startDate = request.getParameter("startDate");
@@ -77,7 +78,7 @@
          }
          else
         {
-            out.print("error");
+            out.print("errorUpdate");
         }
     }
       

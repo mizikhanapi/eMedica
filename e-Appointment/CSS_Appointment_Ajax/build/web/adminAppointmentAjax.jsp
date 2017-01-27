@@ -20,6 +20,16 @@
     }
 </script>
 <%
+    Conn Conn = new Conn();
+    //untuk IE
+    response.addHeader("Pragma", "no-cache");
+    response.addHeader("Cache-Control", "no-cache");
+    response.addHeader("Cache-Control", "no-store");
+    response.addHeader("Cache-Control", "must-revalidate");
+    response.addHeader("Cache-Control", "Post-Check=0");
+    response.addHeader("Cache-Control", "Pre-Check=0");
+    response.addHeader("Expires", "Mon, 1 Jan 2006 05:00:00 GMT");//in the past
+    
   
     response.addHeader("Access-Control-Allow-Origin", "*");
     if ("OPTIONS".equalsIgnoreCase(request.getMethod())) 
@@ -34,7 +44,7 @@
     String subdiscipline = (String)session.getAttribute("SUBDISCIPLINE_CODE");
 
     
-    out.print(hfc);
+    //out.print(hfc);
     
     if(discipline == null)
     {
@@ -115,7 +125,7 @@
     {
         adminUsername = null;
     }
-out.print(adminUsername);
+//out.print(adminUsername);
 
     String sqlDoctorAvailable = "SELECT doc.*,DATE(pdr.start_date),DATE(pdr.end_date) "
             + "from pms_duty_roster pdr, "
@@ -870,7 +880,7 @@ out.print(adminUsername);
                                     <label class="control-label col-sm-2" for="starttime">Start Time</label>  
                                     <div class="col-sm-10">   
 
-                                        <input  name="starttime" type="time-local" class="form-control" id="startdateC" onfocus="(this.type = 'time')" onblur="(this.type = 'time')" placeholder="" required>
+                                        <input  name="starttime" type="text" class="form-control" id="startdateC" placeholder="" required>
 
                                     </div>
                                 </div>   
@@ -878,7 +888,7 @@ out.print(adminUsername);
                                     <label class="control-label col-sm-2" for="endtime">End Time</label>  
                                     <div class="col-sm-10">   
 
-                                        <input  name="endtime" type="time-local" class="form-control" id="enddateC" onfocus="(this.type = 'time')" onblur="(this.type = 'time')" placeholder="" required>
+                                        <input  name="endtime" type="text" class="form-control" id="enddateC"placeholder="" required>
        
                                     </div>
                                 </div> 
@@ -1080,7 +1090,7 @@ out.print(adminUsername);
                                     <label class="control-label col-sm-2" for="startDate">Start Date </label>
                                     <input type="hidden" name="startDateBeforeRoster" value="" id="startDateBeforeRoster">
                                     <div class="col-sm-10">
-                                        <input  class="form-control" name="startDateRoster" value="" type="date" id="startDateRoster">
+                                        <input  class="form-control" name="startDateRoster" value="" type="text" id="startDateRoster">
                                     
                                     </div>
                                 </div>
@@ -1088,7 +1098,7 @@ out.print(adminUsername);
                                     <label class="control-label col-sm-2" for="endDate">End Date </label>
                                     <div class="col-sm-10">
 
-                                        <input  class="form-control" name="end_date" value="" type="date" id="endDateRoster">
+                                        <input  class="form-control" name="end_date" value="" type="text" id="endDateRoster">
                                       
                                     </div>
                                 </div>
@@ -1096,15 +1106,15 @@ out.print(adminUsername);
                                     <label class="control-label col-sm-2" for="startTime">Start Time </label>
                                     <div class="col-sm-10">
 
-                                        <input  class="form-control" name="startTimeRoster" value="" type="time" id="startTimeRoster">
-                                      
+                                        <input  class="form-control" name="startTimeRoster" value="" type="text" id="startTimeRoster">
+  
                                     </div>
                                 </div>
                                 <div class="form-group"> 
                                     <label class="control-label col-sm-2" for="endTime">End Time </label>
                                     <div class="col-sm-10">
                                         
-                                        <input  class="form-control" name="endTimeRoster" value="" type="time" id="endTimeRoster">
+                                        <input  class="form-control" name="endTimeRoster" value="" type="text" id="endTimeRoster">
                                         
                                     </div>
                                 </div>
@@ -1386,7 +1396,7 @@ out.print(adminUsername);
                                     <input type="hidden" name="startLeaveBefore" value="" id="startLeaveBefore">
                                     <div class="col-sm-10">
 
-                                        <input  class="form-control" name="start_leave" value="" type="date" id="startDateLeave" required>
+                                        <input  class="form-control" name="start_leave" value="" type="text" id="startDateLeave" required>
                                        
                                     </div>
                                 </div>
@@ -1394,7 +1404,7 @@ out.print(adminUsername);
                                     <label class="control-label col-sm-2" for="endLeave">End Leave </label>
                                     <div class="col-sm-10">
 
-                                        <input  class="form-control" name="end_leave" value="" type="date" id="endDateLeave" required>
+                                        <input  class="form-control" name="end_leave" value="" type="text" id="endDateLeave" required>
                                      
                                     </div>
                                 </div>
@@ -1488,7 +1498,7 @@ out.print(adminUsername);
                                     <form>
                                         <!--<div class="form-inline" >-->
                                         <div class="form-group">
-                                            <input type="date" name="searchDateAvailability"  id="dateDoctorA" class="form-control" placeholder="Search Appointment Date" required="required"/>
+                                            <input type="text" name="searchDateAvailability"  id="dateDoctorA" class="form-control" placeholder="Search Appointment Date" required="required"/>
                                         </div>
                                         <div class="form-group"> 
                                             <!--<div class="col-sm-10">--> 
@@ -1671,12 +1681,12 @@ out.print(adminUsername);
                                         <div class="form-group" >
                                             <label class="control-label col-sm-2" for="pmiNo">PMI No : </label>  
                                             <div class="col-sm-10">   
-                                                  <input type="text" name="role" value="<%=title%>" id="role">
-                                                  <input type="text" name="disciple" value="<%=discipline%>" id="disciple">
-                                                  <input type="text" name="subdiscipline" value="<%=subdiscipline%>" id="subdisciplineAppointment">
-                                                  <input type="text" name="HFCCode" value="<%=hfc%>" id="HFCCode">
+                                                  <input type="hidden" name="role" value="<%=title%>" id="role">
+                                                  <input type="hidden" name="disciple" value="<%=discipline%>" id="disciple">
+                                                  <input type="hidden" name="subdiscipline" value="<%=subdiscipline%>" id="subdisciplineAppointment">
+                                                  <input type="hidden" name="HFCCode" value="<%=hfc%>" id="HFCCode">
                                                 <input name="pmiNo" value=""  id="pmiNo" type="text" class="form-control" readonly>
-                                                <input type="text" name="ic"  id="ic">
+                                                <input type="hidden" name="ic"  id="ic">
                                     
                
                                             </div>
@@ -1725,7 +1735,7 @@ out.print(adminUsername);
                                             <div class="col-sm-10">   
                                                 <%if(appDate == null)
                             {%>
-                                                <input  name="appDate" type="date" id="datepicker" class="form-control" required>
+                                                <input  name="appDate" type="text" id="datepicker" class="form-control" required>
                                                 <%}
                                                 else
                                                 {%>
@@ -1894,7 +1904,7 @@ out.print(adminUsername);
                                         <div class="form-inline" >
                                             <div class="form-group">
                                                 <!--<label>PMI No :</label>-->
-                                                <input type="date" name="searchAppointmentDate"  id="searchAppointmentDate" class="form-control" placeholder="Search Appointment Date"/>
+                                                <input type="text" name="searchAppointmentDate"  id="searchAppointmentDate" class="form-control" placeholder="Search Appointment Date"/>
                                             </div>
                                             <div class="form-group">
                                                 <button class="btn btn-xs btn-success" id="searchDateView">Search</button>
@@ -2113,13 +2123,47 @@ out.print(adminUsername);
             }
            
             $(document).ready(function(){
+                $('#startTimeRoster').ptTimeSelect();
+                $('#endTimeRoster').ptTimeSelect();
+                
+                $('#startdateC').ptTimeSelect();
+                $('#enddateC').ptTimeSelect();
                 
                 $('#updateBtn').prop('disabled', true);
                 $('#updateClinicDay').prop('disabled', true);
                 $('#updateRoster').prop('disabled', true);
-                
               
-                
+            $(function(){
+                $('#startdate').datepicker({dateFormat:'dd/mm/yy'});
+            });
+            
+            $(function(){
+                $('#datepicker').datepicker({dateFormat:'dd/mm/yy'});
+            });
+            
+           $(function(){
+                $('#startDateRoster').datepicker({dateFormat:'dd/mm/yy'});
+            });
+            
+         $(function(){
+                $('#endDateRoster').datepicker({dateFormat:'dd/mm/yy'});
+            });
+            
+          $(function(){
+                $('#dateDoctorA').datepicker({dateFormat:'dd/mm/yy'});
+            });
+            
+         $(function(){
+                $('#startDateLeave').datepicker({dateFormat:'dd/mm/yy'});
+            });
+            
+          $(function(){
+                $('#endDateLeave').datepicker({dateFormat:'dd/mm/yy'});
+            });
+            
+          $(function(){
+                $('#searchAppointmentDate').datepicker({dateFormat:'dd/mm/yy'});
+            });
                 
                 
                 $('#maintainStaffLeave').on('click','.notApprove-leave',function(e){
@@ -2222,16 +2266,25 @@ out.print(adminUsername);
                 
                 $('#updateRoster').click(function(e){
                     e.preventDefault(e);
+             
+                    var starttimeRoster = ConvertTimeformat('24',$('#startTimeRoster').val());
+                    var endtimeRoster = ConvertTimeformat('24',$('#endTimeRoster').val());
+                    
+                    var  startDate = changeDateFormat($('#startDateRoster').val());
+                     var endDate = changeDateFormat($('#endDateRoster').val());
+                     var startDateBefore = changeDateFormat($('#startDateBeforeRoster').val());
+                     
+                    
                     var dataURoster = {
                         hfcCode:$('#hfcRoster').val(),
                         staffId:$('#staffIDRoster').val(),
                         userIdBefore:$('#userIDBefore').val(),
                         roster_category:$('#roster_category').val(),
-                        startDateBefore:$('#startDateBeforeRoster').val(),
-                        startDate:$('#startDateRoster').val(),
-                        endDate:$('#endDateRoster').val(),
-                        startTime:$('#startTimeRoster').val(),
-                        endTime:$('#endTimeRoster').val(),
+                        startDateBefore:startDateBefore,
+                        startDate:startDate,
+                        endDate:endDate,
+                        startTime:starttimeRoster,
+                        endTime:endtimeRoster,
                         status:$('#statusRoster').val()
                     };
                     console.log(dataURoster);
@@ -2270,19 +2323,20 @@ out.print(adminUsername);
                       var dataRoster = $('#rosterData'+id[1]).val();
                      var dataRArry = dataRoster.split("|");
                      
-                     var startDate = dataRArry[1].split('/');
-                     var endDate = dataRArry[2].split('/');
-                     var startDate = startDate[2]+'-'+startDate[1]+'-'+startDate[0];
-                     var endDate = endDate[2]+'-'+endDate[1]+'-'+endDate[0];
+                    console.log(dataRArry);
+                    
+                     
+                  var starttimeRoster = ConvertTimeformat12('12',dataRArry[3]);
+                   var endtimeRoster = ConvertTimeformat12('12',dataRArry[4]);
                      
                    $('#staffIDRoster').val(dataRArry[0].trim());
                    $('#userIDBefore').val(dataRArry[0].trim());
                    $('#roster_category').val(dataRArry[5]);
-                   $('#startDateRoster').val(startDate);
-                   $('#startDateBeforeRoster').val(startDate);
-                   $('#endDateRoster').val(endDate);
-                   $('#startTimeRoster').val(dataRArry[3]);
-                   $('#endTimeRoster').val(dataRArry[4]);
+                   $('#startDateRoster').val(dataRArry[1]);
+                   $('#startDateBeforeRoster').val(dataRArry[1]);
+                   $('#endDateRoster').val(dataRArry[2]);
+                   $('#startTimeRoster').val(starttimeRoster);
+                   $('#endTimeRoster').val(endtimeRoster);
                    $('#statusRoster').val(dataRArry[6]);
                      
                 });
@@ -2290,14 +2344,22 @@ out.print(adminUsername);
                 $('#addRoster').click(function(e){
                     e.preventDefault();
                     
+                    var startDateRoster = $('#startDateRoster').val().split('/');
+                     var endDateRoster = $('#endDateRoster').val().split('/');
+                     startDateRoster = startDateRoster[2]+'-'+startDateRoster[1]+'-'+startDateRoster[0];
+                     endDateRoster = endDateRoster[2]+'-'+endDateRoster[1]+'-'+endDateRoster[0];
+                    
+                    var starttimeRoster = ConvertTimeformat('24',$('#startTimeRoster').val());
+                    var endtimeRoster = ConvertTimeformat('24',$('#endTimeRoster').val());
+                    
                     var dataRoster = {
                        hfcRoster: $('#hfcRoster').val(),
                        staffIDRoster:$('#staffIDRoster').val(),
                        roster_category: $('#roster_category').val(),
-                       startDateRoster:$('#startDateRoster').val(),
-                       endDateRoster:$('#endDateRoster').val(),
-                       startTimeRoster:$('#startTimeRoster').val(),
-                       endTimeRoster:$('#endTimeRoster').val(),
+                       startDateRoster: startDateRoster,
+                       endDateRoster: endDateRoster,
+                       startTimeRoster:starttimeRoster,
+                       endTimeRoster:endtimeRoster,
                        statusRoster:$('#statusRoster').val()
                     };
                     
@@ -2347,6 +2409,9 @@ out.print(adminUsername);
                 
                 $('#updateClinicDay').click(function(e){
                     e.preventDefault();
+                    var starttimeClinic = ConvertTimeformat('24',$('#startdateC').val());
+                    var endtimeClinic = ConvertTimeformat('24',$('#enddateC').val());
+                    
                     var _state = $('#state_').val();
                     var _hfc  = $('#hfc_codeC').val();
                     var _hfcBefore = $('#hfcBefore').val();
@@ -2356,8 +2421,8 @@ out.print(adminUsername);
                     var _subdiscipline = $('#subdiscipline').val();
                     var _clinicDay = $('#clinicDay').val();
                     var _dayBefore = $('#dayBefore').val();
-                    var _starttime = $('#startdateC').val();
-                    var _endtime = $('#enddateC').val();
+                    var _starttime = starttimeClinic;
+                    var _endtime = endtimeClinic;
                     var _status = $('#status').val();
                     
                     var uClinicData = {
@@ -2431,12 +2496,13 @@ out.print(adminUsername);
                         $('#subdiscipline  option').filter(function() { 
                             return ($(this).text() === dataArry[3]); //To select Blue
                         }).prop('selected', true);
-                      
-
+                     
+                     var startTime = ConvertTimeformat12('12',dataArry[5]);
+                     var endTime = ConvertTimeformat12('12',dataArry[6]);
 
                       $('#clinicDay').val(dataArry[4]);
-                      $('#startdateC').val(dataArry[5]);
-                       $('#enddateC').val(dataArry[6]);
+                      $('#startdateC').val(startTime);
+                       $('#enddateC').val(endTime);
                        $('#status').val(dataArry[7]);
                        
                        $('#hfcBefore').val(dataArry[1]);
@@ -2448,15 +2514,20 @@ out.print(adminUsername);
                 
                 $('#addClinicDay').click(function(e){
                    e.preventDefault();
+                   
+                    var starttimeClinic = ConvertTimeformat('24',$('#startdateC').val());
+                    var endtimeClinic = ConvertTimeformat('24',$('#enddateC').val());
+
                    var _state = $('#state_').val();
                    var _hfc = $('#hfc_codeC').val();
                    var _discipline = $('#discipline').val();
                    var _subdiscipline = $('#subdiscipline').val();
                    var _clinicDay = $('#clinicDay').val();
-                   var _startTime = $('#startdateC').val();
-                   var _endTime = $('#enddateC').val();
+                   var _startTime = starttimeClinic;
+                   var _endTime = endtimeClinic;
                    var _clinicStatus = $('#status').val();
                    
+               
                    var dataC = {
                        state:_state,
                        hfc:_hfc,
@@ -2506,9 +2577,13 @@ out.print(adminUsername);
                      var dataArry = data.split("|");
                      console.log(dataArry);
                      
+                      var dateConvert = dataArry[1].split(' ');
+                      dateConvert = dateConvert[0].split('-');
+                      dateConvert = dateConvert[2]+"/"+dateConvert[1]+"/"+dateConvert[0];
+                     
                      $('#state').val(dataArry[0]);
                      $('#stateBefore').val(dataArry[0]);
-                     $('#startdate').val(dataArry[1]);
+                     $('#startdate').val(dateConvert);
                      $('#dateBefore').val(dataArry[1]);
                      $('#desc').val(dataArry[2]);
                      $('#appTo').val(dataArry[3]);
@@ -2518,16 +2593,19 @@ out.print(adminUsername);
                 
                $('#updateBtn').click(function(e){
                    e.preventDefault();
-                   alert('updateBtn');
+  
                    
                    var _uState = $('#state').val();
                    var _uStateBefore = $('#stateBefore').val();
-                   var _uDate = $('#startdate').val();
+                   var _uDate = $('#startdate').datepicker().val();
                    var _uDesc = $('#desc').val();
                    var _uAppTo = $('#appTo').val();
                    var _uStatus = $('#holidayStatus').val();
                    var _uDateBefore = $('#dateBefore').val();
                    
+                   _uDate = _uDate.split('/');
+                _uDate = _uDate[2]+ "-"+_uDate[1]+"-"+ _uDate[0];
+                
                    var _upData = {
                       state: _uState,
                       stateBefore: _uStateBefore,
@@ -2549,6 +2627,7 @@ out.print(adminUsername);
                            if(response === 'success'){
                                alert('Holiday has successful update');
                                 $('#holidayTable').load('adminAppointmentAjax.jsp #holidayTable');
+                                $('#viewHoliday').load('adminAppointmentAjax.jsp #viewHoliday');
                            }
                            else if(response === 'fail'){
                                alert('Update holiday fail due to the holiday data does not exist');
@@ -2573,9 +2652,13 @@ out.print(adminUsername);
                $('#addHoliday').click(function(e){
                   e.preventDefault();
                   var _state = $('#state').val();
-                  var _date = $('#startdate').val();
+                  var _date = $('#startdate').datepicker().val();
                   var _desc = $('#desc').val();
                   var _appTo = $('#appTo').val();
+                  
+       
+                 _date = _date.split('/');
+                _date = _date[2]+ "-"+_date[1]+"-"+ _date[0];
                   
                   var data = {
                       state:_state,
@@ -2588,6 +2671,7 @@ out.print(adminUsername);
                      url:'addHolidayAjax.jsp',
                      type:'post',
                      data:data,
+                     cache: false,
                      timeout: 10000,
                      success: function(result){
                          console.log(result);
@@ -2595,6 +2679,7 @@ out.print(adminUsername);
                          if(result === "success"){
                              alert('Holiday successful added');
                              $('#holidayTable').load('adminAppointmentAjax.jsp #holidayTable');
+                             $('#viewHoliday').load('adminAppointmentAjax.jsp #viewHoliday');
                          }
                          else if(result === "error")
                          {

@@ -4,13 +4,22 @@
         <title>e-Appointment</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+
+        
         <link rel="stylesheet" href="<%=Config.getBase_url(request) %>bootstrap-3.3.6-dist/css/bootstrap.min.css" />
         <script src="<%=Config.getBase_url(request) %>bootstrap-3.3.6-dist/js/jquery.min.js"></script>
         <script src="<%=Config.getBase_url(request) %>bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
         <link href="<%=Config.getBase_url(request) %>default.css" rel="stylesheet" type="text/css" />
         <link href="<%=Config.getBase_url(request) %>authenticate.css" rel="stylesheet" type="text/css" />
         
+        <link rel="stylesheet" href="<%=Config.getBase_url(request) %>js/jquery-ui.css">
+        <script src="<%=Config.getBase_url(request) %>js/jquery-ui.js"></script>
         
+        <link rel="stylesheet" type="text/css" href="<%=Config.getBase_url(request) %>js/jquery.ptTimeSelect.css"> 
+        <script type="text/javascript" src="<%=Config.getBase_url(request) %>js/jquery.ptTimeSelect.js"></script> 
+
+   <script src="<%=Config.getBase_url(request) %>js/24hourTime.js"></script>
         <script src="<%=Config.getBase_url(request) %>js/jquery.bootpag.js"></script>
         <script src="<%=Config.getBase_url(request) %>js/login.js"></script>
         <script src="<%=Config.getBase_url(request) %>js/passwordValidation.js"></script>

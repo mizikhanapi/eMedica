@@ -6,11 +6,15 @@
 $(document).ready(function(){
         $('#applyLeave').click(function(e){
             e.preventDefault(e);
+            
+            var startDateLeave = changeDateFormat($('#startDateLeave').val());
+            var endDateLeave  =changeDateFormat($('#endDateLeave').val());
+            
             var dataLeave = {
                hfcName:$('#hfcNameL').val(),
                staffName:$('#staffNameL').val(),
-               startDate:$('#startDateLeave').val(),
-               endDate:$('#endDateLeave').val(),
+               startDate:startDateLeave,
+               endDate:endDateLeave,
                desc:$('#descLeave').val()
             };
             

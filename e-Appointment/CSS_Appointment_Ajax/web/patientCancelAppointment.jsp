@@ -9,6 +9,7 @@
 <%@page import="dBConn.Conn"%>
 <%@page import="main.RMIConnector"%>
 <%
+    Conn Conn = new Conn();
     String ic = (String)session.getAttribute("ic");
     String e27 = request.getParameter("e27");
     String e32 = request.getParameter("e32");

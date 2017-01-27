@@ -13,6 +13,7 @@
 <%@page import="main.RMIConnector"%>
 
 <%
+    Conn Conn = new Conn();
         String username = (String)session.getAttribute("username");
         String pmiNo = request.getParameter("pmiNo");
         String patientName = request.getParameter("patientName");

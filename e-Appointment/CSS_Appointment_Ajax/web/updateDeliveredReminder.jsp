@@ -13,6 +13,7 @@
 
 
 <%
+    Conn Conn = new Conn();
         String pmi_no = request.getParameter("email");
         String hfc_cd = request.getParameter("subject");
         String app_date = request.getParameter("message");

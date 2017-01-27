@@ -11,7 +11,7 @@
 <%@page import="dBConn.Conn"%>
 <%@page import="main.RMIConnector"%>
 <%
-
+Conn Conn = new Conn();
     String ic = (String)session.getAttribute("ic");
     String val1 = (String)session.getAttribute("val1");
     String val2 = (String)session.getAttribute("val2");

@@ -25,7 +25,7 @@ function myFunction(pmiNo, hfcCd, date)
                 data: dataDelete,
                 timeout: 10000,
                 success: function (result) {
-                    console.log(result);
+                    //console.log(result);
                     if (result.trim() === 'success') {
                         alert('the appointment has been canceled');
                         $('#viewAppointmentTable').load('adminAppointmentAjax.jsp #viewAppointmentTable');
@@ -35,7 +35,7 @@ function myFunction(pmiNo, hfcCd, date)
                 }
 
             });
-            console.log(dataDelete)
+            //console.log(dataDelete)
            
         } else
         {

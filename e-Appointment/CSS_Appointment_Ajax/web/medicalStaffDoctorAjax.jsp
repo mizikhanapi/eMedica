@@ -20,7 +20,16 @@
 </script>
 
 <%
-
+        //untuk IE
+    response.addHeader("Pragma", "no-cache");
+    response.addHeader("Cache-Control", "no-cache");
+    response.addHeader("Cache-Control", "no-store");
+    response.addHeader("Cache-Control", "must-revalidate");
+    response.addHeader("Cache-Control", "Post-Check=0");
+    response.addHeader("Cache-Control", "Pre-Check=0");
+    response.addHeader("Expires", "Mon, 1 Jan 2006 05:00:00 GMT");//in the past
+    
+Conn Conn = new Conn();
     String username = (String) session.getAttribute("username");
     String hfc = (String) session.getAttribute("HEALTH_FACILITY_CODE");
     String name = (String) session.getAttribute("USER_NAME");

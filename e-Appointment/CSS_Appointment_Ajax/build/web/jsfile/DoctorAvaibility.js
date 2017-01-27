@@ -6,11 +6,18 @@
 
 $(document).ready(function(){
   function searchDoctor(){
-     var dataSearch = {
-                date:$('#dateDoctorA').val(),
+
+            
+         var dateAppointment = $("#dateDoctorA").datepicker().val();
+        dateAppointment = dateAppointment.split('/');
+        dateAppointment = dateAppointment[2]+ "-"+dateAppointment[1]+"-"+ dateAppointment[0];
+        
+             var dataSearch = {
+                date:dateAppointment,
                 doctor:$('#selectDoctorA').val()
             };
-            console.log(dataSearch);
+        
+            console.log(dateAppointment);
             //ada bug x boleh click href lain
             $.ajax({
                 url:'adminDoctorAvailability.jsp',
@@ -20,7 +27,7 @@ $(document).ready(function(){
                 success:function(result){
 
                     $('#doctorAvailabilityTable').html(result);
-                    console.log(result);
+                    //console.log(result);
 
 
                 },

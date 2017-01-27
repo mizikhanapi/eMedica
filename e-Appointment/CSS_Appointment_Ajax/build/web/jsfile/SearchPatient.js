@@ -37,6 +37,6 @@ $(document).ready(function(){
                     console.log(err);
                 }
             });
-            console.log(dataSearchPatient);
+            //console.log(dataSearchPatient);
         });
 });

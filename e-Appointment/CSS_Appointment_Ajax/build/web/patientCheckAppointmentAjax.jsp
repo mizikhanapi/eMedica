@@ -14,7 +14,7 @@
 
         <%
            
-                
+                Conn Conn = new Conn();
                 String pmiNo = request.getParameter("pmiNo");
                 String dataUserId = request.getParameter("dataUserId");
                 String ic = request.getParameter("ic");

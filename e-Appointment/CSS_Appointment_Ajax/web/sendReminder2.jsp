@@ -16,6 +16,7 @@
 <%@include file="header.jsp"%>
 
 <%
+    Conn Conn = new Conn();
 //    response.addHeader("Access-Control-Allow-Origin", "*");
 //    if ("OPTIONS".equalsIgnoreCase(request.getMethod())) 
 //    {

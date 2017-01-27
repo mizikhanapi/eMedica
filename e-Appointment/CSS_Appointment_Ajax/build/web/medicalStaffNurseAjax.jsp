@@ -20,7 +20,16 @@
 </script>
 
 <%
-
+        //untuk IE
+    response.addHeader("Pragma", "no-cache");
+    response.addHeader("Cache-Control", "no-cache");
+    response.addHeader("Cache-Control", "no-store");
+    response.addHeader("Cache-Control", "must-revalidate");
+    response.addHeader("Cache-Control", "Post-Check=0");
+    response.addHeader("Cache-Control", "Pre-Check=0");
+    response.addHeader("Expires", "Mon, 1 Jan 2006 05:00:00 GMT");//in the past
+    
+Conn Conn = new Conn();
     String username = (String) session.getAttribute("username");
     String hfc = (String) session.getAttribute("HEALTH_FACILITY_CODE");
     String name = (String) session.getAttribute("USER_NAME");
@@ -124,107 +133,10 @@
             + "AND lookSub.subdiscipline=lds.Detail_Ref_code";
     ArrayList<ArrayList<String>> dataAppointment = Conn.getData(sqlAppointment);
 
-    String e1 = null;
-    String e2 = null;
-    String e3 = null;
-    String e4 = null;
-    String e5 = null;
-    String e6 = null;
-    String stateCode = null;
-    String e7 = null;
-    String HFCCode = null;
-    String e8 = null;
-    String disciplineCode = null;
-    String e9 = null;
-    String subdisciplineCode = null;
-    String e10 = null;
-    String e11 = null;
-    String e12 = null;
-    String e13 = null;
-    String e14 = null;
-    String userID = null;
-    String e15 = null;
-    String e16 = null;
-    String e17 = null;
-    String e18 = null;
-    String e19 = null;
-    String e20 = null;
-    String e21 = null;
-    String e22 = null;
-    String e23 = null;
-    String e24 = null;
-    String e25 = null;
-    String e26 = null;
-    String e27 = null;
-    String e28 = null;
-    String e29 = null;
-    String e30 = null;
-    String e31 = null;
-    String e32 = null;
-    String e33 = null;
-    String e34 = null;
-    String e35 = null;
-    String disciplineCodeApp = null;
-    String e36 = null;
-    String subDisciplineCodeApp = null;
-    String e37 = null;
-    String e38 = null;
-    String e39 = null;
-    String e40 = null;
-    String e41 = null;
-    String e42 = null;
-    String e43 = null;
-    String e44 = null;
-    String e45 = null;
-    String e46 = null;
-    String e47 = null;
+ 
     String e48 = null;
 
-    e1 = request.getParameter("e1");
-    e2 = request.getParameter("e2");
-    e3 = request.getParameter("e3");
-    e4 = request.getParameter("e4");
-    e5 = request.getParameter("e5");
-    e6 = request.getParameter("e6");
-    e7 = request.getParameter("e7");
-    e8 = request.getParameter("e8");
-    e9 = request.getParameter("e9");
-    e10 = request.getParameter("e10");
-    e11 = request.getParameter("e11");
-    e12 = request.getParameter("e12");
-    e13 = request.getParameter("e13");
-    e14 = request.getParameter("e14");
-    e15 = request.getParameter("e15");
-    e16 = request.getParameter("e16");
-    e17 = request.getParameter("e17");
-    e18 = request.getParameter("e18");
-    e19 = request.getParameter("e19");
-    e20 = request.getParameter("e20");
-    e21 = request.getParameter("e21");
-    e22 = request.getParameter("e22");
-    e23 = request.getParameter("e23");
-    e24 = request.getParameter("e24");
-    e25 = request.getParameter("e25");
-    e26 = request.getParameter("e26");
-    e27 = request.getParameter("e27");
-    e30 = request.getParameter("e30");
-    e31 = request.getParameter("e31");
-    e32 = request.getParameter("e32");
-    e33 = request.getParameter("e33");
-    e34 = request.getParameter("e34");
-    e35 = request.getParameter("e35");
-    e36 = request.getParameter("e36");
-    e37 = request.getParameter("e37");
-    e38 = request.getParameter("e38");
-    e39 = request.getParameter("e39");
-    e40 = request.getParameter("e40");
-    e41 = request.getParameter("e41");
-    e42 = request.getParameter("e42");
-    e43 = request.getParameter("e43");
-    e44 = request.getParameter("e44");
-    e45 = request.getParameter("e45");
-    e46 = request.getParameter("e46");
-    e47 = request.getParameter("e47");
+   
     e48 = request.getParameter("e48");
 %>
 
@@ -531,7 +443,7 @@
                                     <input type="hidden" name="startLeaveBefore" value="" id="startLeaveBefore">
                                     <div class="col-sm-10">
 
-                                        <input  class="form-control" name="start_leave" value="" type="date" id="startDateLeave" required>
+                                        <input  class="form-control" name="start_leave" value="" type="text" id="startDateLeave" required>
 
                                     </div>
                                 </div>
@@ -539,7 +451,7 @@
                                     <label class="control-label col-sm-2" for="endLeave">End Leave </label>
                                     <div class="col-sm-10">
 
-                                        <input  class="form-control" name="end_leave" value="" type="date" id="endDateLeave" required>
+                                        <input  class="form-control" name="end_leave" value="" type="text" id="endDateLeave" required>
 
                                     </div>
                                 </div>
@@ -630,7 +542,7 @@
                                     <form>
                                         <!--<div class="form-inline" >-->
                                         <div class="form-group">
-                                            <input type="date" name="searchDateAvailability"  id="dateDoctorA" class="form-control" placeholder="Search Appointment Date" required="required"/>
+                                            <input type="text" name="searchDateAvailability"  id="dateDoctorA" class="form-control" placeholder="Search Appointment Date" required="required"/>
                                         </div>
                                         <div class="form-group"> 
                                             <!--<div class="col-sm-10">--> 
@@ -860,7 +772,7 @@
                                             <label class="control-label col-sm-2" for="appDate">*Appointment Date : </label>  
                                             <div class="col-sm-10">   
                                                 <%if (appDate == null) {%>
-                                                <input  name="appDate" type="date" id="datepicker" class="form-control" required>
+                                                <input  name="appDate" type="text" id="datepicker" class="form-control" required>
                                                 <%} else {%>
                                                 <input name="appDate" value="<%= appDate%>" type="date"  class="form-control" required>
                                                 <%}%>
@@ -1021,7 +933,7 @@
                                         <div class="form-inline" >
                                             <div class="form-group">
                                                 <!--<label>PMI No :</label>-->
-                                                <input type="date" name="searchAppointmentDate"  id="searchAppointmentDate" class="form-control" placeholder="Search Appointment Date"/>
+                                                <input type="text" name="searchAppointmentDate"  id="searchAppointmentDate" class="form-control" placeholder="Search Appointment Date"/>
                                             </div>
                                             <div class="form-group">
                                                 <button class="btn btn-xs btn-success" id="searchDateView">Search</button>
@@ -1201,5 +1113,17 @@
         <script src="<%=Config.getBase_url(request)%>jsfile/ViewAppointment.js"></script> 
         <script src="<%=Config.getBase_url(request)%>jsfile/CancelAppointment.js"></script>
         <script src="<%=Config.getBase_url(request)%>jsfile/MakeAppointment.js"></script> 
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#startDateLeave').datepicker({dateFormat:'dd/mm/yy'});
+                $('#endDateLeave').datepicker({dateFormat:'dd/mm/yy'});
+                $('#dateDoctorA').datepicker({dateFormat:'dd/mm/yy'});
+                $('#datepicker').datepicker({dateFormat:'dd/mm/yy'});
+                 $('#searchAppointmentDate').datepicker({dateFormat:'dd/mm/yy'});
+                
+            });
+            
+            </script>
     </body>
 </html>
