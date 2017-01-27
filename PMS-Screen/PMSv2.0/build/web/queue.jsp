@@ -19,6 +19,7 @@
     <div class="container-fluid">
         <div class="row">
             <%
+                Conn conn = new Conn();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String now = sdf.format(new Date());
                 String hfc = "Klinik UTeM Induk";
@@ -26,7 +27,7 @@
                 String newSql = "SELECT e.PMI_NO,e.name,e.EPISODE_TIME,e.COMMON_QUEUE,e.DOCTOR,e.STATUS,q.QUEUE_NO FROM PMS_EPISODE e,PMS_PATIENT_QUEUE q WHERE (e.STATUS NOT LIKE 'Discharge') AND ((e.EPISODE_DATE LIKE '%" + now + "%') AND  (q.PMI_NO=e.PMI_NO) AND e.HEALTH_FACILITY_CODE='" + hfc + "' AND e.EPISODE_DATE=q.episode_date)";
                 String newnewSql = "select e.pmi_no,e.name,e.episode_time,e.common_queue,q.queue_no,e.doctor,e.status from pms_episode e,pms_patient_queue q where e.status !='Discharge' and e.EPISODE_DATE like '%" + now + "%' and e.HEALTH_FACILITY_CODE='" + hfc + "' and e.PMI_NO = q.pmi_no and e.EPISODE_DATE = q.episode_date";
                 ArrayList<ArrayList<String>> dataQueue;
-                dataQueue = Conn.getData(newnewSql);
+                dataQueue = conn.getData(newnewSql);
                 //out.print(dataQueue.toString());
                 //out.print(newnewSql);
             %>
@@ -142,7 +143,7 @@
 
     $(document).ready(function () {
         //include header and menus
-        $("#header").load("libraries/header.jsp");
+        $("#header").load("libraries/header.html");
         $("#topMenus").load("libraries/topMenus.html");
         $("#sideMenus").load("libraries/sideMenus.jsp");
 

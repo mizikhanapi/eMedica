@@ -12,6 +12,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     RMIConnector rmic = new RMIConnector();
+    Conn conn = new Conn();
 
     String pmino, empCode, empName, occupation, joinDate, incomeRange, hfc, createDate, status, sql, sqlCheck, empseq;
     pmino = request.getParameter("EMPpmino");
@@ -27,9 +28,9 @@
     sql = "SELECT EMPLOYMENT_SEQ_NO FROM AUTOGENERATE_ESNO";
     Boolean insert1 = false, insert2 = false,update = false;
     sqlCheck = "select * from PMS_EMPLOYMENT where EMPLOYMENT_SEQ_NO = '" + empseq + "' and pmi_no ='" + pmino + "'";
-    ArrayList<ArrayList<String>> Checkseq = Conn.getData(sqlCheck);
+    ArrayList<ArrayList<String>> Checkseq = conn.getData(sqlCheck);
 
-    ArrayList<ArrayList<String>> seq = Conn.getData(sql);
+    ArrayList<ArrayList<String>> seq = conn.getData(sql);
 
     String[] g = new String[1];
     int num = 0;
@@ -45,7 +46,7 @@
 
     if (Checkseq.size() > 0) {
         String sql4 = "update PMS_EMPLOYMENT set PMI_NO='" + pmino + "',EMPLOYMENT_SEQ_NO='" + empseq + "',EMPLOYER_CODE='" + empCode + "',EMPLOYER_NAME='" + empName + "',OCCUPATION_CODE='" + occupation + "',JOINED_DATE='" + joinDate + "',INCOME_RANGE_CODE='" + incomeRange + "',HEALTH_FACILITY='" + hfc + "',CREATE_DATE='" + createDate + "',EMPLOYMENT_STATUS='" + status + "' where EMPLOYMENT_SEQ_NO='" + empseq + "' and pmi_no ='" + pmino + "'";
-        update = rmic.setQuerySQL(Conn.HOST, Conn.PORT, sql4);
+        update = rmic.setQuerySQL(conn.HOST, conn.PORT, sql4);
         
         if (update == true) {
             out.print("true");
@@ -55,8 +56,8 @@
 //            out.print(sql4);
         }
     } else {
-        insert1 = rmic.setQuerySQL(Conn.HOST, Conn.PORT, sql2);
-        insert2 = rmic.setQuerySQL(Conn.HOST, Conn.PORT, sql3);
+        insert1 = rmic.setQuerySQL(conn.HOST, conn.PORT, sql2);
+        insert2 = rmic.setQuerySQL(conn.HOST, conn.PORT, sql3);
 
         if (insert1 == true && insert2 == true) {
             out.print("true");

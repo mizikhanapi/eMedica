@@ -1,7 +1,9 @@
+<%@page import="dBConn.Conn"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Config.connect"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+    Conn conn = new Conn();
     //for select box items
     String eliCat = "select * from lookup_detail where master_ref_code = '0063' order by Description";
     String eliType = "select * from lookup_detail where master_ref_code = '0034' order by Description";
@@ -26,25 +28,25 @@
     ArrayList<ArrayList<String>> dataEliCat, dataEliType, dataIdType, dataGender, dataMarital, dataRace, dataNationality, dataReligion, dataTitle,
             dataBloodty, dataRhesus, dataAllergy, dataChronicDesease, dataOrganDonor, dataDistrict, dataPostcode, dataCountry, dataTown, dataState;
 
-    dataEliCat = connect.getData(eliCat);
-    dataEliType = connect.getData(eliType);
-    dataGender = connect.getData(gender);
-    dataMarital = connect.getData(marital);
-    dataRace = connect.getData(race);
-    dataNationality = connect.getData(nationality);
-    dataReligion = connect.getData(religion);
-    dataIdType = connect.getData(idType);
-    dataTitle = connect.getData(title);
-    dataBloodty = connect.getData(bloodty);
-    dataRhesus = connect.getData(rhesus);
-    dataAllergy = connect.getData(allergy);
+    dataEliCat = conn.getData(eliCat);
+    dataEliType = conn.getData(eliType);
+    dataGender = conn.getData(gender);
+    dataMarital = conn.getData(marital);
+    dataRace = conn.getData(race);
+    dataNationality = conn.getData(nationality);
+    dataReligion = conn.getData(religion);
+    dataIdType = conn.getData(idType);
+    dataTitle = conn.getData(title);
+    dataBloodty = conn.getData(bloodty);
+    dataRhesus = conn.getData(rhesus);
+    dataAllergy = conn.getData(allergy);
     dataChronicDesease = connect.getData(chronicDesease);
-    dataOrganDonor = connect.getData(organDonor);
-    dataDistrict = connect.getData(district);
-    dataPostcode = connect.getData(postcode);
-    dataCountry = connect.getData(country);
-    dataTown = connect.getData(town);
-    dataState = connect.getData(state);
+    dataOrganDonor = conn.getData(organDonor);
+    dataDistrict = conn.getData(district);
+    dataPostcode = conn.getData(postcode);
+    dataCountry = conn.getData(country);
+    dataTown = conn.getData(town);
+    dataState = conn.getData(state);
 
 
 %>

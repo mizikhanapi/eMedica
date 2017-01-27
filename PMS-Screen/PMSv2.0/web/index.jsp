@@ -3,10 +3,12 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="assets/css/loading.css">
+        
+        
         <!-- header -->
     <div w3-include-html="libraries/header.html"></div>
     <!-- header -->
+<!--    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
 </head>
 
 <body>
@@ -33,6 +35,7 @@
                                 <li> <a href="#tab_default_4" data-toggle="tab"> Next of Kin </a> </li>
                                 <li> <a href="#tab_default_5" data-toggle="tab"> Family </a> </li>
                                 <li> <a href="#tab_default_6" data-toggle="tab"> Medical Insurance </a> </li>
+<!--                                <li> <a href="#tab_default_7" data-toggle="tab"> TEST TAB </a> </li>-->
                             </ul>
                         </div>
                     </div>
@@ -78,14 +81,21 @@
                                         list of family tab tab
                                     -->
                                     <div class="tab-pane" id="tab_default_5">
-                                        <div w3-include-html="family (2).html"></div>
+                                        <div id="family"></div>
                                     </div>
                                     
                                     <!--
                                         medical insurance tab
                                     -->
                                     <div class="tab-pane" id="tab_default_6">
-                                        <div w3-include-html="medical-insurance (2).html"></div>
+                                        <div id="medical"></div>
+                                    </div>
+                                    
+                                    <!--
+                                        medical insurance tab
+                                    -->
+                                    <div class="tab-pane" id="tab_default_7">
+                                        <div id="test"></div>
                                     </div>
 
 
@@ -109,9 +119,9 @@
     <!-- Bootstrap core JavaScript
         ================================================== --> 
     <!-- Placed at the end of the document so the pages load faster --> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-    <script src="http://www.w3schools.com/lib/w3data.js"></script> 
+    <script src="http://www.w3schools.com/lib/w3data.js"></script> -->
     <script>
         var patientDOM = [];
         
@@ -120,6 +130,9 @@
         $("#patientMasterIndex").load("patient-master-indexV2.jsp");
         $("#employment").load("EmploymentV2.jsp");
         $("#nextOfKin").load("kinV2.jsp");
+        $("#family").load("familyV2.jsp");
+        $("#medical").load("medical-insuranceV2.jsp");
+//        $("#test").load("dummy.html");
         $("#sidemenus").load("libraries/sideMenus.jsp");
         
         w3IncludeHTML();

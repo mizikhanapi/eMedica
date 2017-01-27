@@ -13,11 +13,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     RMIConnector rmic = new RMIConnector();
+    Conn conn = new Conn();
     String pmino = request.getParameter("pmino");
     String now = request.getParameter("today");
     
     String delSql ="DELETE FROM PMS_EPISODE WHERE PMI_NO ='"+pmino+"' AND EPISODE_TIME = '"+now+"'";
-    Boolean delSuccess = rmic.setQuerySQL(Conn.HOST, Conn.PORT, delSql);
+    Boolean delSuccess = rmic.setQuerySQL(conn.HOST, conn.PORT, delSql);
     if(delSuccess == true){
 out.print("success");
 //out.print(delSql);

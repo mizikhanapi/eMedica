@@ -8,13 +8,14 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    String pmiKIN = request.getParameter("KINpmino");
+    Conn conn = new Conn();
+    String pmiKIN = request.getParameter("PMINO");
     String kinList = "select * from pms_nextofkin where pmi_no = '" + pmiKIN + "'";
     ArrayList<ArrayList<String>> dataKinList;
-    dataKinList = Conn.getData(kinList);
+    dataKinList = conn.getData(kinList);
 
 
-%><table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; " id="listEMP">
+%><table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; " id="listKIN">
     <thead>
     <th>Name</th>
     <th>IC. No.</th>
@@ -22,9 +23,6 @@
     <th>Delete</th>
 </thead>
 <tbody>
-
-</tbody>
-</table>
 <%  for (int i = 0; i < dataKinList.size(); i++) {%>
 <tr data-status="pagado" data-toggle="modal" data-id="1" data-target="#type">
     <td id="pmiNumber"><%=dataKinList.get(i).get(3)%></td>
@@ -35,3 +33,5 @@
 </tr>
 <%  }
 %>
+</tbody>
+</table>

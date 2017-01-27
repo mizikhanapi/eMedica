@@ -15,6 +15,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     RMIConnector rmic = new RMIConnector();
+    Conn conn = new Conn();
 
     String pmino, pminotemp, pname, ptitle, pnic, poic, pit, pino, pelicat, pelity, pbday, psex, pmarital, prace, pnational, preligional, pbloodty, prhesus, pallergy, pchronic, porgandonor, phomeadd, phomedistrict, phometown, ppostcode, pstate, pcountry, phomephone, ppostaladd, ppostaldistrict, ppostaltown, ppostalpostcode, ppostalstate, ppostalcountry, pmobilephone;
     pmino = request.getParameter("pmino");
@@ -55,7 +56,7 @@
     //pnic = "950607015242";
     //pnic = "950607015241";
     String selectSql = "select * from pms_patient_biodata where PMI_NO ='" + pmino + "'";
-    ArrayList<ArrayList<String>> patientRow = Conn.getData(selectSql);
+    ArrayList<ArrayList<String>> patientRow = conn.getData(selectSql);
     //ArrayList<String> patientrowOne = patientRow.get(0);
     
     //ptitle = "Dato'";
@@ -86,7 +87,7 @@
                 + "POSTAL_TOWN_CODE,POSTAL_POSTCODE,POSTAL_STATE_CODE,"
                 + "POSTAL_COUNTRY_CODE,MOBILE_PHONE)values('" + pmino + "', '" + pminotemp + "', '" + pname + "', '" + ptitle + "', '" + pnic + "', '" + poic + "', '" + pit + "', '" + pino + "', '" + pelicat + "', '" + pelity + "', '" + pbday + "', '" + psex + "', '" + pmarital + "', '" + prace + "', '" + pnational + "', '" + preligional + "', '" + pbloodty + "', '" + prhesus + "', '" + pallergy + "', '" + pchronic + "', '" + porgandonor + "', '" + phomeadd + "', '" + phomedistrict + "', '" + phometown + "', '" + ppostcode + "', '" + pstate + "', '" + pcountry + "', '" + phomephone + "', '" + ppostaladd + "', '" + ppostaldistrict + "', '" + ppostaltown + "', '" + ppostalpostcode + "', '" + ppostalstate + "', '" + ppostalcountry + "', '" + pmobilephone + "')";
 }
-    SQL = rmic.setQuerySQL(Conn.HOST, Conn.PORT, sql1);
+    SQL = rmic.setQuerySQL(conn.HOST, conn.PORT, sql1);
     out.print(SQL+"|"+sql1);
     
 

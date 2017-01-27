@@ -4,37 +4,13 @@
     <ul id="menu-content" class="nav nav-sidebar">
         <!-- // menu tanpa dropdown -->
         <li>
-            <a id="registe" href="index.jsp#tab_default_1" data-toggle="tab">
-                <i class="fa fa-adress-card-o fa-lg"></i> Registration
+            <a  href="index.jsp">
+                <i class="fa fa-adress-card-o fa-lg"></i> Outpatient Registration
             </a>
         </li>
+
         <li>
-            <a id="pmi" href="index.jsp#tab_default_2" data-toggle="tab">
-                <i class="fa fa-bed fa-lg"></i> Patient Master Index
-            </a>
-        </li>
-        <li>
-            <a href="<%=Config.getBase_url(request)%>Employment.html">
-                <i class="fa fa-briefcase fa-lg"></i> Employment
-            </a>
-        </li>
-        <li>
-            <a href="<%=Config.getBase_url(request)%>kin.html">
-                <i class="fa fa-forward fa-lg"></i> Next of Kin
-            </a>
-        </li>
-        <li>
-            <a href="<%=Config.getBase_url(request)%>family.html">
-                <i class="fa fa-users fa-lg"></i> Family
-            </a>
-        </li>
-        <li>
-            <a href="<%=Config.getBase_url(request)%>medical-insurance.html">
-                <i class="fa fa-ambulance-o fa-lg"></i> Medical Insurance
-            </a>
-        </li>
-        <li>
-            <a href="<%=Config.getBase_url(request)%>queue.jsp">
+            <a href="queue.jsp">
                 <i class="fa fa-ambulance-o fa-lg"></i> List of Queue
             </a>
         </li>

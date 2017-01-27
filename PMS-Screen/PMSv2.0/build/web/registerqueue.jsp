@@ -13,6 +13,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     RMIConnector rmic = new RMIConnector();
+    Conn conn = new Conn();
     String now = request.getParameter("now");
     String pmi = request.getParameter("pmi");
     String epiDate = request.getParameter("epiDate");
@@ -55,14 +56,14 @@
 
     //String testInsert = "insert into pms_episode(pmi_no)values('"+pmi+"')";
     String isAlreadyRegister = "select * from pms_episode where pmi_no = '" + pmi + "' and (status like '%Consult%' or status like '%Waiting%' or status like '%Hold%' or status like '%Second Opinion%') and episode_date like '%" + now + "%';";
-    ArrayList<ArrayList<String>> alreadyRegis = Conn.getData(isAlreadyRegister);
+    ArrayList<ArrayList<String>> alreadyRegis = conn.getData(isAlreadyRegister);
 
     if (alreadyRegis.size() > 0) {
         out.print("already");
 //out.print(queue_now);
     } else {
         String findQueueNo = "select last_queue_no from pms_last_queue_no where hfc_cd ='" + hfc + "' and queue_name ='" + comQueue + "' and episode_date like '%" + now + "%';";
-        ArrayList<ArrayList<String>> numberQueue = Conn.getData(findQueueNo);
+        ArrayList<ArrayList<String>> numberQueue = conn.getData(findQueueNo);
         if (numberQueue.size() < 1) {
             queueSql = "insert into pms_last_queue_no(hfc_cd,queue_name,episode_date,last_queue_no)values('" + hfc + "','" + comQueue + "','" + epiDate + "','1');";
             newQueueNo = queue_now + 1;
@@ -73,9 +74,9 @@
         }
         insertPatientQueue = "insert into pms_patient_queue(hfc_cd,queue_name,episode_date,pmi_no,queue_no,queue_type)values('" + hfc + "','" + comQueue + "','" + epiDate + "','" + pmi + "','" + newQueueNo + "','" + comTy + "');";
 
-        rmic.setQuerySQL(Conn.HOST, Conn.PORT, insertEpisode);
-        rmic.setQuerySQL(Conn.HOST, Conn.PORT, insertPatientQueue);
-        rmic.setQuerySQL(Conn.HOST, Conn.PORT, queueSql);
+        rmic.setQuerySQL(conn.HOST, conn.PORT, insertEpisode);
+        rmic.setQuerySQL(conn.HOST, conn.PORT, insertPatientQueue);
+        rmic.setQuerySQL(conn.HOST, conn.PORT, queueSql);
         out.print("Success");
         //out.print(queueSql);
 //out.print(insertEpisode);

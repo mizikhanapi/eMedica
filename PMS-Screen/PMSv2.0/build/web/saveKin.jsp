@@ -12,6 +12,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     RMIConnector rmic = new RMIConnector();
+    Conn conn = new Conn();
 
     String KINpmino, KINidtype, KINdob, KINphone, KINemail, KINname, KINoldic, KINidnumber, KINoccu, sql,sqlCheck, KINhomephone, KINaddress,KINdistrict,KINpostcode,KINcountry,KINtown,KINstate,KINseq,KINrelationship,KINnewic;
     KINpmino = request.getParameter("KINpmino");
@@ -37,10 +38,10 @@
     
     sql = "SELECT NEXTOFKIN_SEQ_NO FROM autogenerate_noksno";
     Boolean insert1 = false, insert2 = false,update = false;
-    sqlCheck = "select * from pms_nextofkin where NEXTOFKIN_SEQ_NO = '" + KINseq + "' and pmi_no ='" + KINpmino + "'";
-    ArrayList<ArrayList<String>> Checkseq = Conn.getData(sqlCheck);
+    sqlCheck = "select * from pms_nextofkin where pmi_no ='" + KINpmino + "' and NEW_IC_NO='"+KINnewic+"' AND OLD_IC_NO='"+KINoldic+"' OR NEXTOFKIN_SEQ_NO = '" + KINseq + "'";
+    ArrayList<ArrayList<String>> Checkseq = conn.getData(sqlCheck);
 
-    ArrayList<ArrayList<String>> seq = Conn.getData(sql);
+    ArrayList<ArrayList<String>> seq = conn.getData(sql);
 
     String[] g = new String[1];
     int num = 0;
@@ -55,8 +56,8 @@
     String sql3 = "INSERT INTO autogenerate_noksno (NEXTOFKIN_SEQ_NO) VALUES ('" + newSeq + "')";
 
     if (Checkseq.size() > 0) {
-        String sql4 = "update pms_nextofkin set PMI_NO='" + KINpmino + "',NEXTOFKIN_SEQ_NO='" + KINseq + "',NEXTOFKIN_RELATIONSHIP_CODE='" + KINrelationship + "',NEXTOFKIN_NAME='" + KINname + "',NEW_IC_NO='" + KINnewic + "',OLD_IC_NO='" + KINoldic + "',ID_TYPE='" + KINidtype + "',ID_NO='" + KINidnumber + "',BIRTH_DATE='" + KINdob + "',OCCUPATION_CODE='" + KINoccu + "', ADDRESS='"+KINaddress+"', DISTRICT_CODE='"+KINdistrict+"', TOWN_CODE='"+KINtown+"', POSTCODE='"+KINpostcode+"', STATE_CODE='"+KINstate+"', COUNTRY_CODE='"+KINcountry+"', MOBILE_PHONE='"+KINphone+"', HOME_PHONE='"+KINhomephone+"', E_MAIL='"+KINemail+"' where NEXTOFKIN_SEQ_NO='" + KINseq + "' and pmi_no ='" + KINpmino + "'";
-        update = rmic.setQuerySQL(Conn.HOST, Conn.PORT, sql4);
+        String sql4 = "update pms_nextofkin set PMI_NO='" + KINpmino + "',NEXTOFKIN_SEQ_NO='" + KINseq + "',NEXTOFKIN_RELATIONSHIP_CODE='" + KINrelationship + "',NEXTOFKIN_NAME='" + KINname + "',NEW_IC_NO='" + KINnewic + "',OLD_IC_NO='" + KINoldic + "',ID_TYPE='" + KINidtype + "',ID_NO='" + KINidnumber + "',BIRTH_DATE='" + KINdob + "',OCCUPATION_CODE='" + KINoccu + "', ADDRESS='"+KINaddress+"', DISTRICT_CODE='"+KINdistrict+"', TOWN_CODE='"+KINtown+"', POSTCODE='"+KINpostcode+"', STATE_CODE='"+KINstate+"', COUNTRY_CODE='"+KINcountry+"', MOBILE_PHONE='"+KINphone+"', HOME_PHONE='"+KINhomephone+"', E_MAIL='"+KINemail+"' where NEW_IC_NO='" + KINnewic + "' AND OLD_IC_NO='" + KINoldic + "' and pmi_no ='" + KINpmino + "' or NEXTOFKIN_SEQ_NO='" + KINseq + "'";
+        update = rmic.setQuerySQL(conn.HOST, conn.PORT, sql4);
         
         if (update == true) {
             out.print("true");
@@ -66,8 +67,8 @@
             out.print(sql4);
         }
     } else {
-        insert1 = rmic.setQuerySQL(Conn.HOST, Conn.PORT, sql2);
-        insert2 = rmic.setQuerySQL(Conn.HOST, Conn.PORT, sql3);
+        insert1 = rmic.setQuerySQL(conn.HOST, conn.PORT, sql2);
+        insert2 = rmic.setQuerySQL(conn.HOST, conn.PORT, sql3);
 
         if (insert1 == true && insert2 == true) {
             out.print("true");

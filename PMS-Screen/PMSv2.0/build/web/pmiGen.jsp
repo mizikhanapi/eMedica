@@ -3,6 +3,7 @@
     Created on : Jan 23, 2017, 7:00:23 PM
     Author     : shay
 --%>
+<%@page import="main.RMIConnector"%>
 <%@page import="testpmi.getPmiController"%>
 <%@page import="testpmi.TestPmi"%>
 <%@page import="dBConn.Conn"%>
@@ -15,10 +16,13 @@
 <%
     TestPmi pmi = new TestPmi();
     getPmiController pmiw = new getPmiController();
+    Conn conn = new Conn();
+    RMIConnector rmic = new RMIConnector();
     String pmino;
     String input =  request.getParameter("idInput");
     //String input = "9506070152";
-    int PMINOGEN = pmiw.getNewPmi();
-pmino = pmi.getPMI(input,PMINOGEN);
+    pmino = rmic.getPMI(conn.HOST, conn.PORT, input);
+    //int PMINOGEN = pmiw.getNewPmi();
+    //pmino = pmi.getPMI(input,PMINOGEN);
 out.print(pmino);
 %>

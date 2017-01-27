@@ -4,6 +4,7 @@
 <%@page import="dBConn.Conn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+    Conn conn = new Conn();
     String incomeRange = "select * from lookup_detail where master_ref_code = '0028' order by Description";
     String hcf = "select * from lookup_detail where master_ref_code = '0081' order by Description";
     String status = "select * from lookup_detail where master_ref_code = '0014' order by Description";
@@ -11,9 +12,9 @@
     //String empList = "select * from pms_employment where pmi_no = ''";
     ArrayList<ArrayList<String>> dataIncomeRange, dataHfc, dataStatus;
 
-    dataIncomeRange = Conn.getData(incomeRange);
-    dataHfc = Conn.getData(hcf);
-    dataStatus = Conn.getData(status);
+    dataIncomeRange = conn.getData(incomeRange);
+    dataHfc = conn.getData(hcf);
+    dataStatus = conn.getData(status);
 
 
 %>
@@ -130,9 +131,11 @@
             </div>
         </div>
 
-        <div class="thumbnail" id>
+        <div class="thumbnail">
             <h4>List of Employments</h4>
-
+            <div id="tableListEmp" class="form-group">
+                
+            
             <table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; " id="listEMP">
                 <thead>
                 <th>Employer Name</th>
@@ -144,7 +147,7 @@
 
                 </tbody>
             </table>
-
+             </div>
         </div>
     </div>
 </div>
@@ -209,10 +212,10 @@
                 EMPstatus = $('#EMPstatus').val();
 
         var splitCreDate = String(EMPcredate).split("-");
-        var convertedCreDate = splitCreDate[2] + "/" + splitCreDate[1] + "/" + splitCreDate[0];
+        var convertedCreDate = splitCreDate[0] + "/" + splitCreDate[1] + "/" + splitCreDate[2];
 
         var splitJDate = String(EMPjdate).split("-");
-        var convertedJDate = splitJDate[2] + "/" + splitJDate[1] + "/" + splitJDate[0];
+        var convertedJDate = splitJDate[0] + "/" + splitJDate[1] + "/" + splitJDate[2];
 
         var datas = {
             EMPpmino: EMPpmino,
@@ -258,11 +261,11 @@
                                 $.ajax({
                                     url: "listEmp.jsp",
                                     type: "post",
-                                    data: {'EMPpmino': EMPpmino},
+                                    data: {'PMINO': EMPpmino},
                                     timeout: 3000,
                                     success: function (returnhtml) {
-                                        //console.log(returnhtml);
-                                        $('#listEMP').html(returnhtml);
+                                        console.log(returnhtml);
+                                        $('#tableListEmp').html(returnhtml);
                                     }
                                 });
                             } else {
@@ -286,21 +289,13 @@
         var pmino = $('input[id=EMPpmino]').val();
         $('#empform')[0].reset();
         $('input[id=EMPpmino]').val(pmino);
-        //change button save to enable for click
-        //$('#EMPsave').prop('disabled', false);
-        //change button update unable to click
-        //$('#EMPupdate').prop('disabled', true);
     });
 
     //function to edit employment data from table
-    $('#listEMP').on('click', '#EMPedit', function (e) {
+    $('#tableListEmp').on('click', '#listEMP #EMPedit', function (e) {
         //prevent any default function
         e.preventDefault();
 
-        //change button save to disable for click
-        //$('#EMPsave').prop('disabled', true);
-        //change button update enable to click
-        //$('#EMPupdate').prop('disabled', false);
         //go to the top
         $('html,body').animate({
             scrollTop: $("#maintainEMP").offset().top
@@ -313,12 +308,12 @@
         var pmino = arrayData[0], seqno = arrayData[1], empcode = arrayData[2], empname = arrayData[3], occu = arrayData[4], jdate = arrayData[5], incomerange = arrayData[6], hfc = arrayData[7], credate = arrayData[8], empstatus = arrayData[9];
         //convert date
         var splitCreDate = String(credate).split("/");
-        var convertedCreDate = splitCreDate[2] + "-" + splitCreDate[1] + "-" + splitCreDate[0];
+        var convertedCreDate = splitCreDate[0] + "-" + splitCreDate[1] + "-" + splitCreDate[2];
 
         var splitJDate = String(jdate).split("/");
-        var convertedJDate = splitJDate[2] + "-" + splitJDate[1] + "-" + splitJDate[0];
-        console.log(convertedCreDate);
-        console.log(convertedJDate);
+        var convertedJDate = splitJDate[0] + "-" + splitJDate[1] + "-" + splitJDate[2];
+//        console.log(convertedCreDate);
+//        console.log(convertedJDate);
 
         $('#EMPpmino').val(pmino);
         $('#EMPempcode').val(empcode);
@@ -335,11 +330,11 @@
     });
 
 
-    $('#listEMP').on('click', '#EMPdel', function (e) {
+    $('#tableListEmp').on('click', '#listEMP #EMPdel', function (e) {
         e.preventDefault();
         var row2 = $(this).closest("tr");
         var rowData2 = row2.find("#empval").val();
-        row2.remove();
+        
         console.log(rowData2);
         bootbox.confirm({
             message: "Are you sure want to delete patient's Employment Information?",
@@ -357,7 +352,7 @@
                 
                 if (result === true) {
                     //get the row value
-                    
+                    row2.remove();
                     var arrayData2 = rowData2.split("|");
                     //assign into seprated val
                     var pmino = arrayData2[0], seqno = arrayData2[1];

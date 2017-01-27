@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/shay/Documents/NetBeansProjects/PMS/web/saveEmp.jsp</file>
-            <file>file:/C:/Users/shay/Documents/NetBeansProjects/PMS/web/listEmp.jsp</file>
-            <file>file:/C:/Users/shay/Documents/NetBeansProjects/PMS/web/patient-master-indexV2.jsp</file>
-            <file>file:/C:/Users/shay/Documents/NetBeansProjects/PMS/web/EmploymentV2.jsp</file>
-            <file>file:/C:/Users/shay/Documents/NetBeansProjects/PMS/web/delEmp.jsp</file>
+            <file>file:/C:/Users/shay/Documents/NetBeansProjects/PMS/web/testRMI.jsp</file>
+            <file>file:/C:/Users/shay/Documents/NetBeansProjects/PMS/web/dummy.html</file>
+            <file>file:/C:/Users/shay/Documents/NetBeansProjects/PMS/web/index.jsp</file>
+            <file>file:/C:/Users/shay/Documents/NetBeansProjects/PMS/web/kinV2.jsp</file>
+            <file>file:/C:/Users/shay/Documents/NetBeansProjects/PMS/web/ipcall</file>
+            <file>file:/C:/Users/shay/Documents/NetBeansProjects/PMS/src/java/testPmi/TestPmi.java</file>
+            <file>file:/C:/Users/shay/Documents/NetBeansProjects/PMS/src/java/dBConn/Conn.java</file>
+            <file>file:/C:/Users/shay/Documents/NetBeansProjects/PMS/web/saveFamily.jsp</file>
         </group>
     </open-files>
 </project-private>

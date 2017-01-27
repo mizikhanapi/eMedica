@@ -7,6 +7,7 @@
 <%
 	String idType = request.getParameter("idType");
 	String idInput = request.getParameter("idInput");
+        Conn conn = new Conn();
         
         //String idType = "icnew";
         //String idInput = "950607015241";
@@ -36,7 +37,7 @@
                 searchPatient = "select * from pms_patient_biodata where ID_NO='"+idInput+"' AND ID_TYPE = 'Staff No.'";
             }
 	
-            ArrayList<ArrayList<String>> search = Conn.getData(searchPatient);
+            ArrayList<ArrayList<String>> search = conn.getData(searchPatient);
             if (search.size() > 0){
             ArrayList<String> search1 = search.get(0);
             JSONArray jsonAraay = new JSONArray(search1);
@@ -60,7 +61,7 @@
                 searchPatient = "select * from pms_patient_biodata where OLD_IC_NO='"+idInput+"'";
             }
 	
-            ArrayList<ArrayList<String>> search = Conn.getData(searchPatient);
+            ArrayList<ArrayList<String>> search = conn.getData(searchPatient);
             if (search.size() > 0){
             ArrayList<String> search1 = search.get(0);
             JSONArray jsonAraay = new JSONArray(search1);

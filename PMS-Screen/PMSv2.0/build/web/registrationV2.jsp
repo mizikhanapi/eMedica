@@ -2,7 +2,6 @@
 <%@page import="Config.Config"%>
 <%@page import="Config.connect"%>
 <%@page import="dBConn.Conn"%>
-<%@page import="dBConn.PMI"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="assets/css/loading.css">
 <!--hfc code in register queue need to get from session -->
@@ -17,30 +16,26 @@
     String queue = "select * from pms_queue_name";
 
     ArrayList<ArrayList<String>> dataPatCat2, dataPatCat, dataVisType, dataEliCat, dataEliType, dataDiscip, dataPrio, dataIdType, dataQueue;
-    PMI pmi = new PMI();
-    dataPatCat = Conn.getData(patCat);
-    dataVisType = Conn.getData(visType);
-    dataEliCat = Conn.getData(eliCat);
-    dataEliType = Conn.getData(eliType);
-    dataDiscip = Conn.getData(discip);
-    dataPrio = Conn.getData(prio);
-    dataIdType = Conn.getData(idTYpe);
-    dataQueue = Conn.getData(queue);
+    
+    Conn conn = new Conn();
+    
+    dataPatCat = conn.getData(patCat);
+    dataVisType = conn.getData(visType);
+    dataEliCat = conn.getData(eliCat);
+    dataEliType = conn.getData(eliType);
+    dataDiscip = conn.getData(discip);
+    dataPrio = conn.getData(prio);
+    dataIdType = conn.getData(idTYpe);
+    dataQueue = conn.getData(queue);
 
-    //dataPatCat2 = Conn.getData(patCat);
-//    
+   
     // status 0 = public
     // status 1 = universiti
     // status bole dapat kat session
     String dataSystemStatus = "0";
-    out.println(Conn.HOST);
-//    out.print(Conn.PORT);
-//    out.print(Conn.STR_ERROR);
-//    out.print(Conn.STR_HOST);
-//    out.print(Conn.STR_PORT);
-    //out.print(Conn.getIpCall());
-    out.println(Config.getBase_url(request));
-    //out.print(dataPatCat2.get(0).get(0));
+
+    out.println(conn.getIpCall());
+    
 
 %>
 <div class="row" id="register">
@@ -379,10 +374,10 @@
                 if (tahun >= 00 && tahun < 50)
                 {
 
-                    ICbday = "20"+tahun+"-"+bulan+"-"+hari;
+                    ICbday = "20" + tahun + "-" + bulan + "-" + hari;
                 } else
                 {
-                    ICbday = "19"+tahun+"-"+bulan+"-"+hari;
+                    ICbday = "19" + tahun + "-" + bulan + "-" + hari;
                 }
             }
         }
@@ -457,18 +452,20 @@
         var opt = $('#idType option[disabled]:selected').val();
         $('#myForm2')[0].reset();
         $('#formPMI')[0].reset();
+        $('#kinform')[0].reset();
         if (opt === true) {
             //alert('hai');
         }
         if ($('#idInput').val() === "" || $('#idInput').val() === " ") {
-            alert('Please key in PMI no. or IC no. or IDENTIFICATION no. to continue seaching process');
+            bootbox.alert('Please key in PMI no. or IC no. or IDENTIFICATION no. to continue seaching process');
         } else if (opt === "-") {
-            alert('Please select ID Type first.');
+            bootbox.alert('Please select ID Type first.');
         } else {
             $body.addClass("loading");
             var idType = $('#idType').find(":selected").val();
             var idInput = $('#idInput').val();
             $.ajax({
+                async: true,
                 type: "POST",
                 url: "resultPatient.jsp", // call the php file ajax/tuto-autocomplete.php
                 data: {'idType': idType, 'idInput': idInput}, // Send input
@@ -518,6 +515,7 @@
                                 if (result === true) {
                                     $body.addClass("loading");
                                     $.ajax({
+                                        async: true,
                                         type: "POST",
                                         url: "pmiGen.jsp",
                                         data: {'idInput': idInput}, // Send input
@@ -527,8 +525,8 @@
                                             //pmi
                                             $('input[id=PMIpmino]').val($.trim(list));
                                             $('#PMInic').val($.trim(idInput));
-                                             $('#PMIbday').val($.trim(ICbday));
-                                             console.log(ICbday);
+                                            $('#PMIbday').val($.trim(ICbday));
+                                            console.log(ICbday);
                                             //registration
                                             $('input[id=pmino]').val($.trim(list));
                                             $('input[id=pnic]').val($.trim(idInput));
@@ -636,28 +634,69 @@
                         $("#PMIpcountry").val($.trim(ppostalcountry));
                         // set value in employment page
                         $('input[id=EMPpmino]').val($.trim(pmino));
-                        var EMPpminos = $.trim(pmino);
+                        var data = {'PMINO': $.trim(pmino)};
                         $.ajax({
+                            async: true,
                             url: "listEmp.jsp",
                             type: "post",
-                            data: {'EMPpmino': EMPpminos},
+                            data: data,
                             timeout: 3000,
                             success: function (returnhtml) {
                                 //console.log(returnhtml);
-                                $('#listEMP').html(returnhtml);
+                                $('#tableListEmp').html(returnhtml);
+                            }
+                        });
+
+                        // set value in next of kin page
+                        $('input[id=KINpmino]').val($.trim(pmino));
+                        $.ajax({
+                            async: true,
+                            url: "listKin.jsp",
+                            type: "post",
+                            data: data,
+                            timeout: 3000,
+                            success: function (returnData) {
+//                                console.log(returnData);
+//                                console.log(data);
+                                $('#tableListKin').html(returnData);
+                            }, error: function (jqXHR, textStatus, errorThrown) {
+                                console.log('error: ' + errorThrown);
                             }
                         });
                         
-                         // set value in employment page
-                        $('input[id=KINpmino]').val($.trim(pmino));
+                        
+                        
+                        // set value in family page
+                        $('input[id=FAMpmi]').val($.trim(pmino));
                         $.ajax({
-                            url: "listKin.jsp",
+                            async: true,
+                            url: "listFamily.jsp",
                             type: "post",
-                            data: {'KINpmino': EMPpminos},
+                            data: data,
                             timeout: 3000,
-                            success: function (returnhtml) {
-                                //console.log(returnhtml);
-                                $('#listKIN').html(returnhtml);
+                            success: function (returnData) {
+//                                console.log(returnData);
+//                                console.log(data);
+                                $('#tableListFamily').html(returnData);
+                            }, error: function (jqXHR, textStatus, errorThrown) {
+                                console.log('error: ' + errorThrown);
+                            }
+                        });
+                        
+                        // set value in MEDICAL page
+                        $('input[id=MEDpmino]').val($.trim(pmino));
+                        $.ajax({
+                            async: true,
+                            url: "listMedical.jsp",
+                            type: "post",
+                            data: data,
+                            timeout: 3000,
+                            success: function (returnData) {
+//                                console.log(returnData);
+//                                console.log(data);
+                                $('#tableListMed').html(returnData);
+                            }, error: function (jqXHR, textStatus, errorThrown) {
+                                console.log('error: ' + errorThrown);
                             }
                         });
                         $('#radios-1').prop('checked', true);
@@ -680,7 +719,7 @@
                 },
                 error: function (xhr, status, error) {
                     var err = eval("(" + xhr.responseText + ")");
-                    alert(err.Message);
+                    bootbox.alert(err.Message);
                 }
             });
         }

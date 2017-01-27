@@ -12,11 +12,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     RMIConnector rmic = new RMIConnector();
+    Conn conn = new Conn();
     String pmino = request.getParameter("pmino");
     String seqEmp = request.getParameter("seqno");
     String delSql = "delete from pms_employment where pmi_no = '"+pmino+"' and EMPLOYMENT_SEQ_NO ='"+seqEmp+"' ";
     Boolean del = false;
-    del = rmic.setQuerySQL(Conn.HOST, Conn.PORT, delSql);
+    del = rmic.setQuerySQL(conn.HOST, conn.PORT, delSql);
     if(del==true){
         out.print("true");
     }else{

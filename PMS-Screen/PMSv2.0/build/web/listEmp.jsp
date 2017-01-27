@@ -8,13 +8,15 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    String pmiEMP = request.getParameter("EMPpmino");
+    Conn conn = new Conn();
+    String pmiEMP = request.getParameter("PMINO");
     String empList = "select * from pms_employment where pmi_no = '" + pmiEMP + "'";
     ArrayList<ArrayList<String>> dataEmpList;
-    dataEmpList = Conn.getData(empList);
+    dataEmpList = conn.getData(empList);
 
 
-%><table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; " id="listEMP">
+%>
+<table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; " id="listEMP">
     <thead>
     <th>Employer Name</th>
     <th>Occupation</th>
@@ -22,10 +24,7 @@
     <th>Delete</th>
 </thead>
 <tbody>
-
-</tbody>
-</table>
-<%  for (int i = 0; i < dataEmpList.size(); i++) {%>
+    <%  for (int i = 0; i < dataEmpList.size(); i++) {%>
 <tr data-status="pagado" data-toggle="modal" data-id="1" data-target="#type">
     <td id="pmiNumber"><%=dataEmpList.get(i).get(3)%></td>
     <input id="empval" type="hidden" value="<%=String.join("|", dataEmpList.get(i))%>">
@@ -35,3 +34,5 @@
 </tr>
 <%  }
 %>
+</tbody>
+</table>
