@@ -40,21 +40,54 @@
     pchronic = request.getParameter("pchronic");
     porgandonor = request.getParameter("porgandonor");
     phomeadd = request.getParameter("phomeadd");
-    phomedistrict = request.getParameter("phomedistrict");
-    phometown = request.getParameter("phometowncd");
-    ppostcode = request.getParameter("ppostcode");
-    pstate = request.getParameter("pstate");
-    pcountry = request.getParameter("pcountry");
     phomephone = request.getParameter("phomephone");
-    ppostaladd = request.getParameter("ppostaladd");
-    ppostaldistrict = request.getParameter("ppostaldistrict");
-    ppostaltown = request.getParameter("ppostaltown");
-    ppostalpostcode = request.getParameter("ppostalpostcode");
-    ppostalstate = request.getParameter("ppostalstate");
-    ppostalcountry = request.getParameter("ppostalcountry");
+    ppostaladd = request.getParameter("ppostaladd");    
     pmobilephone = request.getParameter("pmobilephone");
-    //pnic = "950607015242";
-    //pnic = "950607015241";
+    
+     phomedistrict = request.getParameter("phomedistrict");
+     phometown = request.getParameter("phometowncd");
+     ppostcode = request.getParameter("ppostcode");
+     pstate = request.getParameter("pstate");
+     pcountry = request.getParameter("pcountry");
+    
+     ppostaldistrict = request.getParameter("ppostaldistrict");
+     ppostaltown = request.getParameter("ppostaltown");
+     ppostalpostcode = request.getParameter("ppostalpostcode");
+     ppostalstate = request.getParameter("ppostalstate");
+     ppostalcountry = request.getParameter("ppostalcountry");
+    
+    
+//    ArrayList<String> addressDescr = new ArrayList(), addressCode= new ArrayList();
+//    addressDescr.add(phomedistrict1);
+//    addressDescr.add(phometown1);
+//    addressDescr.add(ppostcode1);
+//    addressDescr.add(pstate1);
+//    addressDescr.add(pcountry1);
+//    
+//    addressDescr.add(ppostaldistrict1);
+//    addressDescr.add(ppostaltown1);
+//    addressDescr.add(ppostalpostcode1);
+//    addressDescr.add(ppostalstate1);
+//    addressDescr.add(ppostalcountry1);
+//    
+//    for(int i =0;i < addressDescr.size();i++){
+//        String sql = "select * from lookup_detail where description ='"+addressDescr.get(i)+"'";
+//        ArrayList<ArrayList<String>> dataRetrieve = conn.getData(sql);
+//        addressCode.add(dataRetrieve.get(0).get(1));
+//    }
+//    
+//    phomedistrict = addressCode.get(0);
+//    phometown = addressCode.get(1);
+//    ppostcode = addressCode.get(2);
+//    pstate = addressCode.get(3);
+//    pcountry = addressCode.get(4);
+//    
+//    ppostaldistrict = addressCode.get(5);
+//    ppostaltown = addressCode.get(6);
+//    ppostalpostcode = addressCode.get(7);
+//    ppostalstate = addressCode.get(8);
+//    ppostalcountry = addressCode.get(9);
+    
     String selectSql = "select * from pms_patient_biodata where PMI_NO ='" + pmino + "'";
     ArrayList<ArrayList<String>> patientRow = conn.getData(selectSql);
     //ArrayList<String> patientrowOne = patientRow.get(0);

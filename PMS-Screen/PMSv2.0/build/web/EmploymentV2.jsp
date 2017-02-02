@@ -5,16 +5,18 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Conn conn = new Conn();
-    String incomeRange = "select * from lookup_detail where master_ref_code = '0028' order by Description";
-    String hcf = "select * from lookup_detail where master_ref_code = '0081' order by Description";
-    String status = "select * from lookup_detail where master_ref_code = '0014' order by Description";
+    String incomeRange = "select * from adm_lookup_detail where master_reference_code = '0028' ";
+    String hcf = "select * from adm_lookup_detail where master_reference_code = '0081'   ";
+    String status = "select * from adm_lookup_detail where master_reference_code = '0014'   ";
+    String occupation = "select * from adm_lookup_detail where master_reference_code = '0050'";
 
     //String empList = "select * from pms_employment where pmi_no = ''";
-    ArrayList<ArrayList<String>> dataIncomeRange, dataHfc, dataStatus;
+    ArrayList<ArrayList<String>> dataIncomeRange, dataHfc, dataStatus,dataOccu;
 
     dataIncomeRange = conn.getData(incomeRange);
     dataHfc = conn.getData(hcf);
     dataStatus = conn.getData(status);
+    dataOccu = conn.getData(occupation);
 
 
 %>
@@ -46,7 +48,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="textinput">Employer Name</label>  
                     <div class="col-md-4">
-                        <input id="EMPempname" name="EMPempname" type="text"  class="form-control input-md">
+                        <input id="EMPempname" name="EMPempname" type="text"  class="form-control input-md" maxlength="80">
 
                     </div>
                 </div>
@@ -55,8 +57,15 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="textinput">Occupation</label>  
                     <div class="col-md-4">
-                        <input id="EMPoccu" name="EMPoccu" type="text"  class="form-control input-md">
-
+<!--                        <input id="EMPoccu" name="EMPoccu" type="text"  class="form-control input-md">-->
+                        <select id="EMPoccu" name="EMPoccu" class="form-control">
+                            <option selected="" disabled="">Please select Occupation</option>
+                            <option value="-">-</option>
+                            <% for (int i = 0; i < dataOccu.size(); i++) {%>
+                            <option value="<%=dataOccu.get(i).get(1)%>"><%=dataOccu.get(i).get(2)%></option>
+                            <%  }
+                            %>
+                        </select>
                     </div>
                 </div>
 
@@ -64,7 +73,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="textinput">Joined Date</label>  
                     <div class="col-md-4">
-                        <input id="EMPjdate" name="EMPjdate" type="date"  class="form-control input-md">
+                        <input id="EMPjdate" name="EMPjdate" type="text"  class="form-control input-md">
 
                     </div>
                 </div>
@@ -77,7 +86,7 @@
                             <option selected="" disabled="">Please select Income Range</option>
                             <option value="-">-</option>
                             <% for (int i = 0; i < dataIncomeRange.size(); i++) {%>
-                            <option value="<%=dataIncomeRange.get(i).get(2)%>"><%=dataIncomeRange.get(i).get(2)%></option>
+                            <option value="<%=dataIncomeRange.get(i).get(1)%>"><%=dataIncomeRange.get(i).get(2)%></option>
                             <%  }
                             %>
                         </select>
@@ -92,7 +101,7 @@
                             <option selected="" disabled="">Please select health facility</option>
                             <option value="-">-</option>
                             <% for (int i = 0; i < dataHfc.size(); i++) {%>
-                            <option value="<%=dataHfc.get(i).get(2)%>"><%=dataHfc.get(i).get(2)%></option>
+                            <option value="<%=dataHfc.get(i).get(1)%>"><%=dataHfc.get(i).get(2)%></option>
                             <%  }
                             %>
                         </select>
@@ -103,7 +112,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="textinput">Created Date</label>  
                     <div class="col-md-4">
-                        <input id="EMPcredate" name="EMPcredate" type="date" placeholder="Eg: 50000" class="form-control input-md">
+                        <input id="EMPcredate" name="EMPcredate" type="text"  class="form-control input-md" readonly>
 
                     </div>
                 </div>
@@ -116,7 +125,7 @@
                             <option selected="" disabled="">Please select status</option>
                             <option value="-">-</option>
                             <% for (int i = 0; i < dataStatus.size(); i++) {%>
-                            <option value="<%=dataStatus.get(i).get(2)%>"><%=dataStatus.get(i).get(2)%></option>
+                            <option value="<%=dataStatus.get(i).get(1)%>"><%=dataStatus.get(i).get(2)%></option>
                             <%  }
                             %>
                         </select>
@@ -152,7 +161,16 @@
     </div>
 </div>
 <script>
-
+    $(document).ready(function(){
+        $(function(){
+            $('#EMPcredate').datepicker({dateFormat:'dd-mm-yy',changeMonth:true,changeYear:true});
+        });
+        
+        $(function(){
+            $('#EMPjdate').datepicker({dateFormat:'dd-mm-yy',changeMonth:true,changeYear:true});
+        });
+        
+    });
     //yyyy-MM-dd HH:mm:ss
     var nowDate = new Date();
     var ZeroMinutes, ZeroSeconds, ZeroDay, ZeroMonth;
@@ -196,7 +214,8 @@
     var yyyyMMddHHmmss = year + "-" + ZeroMonth + "-" + ZeroDay + " " + hours + ":" + ZeroMinutes + ":" + ZeroSeconds;
     var HHmmss = hours + ":" + ZeroMinutes + ":" + ZeroSeconds;
     var yyyyMMdd = year + "-" + ZeroMonth + "-" + ZeroDay;
-
+    var ddMMyyyy= ZeroDay+ "-" + ZeroMonth + "-" +year;
+    $('#EMPcredate').val(ddMMyyyy);
     //function to save employment when click save button
     $('#EMPsave').on('click', function () {
 
@@ -266,6 +285,7 @@
                                     success: function (returnhtml) {
                                         console.log(returnhtml);
                                         $('#tableListEmp').html(returnhtml);
+                                        $('#EMPpmino').prop('readonly', false);
                                     }
                                 });
                             } else {
@@ -289,13 +309,17 @@
         var pmino = $('input[id=EMPpmino]').val();
         $('#empform')[0].reset();
         $('input[id=EMPpmino]').val(pmino);
+        $('#EMPseq').val("");
+        $('#EMPpmino').prop('readonly', false);
     });
 
     //function to edit employment data from table
     $('#tableListEmp').on('click', '#listEMP #EMPedit', function (e) {
         //prevent any default function
         e.preventDefault();
-
+        
+        $('#EMPpmino').prop('readonly', true);
+        
         //go to the top
         $('html,body').animate({
             scrollTop: $("#maintainEMP").offset().top

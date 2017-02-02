@@ -22,7 +22,7 @@
                 Conn conn = new Conn();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String now = sdf.format(new Date());
-                String hfc = "Klinik UTeM Induk";
+                String hfc = session.getAttribute("HFC").toString();
                 String sql = "SELECT e.PMI_NO,e.NAME,EPISODE_TIME,e.COMMON_QUEUE,e.DOCTOR,e.STATUS,q.QUEUE_NO FROM PMS_EPISODE e,PMS_PATIENT_QUEUE q WHERE e.EPISODE_DATE LIKE '%" + now + "%' AND e.STATUS NOT LIKE 'Discharge' AND q.PMI_NO=e.PMI_NO";
                 String newSql = "SELECT e.PMI_NO,e.name,e.EPISODE_TIME,e.COMMON_QUEUE,e.DOCTOR,e.STATUS,q.QUEUE_NO FROM PMS_EPISODE e,PMS_PATIENT_QUEUE q WHERE (e.STATUS NOT LIKE 'Discharge') AND ((e.EPISODE_DATE LIKE '%" + now + "%') AND  (q.PMI_NO=e.PMI_NO) AND e.HEALTH_FACILITY_CODE='" + hfc + "' AND e.EPISODE_DATE=q.episode_date)";
                 String newnewSql = "select e.pmi_no,e.name,e.episode_time,e.common_queue,q.queue_no,e.doctor,e.status from pms_episode e,pms_patient_queue q where e.status !='Discharge' and e.EPISODE_DATE like '%" + now + "%' and e.HEALTH_FACILITY_CODE='" + hfc + "' and e.PMI_NO = q.pmi_no and e.EPISODE_DATE = q.episode_date";
@@ -88,9 +88,9 @@
                                                         <td><%=dataQueue.get(i).get(1)%></td>
                                                         <td id="epiTime"><%=dataQueue.get(i).get(2)%></td>
                                                         <td ><%=dataQueue.get(i).get(3)%></td>
-                                                        <td><%=dataQueue.get(i).get(6)%></td>
                                                         <td><%=dataQueue.get(i).get(4)%></td>
                                                         <td><%=dataQueue.get(i).get(5)%></td>
+                                                        <td><%=dataQueue.get(i).get(6)%></td>
                                                         <td><button class="btn btn-danger" >Delete</button></td>
                                                     </tr>    
                                                     <%    }

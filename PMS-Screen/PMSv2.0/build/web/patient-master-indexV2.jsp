@@ -1,29 +1,31 @@
+
 <%@page import="dBConn.Conn"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Config.connect"%>
+<%@page import="org.apache.commons.lang3.StringUtils"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Conn conn = new Conn();
+
     //for select box items
-    String eliCat = "select * from lookup_detail where master_ref_code = '0063' order by Description";
-    String eliType = "select * from lookup_detail where master_ref_code = '0034' order by Description";
-    String gender = "select * from lookup_detail where master_ref_code = '0041' order by Description";
-    String marital = "select * from lookup_detail where master_ref_code = '0006' order by Description";
-    String race = "select * from lookup_detail where master_ref_code = '0004' order by Description";
-    String nationality = "select * from lookup_detail where master_ref_code = '0011' order by Description";
-    String religion = "select * from lookup_detail where master_ref_code = '0005' order by Description";
-    String idType = "select * from lookup_detail where master_ref_code = '0012' order by Description";
-    String title = "select * from lookup_detail where master_ref_code = '0026' order by Description";
-    String bloodty = "select * from lookup_detail where master_ref_code = '0074' order by Description";
-    String rhesus = "select * from lookup_detail where master_ref_code = '0017' order by Description";
-    String allergy = "select * from lookup_detail where master_ref_code = '0075' order by Description";
-    String chronicDesease = "select * from lookup_detail where master_ref_code = '0076' order by Description";
-    String organDonor = "select * from lookup_detail where master_ref_code = '0077'";
-    String district = "select * from lookup_detail where master_ref_code = '0078' order by Description";
-    String postcode = "select * from lookup_detail where master_ref_code = '0079' order by Description";
-    String country = "select * from lookup_detail where master_ref_code = '0001' order by Description";
-    String town = "select * from lookup_detail where master_ref_code = '0003' order by Description";
-    String state = "select * from lookup_detail where master_ref_code = '0002' order by Description";
+    String eliCat = "select * from adm_lookup_detail where master_reference_code = '0063'";
+    String eliType = "select * from adm_lookup_detail where master_reference_code = '0034'";
+    String gender = "select * from adm_lookup_detail where master_reference_code = '0041'";
+    String marital = "select * from adm_lookup_detail where master_reference_code = '0006'";
+    String race = "select * from adm_lookup_detail where master_reference_code = '0004'";
+    String nationality = "select * from adm_lookup_detail where master_reference_code = '0011'";
+    String religion = "select * from adm_lookup_detail where master_reference_code = '0005'";
+    String idType = "select * from adm_lookup_detail where master_reference_code = '0012'";
+    String title = "select * from adm_lookup_detail where master_reference_code = '0026' ";
+    String bloodty = "select * from adm_lookup_detail where master_reference_code = '0074'   ";
+    String rhesus = "select * from adm_lookup_detail where master_reference_code = '0017'   ";
+    String allergy = "select * from adm_lookup_detail where master_reference_code = '0075'   ";
+    String chronicDesease = "select * from adm_lookup_detail where master_reference_code = '0076'  ";
+    String organDonor = "select * from adm_lookup_detail where master_reference_code = '0077'";
+    String district = "select * from adm_lookup_detail where master_reference_code = '0078'   ";
+    String postcode = "select * from adm_lookup_detail where master_reference_code = '0079'   ";
+    String country = "select * from adm_lookup_detail where master_reference_code = '0001'   ";
+    String town = "select * from adm_lookup_detail where master_reference_code = '0003'   ";
+    String state = "select * from adm_lookup_detail where master_reference_code = '0002'   ";
 
     ArrayList<ArrayList<String>> dataEliCat, dataEliType, dataIdType, dataGender, dataMarital, dataRace, dataNationality, dataReligion, dataTitle,
             dataBloodty, dataRhesus, dataAllergy, dataChronicDesease, dataOrganDonor, dataDistrict, dataPostcode, dataCountry, dataTown, dataState;
@@ -40,7 +42,7 @@
     dataBloodty = conn.getData(bloodty);
     dataRhesus = conn.getData(rhesus);
     dataAllergy = conn.getData(allergy);
-    dataChronicDesease = connect.getData(chronicDesease);
+    dataChronicDesease = conn.getData(chronicDesease);
     dataOrganDonor = conn.getData(organDonor);
     dataDistrict = conn.getData(district);
     dataPostcode = conn.getData(postcode);
@@ -48,8 +50,34 @@
     dataTown = conn.getData(town);
     dataState = conn.getData(state);
 
+    //  ArrayList<String> dataDistrictSingular= new ArrayList<String>(),dataPostcodeSingular = new ArrayList<String>(),dataCountrySingular = new ArrayList<String>(),dataTownSingular = new ArrayList<String>(),dataStateSingular = new ArrayList<String>();
+//   for(int i = 0;i<dataDistrict.size();i++){
+//       dataDistrictSingular.add(dataDistrict.get(i).get(2));
+//   }
+//   String newVal = StringUtils.join(dataDistrictSingular,"|");
+//   
+//   for(int i = 0;i<dataPostcode.size();i++){
+//       dataPostcodeSingular.add(dataPostcode.get(i).get(2));
+//   }
+//   String newVal2 = String.join("|",dataPostcodeSingular);
+//   
+//   for(int i = 0;i<dataCountry.size();i++){
+//       dataCountrySingular.add(dataCountry.get(i).get(2));
+//   }
+//   String newVal3 = String.join("|",dataCountrySingular);
+//   
+//for(int i = 0;i<dataTown.size();i++){
+//       dataTownSingular.add(dataTown.get(i).get(2));
+//   }
+//   String newVal4 = String.join("|",dataTownSingular);
+//   
+//for(int i = 0;i<dataState.size();i++){
+//       dataStateSingular.add(dataState.get(i).get(2));
+//   }
+//   String newVal5 = String.join("|",dataStateSingular);
 
 %>
+
 <div class="row">
     <div class="col-md-12">
         <div class="thumbnail">
@@ -78,7 +106,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="textinput">Name</label>
                             <div class="col-md-8">
-                                <input id="PMIpname" name="PMIpname" type="text" placeholder="" class="form-control input-md" required="">
+                                <input id="PMIpname" name="PMIpname" type="text" placeholder="" class="form-control input-md" required="require" maxlength="80">
                             </div>
                         </div>
 
@@ -90,7 +118,7 @@
                                     <option value="-">-</option>
                                     <option value="null" selected="" disabled="">Select Title</option>
                                     <%                                        for (int i = 0; i < dataTitle.size(); i++) {%>
-                                    <option value="<%=dataTitle.get(i).get(2)%>"><%=dataTitle.get(i).get(2)%></option>
+                                    <option value="<%=dataTitle.get(i).get(1)%>"><%=dataTitle.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -101,7 +129,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="textinput">New IC No.</label>
                             <div class="col-md-8">
-                                <input id="PMInic" name="PMInic" type="text" placeholder="" class="form-control input-md">
+                                <input id="PMInic" name="PMInic" type="text" placeholder="" class="form-control input-md" maxlength="12">
                             </div>
                         </div>
 
@@ -109,7 +137,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="textinput">Old IC No.</label>
                             <div class="col-md-8">
-                                <input id="PMIoic" name="PMIoic" type="text" placeholder="" class="form-control input-md">
+                                <input id="PMIoic" name="PMIoic" type="text" placeholder="" class="form-control input-md" maxlength="8">
                             </div>
                         </div>
 
@@ -119,10 +147,9 @@
                             <div class="col-md-8">
                                 <select id="PMIidty" name="selectbasic" class="form-control">
                                     <option value="null" selected="" disabled="">Select ID Type</option>
-
                                     <%
                                         for (int i = 0; i < dataIdType.size(); i++) {%>
-                                    <option value="<%=dataIdType.get(i).get(2)%>"><%=dataIdType.get(i).get(2)%></option>
+                                    <option value="<%=dataIdType.get(i).get(1)%>"><%=dataIdType.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -133,7 +160,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="textinput">Identification No.</label>
                             <div class="col-md-8">
-                                <input id="PMIino" name="textinput" type="text" placeholder="" class="form-control input-md">
+                                <input id="PMIino" name="textinput" type="text" placeholder="" class="form-control input-md" maxlength="10">
                             </div>
                         </div>
                     </div>
@@ -147,8 +174,9 @@
                                     <option value="null" selected="" disabled="">Select Eligibility Category</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataEliCat.size(); i++) {%>
-                                    <option value="<%=dataEliCat.get(i).get(2)%>"><%=dataEliCat.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataEliCat.size(); i++) {%>
+                                    <option value="<%=dataEliCat.get(i).get(1)%>"><%=dataEliCat.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -163,8 +191,10 @@
                                     <option value="null" selected="" disabled="">Select Eligibility Type</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataEliType.size(); i++) {%>
-                                    <option value="<%=dataEliType.get(i).get(2)%>"><%=dataEliType.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataEliType.size();
+                                                i++) {%>
+                                    <option value="<%=dataEliType.get(i).get(1)%>"><%=dataEliType.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -175,7 +205,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="textinput">Date of Birth</label>
                             <div class="col-md-8">
-                                <input id="PMIbday" name="textinput" type="date" placeholder="" class="form-control input-md" required="">
+                                <input id="PMIbday" name="textinput" type="text" class="form-control input-md" required="">
                             </div>
                         </div>
 
@@ -187,8 +217,10 @@
                                     <option value="null" selected="" disabled="">Select Gender</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataGender.size(); i++) {%>
-                                    <option value="<%=dataGender.get(i).get(2)%>"><%=dataGender.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataGender.size();
+                                                i++) {%>
+                                    <option value="<%=dataGender.get(i).get(1)%>"><%=dataGender.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -203,8 +235,10 @@
                                     <option value="null" selected="" disabled="">Select Martial Status</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataMarital.size(); i++) {%>
-                                    <option value="<%=dataMarital.get(i).get(2)%>"><%=dataMarital.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataMarital.size();
+                                                i++) {%>
+                                    <option value="<%=dataMarital.get(i).get(1)%>"><%=dataMarital.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -219,8 +253,10 @@
                                     <option value="null" selected="" disabled="">Select Race</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataRace.size(); i++) {%>
-                                    <option value="<%=dataRace.get(i).get(2)%>"><%=dataRace.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataRace.size();
+                                                i++) {%>
+                                    <option value="<%=dataRace.get(i).get(1)%>"><%=dataRace.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -235,8 +271,10 @@
                                     <option value="null" selected="" disabled="">Select Nationality</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataNationality.size(); i++) {%>
-                                    <option value="<%=dataNationality.get(i).get(2)%>"><%=dataNationality.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataNationality.size();
+                                                i++) {%>
+                                    <option value="<%=dataNationality.get(i).get(1)%>"><%=dataNationality.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -251,8 +289,10 @@
                                     <option value="null" selected="" disabled="">Select Religion</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataReligion.size(); i++) {%>
-                                    <option value="<%=dataReligion.get(i).get(2)%>"><%=dataReligion.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataReligion.size();
+                                                i++) {%>
+                                    <option value="<%=dataReligion.get(i).get(1)%>"><%=dataReligion.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -273,8 +313,10 @@
                                     <option value="null" selected="" disabled="">Select Blood Type</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataBloodty.size(); i++) {%>
-                                    <option value="<%=dataBloodty.get(i).get(2)%>"><%=dataBloodty.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataBloodty.size();
+                                                i++) {%>
+                                    <option value="<%=dataBloodty.get(i).get(1)%>"><%=dataBloodty.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -289,8 +331,10 @@
                                     <option value="null" selected="" disabled="">Select Blood Rhesus</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataRhesus.size(); i++) {%>
-                                    <option value="<%=dataRhesus.get(i).get(2)%>"><%=dataRhesus.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataRhesus.size();
+                                                i++) {%>
+                                    <option value="<%=dataRhesus.get(i).get(1)%>"><%=dataRhesus.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -305,8 +349,10 @@
                                     <option value="null" selected="" disabled="">Select Allergy</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataAllergy.size(); i++) {%>
-                                    <option value="<%=dataAllergy.get(i).get(2)%>"><%=dataAllergy.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataAllergy.size();
+                                                i++) {%>
+                                    <option value="<%=dataAllergy.get(i).get(1)%>"><%=dataAllergy.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -322,8 +368,10 @@
                                     <option value="null" selected="" disabled="">Select Chronic Disease</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataChronicDesease.size(); i++) {%>
-                                    <option value="<%=dataChronicDesease.get(i).get(2)%>"><%=dataChronicDesease.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataChronicDesease.size();
+                                                i++) {%>
+                                    <option value="<%=dataChronicDesease.get(i).get(1)%>"><%=dataChronicDesease.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -338,8 +386,10 @@
                                     <option value="null" selected="" disabled="">Select Organ Donor Status</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataOrganDonor.size(); i++) {%>
-                                    <option value="<%=dataOrganDonor.get(i).get(2)%>"><%=dataOrganDonor.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataOrganDonor.size();
+                                                i++) {%>
+                                    <option value="<%=dataOrganDonor.get(i).get(1)%>"><%=dataOrganDonor.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -364,12 +414,16 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectbasic">Home District</label>
                             <div class="col-md-7">
+
+                                <!--                                <input type="text" id="PMIhdis" class="form-control input-md">-->
                                 <select id="PMIhdis" name="selectbasic" class="form-control">
                                     <option value="null" selected="" disabled="">Select Home District</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataDistrict.size(); i++) {%>
-                                    <option value="<%=dataDistrict.get(i).get(2)%>"><%=dataDistrict.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataDistrict.size();
+                                                i++) {%>
+                                    <option value="<%=dataDistrict.get(i).get(1)%>"><%=dataDistrict.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -380,12 +434,15 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectbasic">Home Town</label>
                             <div class="col-md-7">
+                                <!--                                <input id="PMIhtown" class="form-control input-md">-->
                                 <select id="PMIhtown" name="selectbasic" class="form-control">
                                     <option value="null" selected="" disabled="">Select Home Town</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataTown.size(); i++) {%>
-                                    <option value="<%=dataTown.get(i).get(2)%>"><%=dataTown.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataTown.size();
+                                                i++) {%>
+                                    <option value="<%=dataTown.get(i).get(1)%>"><%=dataTown.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -396,12 +453,15 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectbasic">Home Postcode</label>
                             <div class="col-md-7">
-                                <select id="PMIhpostcode" name="selectbasic" class="form-control">
+                                <!--                                <input id="PMIhpostcode" class="form-control input-md">
+                                -->                                <select id="PMIhpostcode" name="selectbasic" class="form-control">
                                     <option value="null" selected="" disabled="">Select Home Postcode</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataPostcode.size(); i++) {%>
-                                    <option value="<%=dataPostcode.get(i).get(2)%>"><%=dataPostcode.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataPostcode.size();
+                                                i++) {%>
+                                    <option value="<%=dataPostcode.get(i).get(1)%>"><%=dataPostcode.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -412,12 +472,15 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectbasic">Home State</label>
                             <div class="col-md-7">
+                                <!--                                <input id="PMIhstate" class="form-control input-md">-->
                                 <select id="PMIhstate" name="selectbasic" class="form-control">
                                     <option value="null" selected="" disabled="">Select Home State</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataState.size(); i++) {%>
-                                    <option value="<%=dataState.get(i).get(2)%>"><%=dataState.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataState.size();
+                                                i++) {%>
+                                    <option value="<%=dataState.get(i).get(1)%>"><%=dataState.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -428,12 +491,15 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectbasic">Home Country</label>
                             <div class="col-md-7">
+                                <!--                                <input id="PMIhcountry" class="form-control input-md">-->
                                 <select id="PMIhcountry" name="selectbasic" class="form-control">
                                     <option value="null" selected="" disabled="">Select Home Country</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataCountry.size(); i++) {%>
-                                    <option value="<%=dataCountry.get(i).get(2)%>"><%=dataCountry.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataCountry.size();
+                                                i++) {%>
+                                    <option value="<%=dataCountry.get(i).get(1)%>"><%=dataCountry.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -463,12 +529,15 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectbasic">Postal District</label>
                             <div class="col-md-7">
+                                <!--                                <input type="text" id="PMIpdis" class="form-control input-md">-->
                                 <select id="PMIpdis" name="selectbasic" class="form-control">
                                     <option value="null" selected="" disabled="">Select Postal District</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataDistrict.size(); i++) {%>
-                                    <option value="<%=dataDistrict.get(i).get(2)%>"><%=dataDistrict.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataDistrict.size();
+                                                i++) {%>
+                                    <option value="<%=dataDistrict.get(i).get(1)%>"><%=dataDistrict.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -479,12 +548,15 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectbasic">Postal Town</label>
                             <div class="col-md-7">
+                                <!--                                <input type="text" id="PMIptown" class="form-control input-md">-->
                                 <select id="PMIptown" name="selectbasic" class="form-control">
                                     <option value="null" selected="" disabled="">Select Postal Town</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataTown.size(); i++) {%>
-                                    <option value="<%=dataTown.get(i).get(2)%>"><%=dataTown.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataTown.size();
+                                                i++) {%>
+                                    <option value="<%=dataTown.get(i).get(1)%>"><%=dataTown.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -495,12 +567,15 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectbasic">Postal Postcode</label>
                             <div class="col-md-7">
+                                <!--                                <input id="PMIppostcode" class="form-control input-md">-->
                                 <select id="PMIppostcode" name="selectbasic" class="form-control">
                                     <option value="null" selected="" disabled="">Select Postal Postcode</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataPostcode.size(); i++) {%>
-                                    <option value="<%=dataPostcode.get(i).get(2)%>"><%=dataPostcode.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataPostcode.size();
+                                                i++) {%>
+                                    <option value="<%=dataPostcode.get(i).get(1)%>"><%=dataPostcode.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -511,12 +586,16 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectbasic">Postal State</label>
                             <div class="col-md-7">
-                                <select id="PMIpstate" name="selectbasic" class="form-control">
+                                <!--                                <input type="text" id="PMIpstate" class="form-control input-md">-->
+                                <!--
+                                -->                                <select id="PMIpstate" name="selectbasic" class="form-control">
                                     <option value="null" selected="" disabled="">Select Postal State</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataState.size(); i++) {%>
-                                    <option value="<%=dataState.get(i).get(2)%>"><%=dataState.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataState.size();
+                                                i++) {%>
+                                    <option value="<%=dataState.get(i).get(1)%>"><%=dataState.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -527,12 +606,15 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectbasic">Postal Country</label>
                             <div class="col-md-7">
+                                <!--                                <input id="PMIpcountry" class="form-control input-md">-->
                                 <select id="PMIpcountry" name="selectbasic" class="form-control">
                                     <option value="null" selected="" disabled="">Select Postal Country</option>
                                     <option value="-">-</option>
                                     <%
-                                        for (int i = 0; i < dataCountry.size(); i++) {%>
-                                    <option value="<%=dataCountry.get(i).get(2)%>"><%=dataCountry.get(i).get(2)%></option>
+                                        for (int i = 0;
+                                                i < dataCountry.size();
+                                                i++) {%>
+                                    <option value="<%=dataCountry.get(i).get(1)%>"><%=dataCountry.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -553,7 +635,7 @@
                 <div class="text-center">
                     <!--                    <button class="btn btn-primary " type="button" disabled="">Save</button>-->
                     <button class="btn btn-primary " type="button" id="updatePatient"><i class="fa fa-floppy-o fa-lg"></i>&nbsp; Save</button>
-<!--                    <button class="btn btn-default " type="button"> Appointment List</button>-->
+                    <!--                    <button class="btn btn-default " type="button"> Appointment List</button>-->
                     <button class="btn btn-default " type="button" id="clearPMI"> <i class="fa fa-ban fa-lg"></i>&nbsp; Clear</button>
                 </div>
             </form>
@@ -562,6 +644,65 @@
 </div>
 <script>
     $(document).ready(function () {
+        $(function () {
+//            var disData = $('#districtData').val();
+//            var postData = $('#postalData').val();
+//            var countryData = $('#countryData').val();
+//            var townData = $('#townData').val();
+//            var stateData = $('#stateData').val();
+//            
+//            var array_dis = String(disData).split("|");
+//            var array_post = String(postData).split("|");
+//            var array_country = String(countryData).split("|");
+//            var array_town = String(townData).split("|");
+//            var array_state = String(stateData).split("|");
+
+            //district autocomplete    
+//        $('#PMIhdis').autocomplete({
+//           source:array_dis
+//        });
+//        $(' #PMIpdis').autocomplete({
+//           source:array_dis
+//        });
+//        
+//        //postcode autocomplete
+//        $('#PMIhpostcode').autocomplete({
+//           source:array_post
+//        });
+//        $('#PMIppostcode').autocomplete({
+//           source:array_post
+//        });
+//        
+//        //town autocomplete
+//        $('#PMIhtown').autocomplete({
+//           source: array_town 
+//        });
+//        $('#PMIptown').autocomplete({
+//           source: array_town 
+//        });
+//        
+//        //state autocomplete
+//        $('#PMIhstate').autocomplete({
+//           source: array_state 
+//        });
+//        $('#PMIpstate').autocomplete({
+//           source: array_state 
+//        });
+//        
+//        //country autocomplete
+//        $('#PMIhcountry').autocomplete({
+//           source: array_country 
+//        });
+//        $('#PMIpcountry').autocomplete({
+//           source: array_country 
+//        });
+
+
+            $('#PMIbday').datepicker({dateFormat: 'dd-mm-yy', changeMonth: true, changeYear: true});
+
+
+        });
+
 
         function update() {
 
@@ -729,7 +870,7 @@
                 phomeadd = $("#PMIhadd").val();
             }
 
-            if (phomedistrict === null) {
+            if (phomedistrict === "") {
                 phomedistrict = "-";
             } else {
                 phomedistrict = $("#PMIhdis").val();
@@ -771,7 +912,7 @@
                 ppostaladd = $("#PMIpadd").val();
             }
 
-            if (ppostaldistrict === null) {
+            if (ppostaldistrict === "") {
                 ppostaldistrict = "-";
             } else {
                 ppostaldistrict = $("#PMIpdis").val();
@@ -866,7 +1007,7 @@
                         $('input[id=poic]').val($.trim(poic));
                         $('input[id=pit]').val($.trim(pit));
                         $('input[id=pino]').val($.trim(pino));
-                        
+
                         $('#radios-1').prop('checked', true);
                         $('#select-1').show();
                         $('#patCat').val('General Outpatient');
@@ -924,6 +1065,8 @@
 
         $('#clearPMI').on('click', function () {
             $('#formPMI')[0].reset();
+            $('input[id=PMIpmino]').prop('readonly', false);
+            $('#PMInic').prop('readonly', false);
         });
     });
 

@@ -4,15 +4,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Conn conn = new Conn();
-    String idType = "select * from lookup_detail where master_ref_code = '0012' order by Description";
-    String district = "select * from lookup_detail where master_ref_code = '0078' order by Description";
-    String postcode = "select * from lookup_detail where master_ref_code = '0079' order by Description";
-    String country = "select * from lookup_detail where master_ref_code = '0001' order by Description";
-    String town = "select * from lookup_detail where master_ref_code = '0003' order by Description";
-    String state = "select * from lookup_detail where master_ref_code = '0002' order by Description";
-    String relation = "select * from lookup_detail where master_ref_code = '0007' order by Description";
+    String idType = "select * from adm_lookup_detail where master_reference_code = '0012'   ";
+    String district = "select * from adm_lookup_detail where master_reference_code = '0078'   ";
+    String postcode = "select * from adm_lookup_detail where master_reference_code = '0079'   ";
+    String country = "select * from adm_lookup_detail where master_reference_code = '0001'   ";
+    String town = "select * from adm_lookup_detail where master_reference_code = '0003'   ";
+    String state = "select * from adm_lookup_detail where master_reference_code = '0002'   ";
+    String relation = "select * from adm_lookup_detail where master_reference_code = '0007'  ";
+    String occupation = "select * from adm_lookup_detail where master_reference_code = '0050'";
 
-    ArrayList<ArrayList<String>> dataIdType, dataDistrict, dataPostcode, dataCountry, dataTown, dataState, dataRelation;
+    ArrayList<ArrayList<String>> dataIdType, dataDistrict, dataPostcode, dataCountry, dataTown, dataState, dataRelation,dataOccu;
     dataIdType = conn.getData(idType);
     dataDistrict = conn.getData(district);
     dataPostcode = conn.getData(postcode);
@@ -20,6 +21,7 @@
     dataTown = conn.getData(town);
     dataState = conn.getData(state);
     dataRelation = conn.getData(relation);
+    dataOccu = conn.getData(occupation);
 %>
 
 <div class="row">
@@ -35,6 +37,7 @@
                             <label class="col-md-4 control-label" for="textinput">PMI No.</label>  
                             <div class="col-md-7">
                                 <input id="KINpmino" name="KINpmino" type="text"  class="form-control input-md">
+                                <input id="KINseq" name="KINseq" type="hidden"  class="form-control input-md">
 
                             </div>
                         </div>
@@ -49,7 +52,7 @@
 
                                     <%
                                         for (int i = 0; i < dataRelation.size(); i++) {%>
-                                    <option value="<%=dataRelation.get(i).get(2)%>"><%=dataRelation.get(i).get(2)%></option>
+                                    <option value="<%=dataRelation.get(i).get(1)%>"><%=dataRelation.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -60,7 +63,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="textinput">New IC</label>  
                             <div class="col-md-7">
-                                <input id="KINnewic" name="KINnewic" type="text"  class="form-control input-md">
+                                <input id="KINnewic" name="KINnewic" type="text"  class="form-control input-md" maxlength="12">
 
                             </div>
                         </div>
@@ -86,7 +89,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="textinput">Date Of Birth</label>  
                             <div class="col-md-7">
-                                <input id="KINdob" name="KINdob" type="date" class="form-control input-md">
+                                <input id="KINdob" name="KINdob" type="text" class="form-control input-md">
 
                             </div>
                         </div>
@@ -95,10 +98,23 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectbasic">Handphone Number</label>
                             <div class="col-md-7">
-                                <input id="KINphone" name="KINphone" type="text" class="form-control input-md">
+                                <input id="KINphone" name="KINphone" type="text" class="form-control input-md"maxlength="12" >
                             </div>
                         </div>
 
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="textinput">Name</label>  
+                            <div class="col-md-7">
+                                <input id="KINname" name="KINname" type="text"  class="form-control input-md" maxlength="80">
+
+                            </div>
+                        </div>
                         <!-- Select Basic -->
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectbasic">Email</label>
@@ -106,30 +122,11 @@
                                 <input id="KINemail" name="KINemail" type="text" class="form-control input-md">
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-6">
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="textinput"></label>  
-                            <div class="col-md-4">
-                                <input id="KINseq" name="KINseq" type="hidden"  class="form-control input-md">
-
-                            </div>
-                        </div>
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="textinput">Next Of Kin Name</label>  
-                            <div class="col-md-7">
-                                <input id="KINname" name="KINname" type="text"  class="form-control input-md">
-
-                            </div>
-                        </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="textinput">Old IC</label>  
                             <div class="col-md-7">
-                                <input id="KINoldic" name="KINoldic" type="text" class="form-control input-md">
+                                <input id="KINoldic" name="KINoldic" type="text" class="form-control input-md" maxlength="8">
 
                             </div>
                         </div>
@@ -144,14 +141,22 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectbasic">Occupation</label>
                             <div class="col-md-7">
-                                <input id="KINoccu" name="KINoccu" type="text" class="form-control input-md">
+<!--                                <input id="KINoccu" name="KINoccu" type="text" class="form-control input-md">-->
+                        <select id="KINoccu" name="KINoccu" class="form-control">
+                            <option selected="" disabled="">Please select Occupation</option>
+                            <option value="-">-</option>
+                            <% for (int i = 0; i < dataOccu.size(); i++) {%>
+                            <option value="<%=dataOccu.get(i).get(1)%>"><%=dataOccu.get(i).get(2)%></option>
+                            <%  }
+                            %>
+                        </select>
                             </div>
                         </div>
                         <!-- Select Basic -->
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="selectbasic">Homephone Number</label>
                             <div class="col-md-7">
-                                <input id="KINhomephone" name="KINhomephone" type="text" class="form-control input-md">
+                                <input id="KINhomephone" name="KINhomephone" type="text" class="form-control input-md" maxlength="12">
                             </div>
                         </div>
                     </div>
@@ -263,7 +268,10 @@
                 <table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; " id="listKIN">
                     <thead>
                     <th>Name</th>
-                    <th>IC. No.</th>
+                    <th>IC/ID No.</th>
+                    <th>Date Of Birth</th>
+                    <th>Relationship</th>
+                    <th>Occupation</th>                    
                     <th>Update</th>
                     <th>Delete</th>
                     </thead>
@@ -276,9 +284,11 @@
     </div>
 </div>
 <script>
-
-
-    ;
+    $(document).ready(function () {
+        $(function () {
+            $('#KINdob').datepicker({dateFormat: 'dd-mm-yy',changeMonth:true,changeYear:true});
+        });
+    });
     //function get birth date
     function getBdayw() {
         var bdate = $('#KINnewic').val();
@@ -292,10 +302,12 @@
             if (tahun >= 00 && tahun < 50)
             {
 
-                ICbdayw = "20" + tahun + "-" + bulan + "-" + hari;
+                //ICbdayw = "20" + tahun + "-" + bulan + "-" + hari;
+                ICbdayw = hari + "-" + bulan + "-" + "20" + tahun;
             } else
             {
-                ICbdayw = "19" + tahun + "-" + bulan + "-" + hari;
+                //ICbdayw = "19" + tahun + "-" + bulan + "-" + hari;
+                ICbdayw = hari + "-" + bulan + "-" + "19" + tahun;
             }
         }
         //console.log(ICbdayw);
@@ -347,7 +359,7 @@
         if (KINidnumber === "") {
             KINidnumber = "-";
         }
-        if (KINoccu === "") {
+        if (KINoccu === null) {
             KINoccu = "-";
         }
         if (KINhomephone === "") {
@@ -442,6 +454,9 @@
                                     success: function (returnhtml) {
                                         //console.log(returnhtml);
                                         $('#tableListKin').html(returnhtml);
+                                        $('#KINpmino').prop('readonly', false);
+                                        $('#KINnewic').prop('readonly', false);
+                                        $('#KINoldic').prop('readonly', false);
                                     }
                                 });
                             } else {
@@ -466,12 +481,21 @@
         var pmino = $('input[id=EMPpmino]').val();
         $('#kinform')[0].reset();
         $('input[id=KINpmino]').val(pmino);
+        $('#KINseq').val("");
+        $('#KINpmino').prop('readonly', false);
+        $('#KINnewic').prop('readonly', false);
+        $('#KINoldic').prop('readonly', false);
+
 
     });
 
     //function to edit next of kin data from table
     $('#tableListKin').on('click', '#listKIN #KINedit', function (e) {
         e.preventDefault();
+        $('#KINpmino').prop('readonly', true);
+        $('#KINnewic').prop('readonly', true);
+        $('#KINoldic').prop('readonly', true);
+
         //go to the top
         $('html,body').animate({
             scrollTop: $("#maintainKIN").offset().top
@@ -507,15 +531,15 @@
         $('#KINrelationship').val(relationship);
         $('#KINnewic').val(newic);
         console.log(convertedbirthdate);
-        console.log(arrayData);
+        console.log(seqno);
     });
-    
+
     //delete function when click delete on next of kin
     $('#tableListKin').on('click', '#listKIN #KINdel', function (e) {
         e.preventDefault();
         var row2 = $(this).closest("tr");
         var rowData2 = row2.find("#kinval").val();
-        
+
         console.log(rowData2);
         bootbox.confirm({
             message: "Are you sure want to delete patient's Next of Kin Information?",
@@ -530,14 +554,14 @@
                 }
             },
             callback: function (result) {
-                
+
                 if (result === true) {
                     //get the row value
                     row2.remove();
                     var arrayData2 = rowData2.split("|");
                     //assign into seprated val
                     var pmino = arrayData2[0], seqno = arrayData2[1];
-                    var datas = {pmino:pmino,seqno:seqno};
+                    var datas = {pmino: pmino, seqno: seqno};
                     console.log(datas);
                     $.ajax({
                         type: "post",
@@ -545,7 +569,7 @@
                         data: datas,
                         timeout: 3000,
                         success: function (data) {
-                            console.log("delete "+data);
+                            console.log("delete " + data);
 
 
                         }, error: function () {

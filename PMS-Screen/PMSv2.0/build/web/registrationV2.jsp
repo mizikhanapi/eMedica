@@ -6,19 +6,21 @@
 <link rel="stylesheet" href="assets/css/loading.css">
 <!--hfc code in register queue need to get from session -->
 <%
-    String patCat = "select * from lookup_detail where master_ref_code = '0033' order by Description";
-    String visType = "select * from lookup_detail where master_ref_code = '0022' order by Description";
-    String eliCat = "select * from lookup_detail where master_ref_code = '0063' order by Description";
-    String eliType = "select * from lookup_detail where master_ref_code = '0034' order by Description";
-    String discip = "select * from lookup_detail where master_ref_code = '0072' order by Description";
-    String prio = "select * from lookup_detail where master_ref_code = '0036' order by Description";
-    String idTYpe = "select * from lookup_detail where master_ref_code = '0012' order by Description";
-    String queue = "select * from pms_queue_name";
+    String patCat = "select * from adm_lookup_detail where master_reference_code = '0033'   ";
+    String visType = "select * from adm_lookup_detail where master_reference_code = '0022'   ";
+    String eliCat = "select * from adm_lookup_detail where master_reference_code = '0063'   ";
+    String eliType = "select * from adm_lookup_detail where master_reference_code = '0034'   ";
+    String discip = "select * from adm_lookup_detail where master_reference_code = '0072'   ";
+    String prio = "select * from adm_lookup_detail where master_reference_code = '0036'   ";
+    String idTYpe = "select * from adm_lookup_detail where master_reference_code = '0012'   ";
+    String Commonqueue = "select * from pms_queue_name where queue_type='CM'";
+    String Consultationqueue = "select * from pms_queue_name where queue_type='FY'";
+    String Doctorqueue = "select * from pms_queue_name where queue_type='PN'";
 
-    ArrayList<ArrayList<String>> dataPatCat2, dataPatCat, dataVisType, dataEliCat, dataEliType, dataDiscip, dataPrio, dataIdType, dataQueue;
-    
+    ArrayList<ArrayList<String>> dataQueue2, dataQueue3, dataPatCat, dataVisType, dataEliCat, dataEliType, dataDiscip, dataPrio, dataIdType, dataQueue;
+
     Conn conn = new Conn();
-    
+
     dataPatCat = conn.getData(patCat);
     dataVisType = conn.getData(visType);
     dataEliCat = conn.getData(eliCat);
@@ -26,16 +28,17 @@
     dataDiscip = conn.getData(discip);
     dataPrio = conn.getData(prio);
     dataIdType = conn.getData(idTYpe);
-    dataQueue = conn.getData(queue);
+    dataQueue = conn.getData(Commonqueue);
+    dataQueue2 = conn.getData(Consultationqueue);
+    dataQueue3 = conn.getData(Doctorqueue);
 
-   
     // status 0 = public
     // status 1 = universiti
     // status bole dapat kat session
-    String dataSystemStatus = "0";
+    String dataSystemStatus = session.getAttribute("SYSTEMSTAT").toString();
 
-    out.println(conn.getIpCall());
-    
+//    out.println(conn.getIpCall()+ " ");
+//    out.println(session.getAttribute("HFC"));
 
 %>
 <div class="row" id="register">
@@ -73,7 +76,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="textinput">IC No. / ID No.</label>
                     <div class="col-md-4">
-                        <input type="text" class="form-control input-md" id="idInput" name="idInput" placeholder="ID" />
+                        <input type="text" class="form-control input-md" id="idInput" name="idInput" placeholder="ID" maxlength="0"/>
                     </div>
                 </div>
                 <div class="text-center">
@@ -164,7 +167,7 @@
                                     <option value="2">Inpatient</option>
                                     <option value="2">Specialist OutPatient</option>-->
                                     <%                                        for (int i = 0; i < dataPatCat.size(); i++) {%>
-                                    <option value="<%=dataPatCat.get(i).get(2)%>"><%=dataPatCat.get(i).get(2)%></option>
+                                    <option value="<%=dataPatCat.get(i).get(1)%>"><%=dataPatCat.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -182,7 +185,7 @@
                                     <option value="2">Walk-in</option>-->
                                     <%
                                         for (int i = 0; i < dataVisType.size(); i++) {%>
-                                    <option value="<%=dataVisType.get(i).get(2)%>"><%=dataVisType.get(i).get(2)%></option>
+                                    <option value="<%=dataVisType.get(i).get(1)%>"><%=dataVisType.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -209,21 +212,19 @@
                                     Consultant Room
                                     <select id="select-0" name="select-0" class="form-control">
                                         <option value="-" selected="" disabled="">Please select consultation room</option>
-                                        <option value="Consultation Room 1">Consultation Room 1</option>
-                                        <option value="Consultation Room 2">Consultation Room 2</option>
-                                        <option value="Consultation Room 3">Consultation Room 3</option>
-                                        <option value="Consultation Room 4">Consultation Room 4</option>
-                                        <option value="Consultation Room 5">Consultation Room 5</option>
+                                        <%
+                                            for (int i = 0; i < dataQueue2.size(); i++) {%>
+                                        <option value="<%=dataQueue2.get(i).get(1)%>"><%="(" + dataQueue2.get(i).get(0) + ") " + dataQueue2.get(i).get(1)%></option>
+                                        <%  }
+                                        %>
                                     </select>
 
                                 </label>
                                 <label for="radios-1">
                                     <input type="radio" name="radios" id="radios-1" value="Queue">
-                                    Queue
+                                    Common Queue
                                     <select id="select-1" name="select-1" class="form-control">
                                         <option selected="" disabled="">Please select Queue</option>
-                                        <!--              option value="1">Option one</option>
-                                                          <option value="2">Option two</option>-->
                                         <%
                                             for (int i = 0; i < dataQueue.size(); i++) {%>
                                         <option value="<%=dataQueue.get(i).get(1)%>"><%="(" + dataQueue.get(i).get(0) + ") " + dataQueue.get(i).get(1)%></option>
@@ -236,11 +237,11 @@
                                     Doctor
                                     <select id="select-2" name="select-2" class="form-control">
                                         <option value="-" disabled="" selected="">Please select Doctor</option>
-                                        <option value="Dr.Jeff">Dr.Jeff</option>
-                                        <option value="Dr.Angeline">Dr.Angeline</option>
-                                        <option value="Dr.Ranjit">Dr.Ranjit</option>
-                                        <option value="Dr.Chung">Dr.Chung</option>
-                                        <option value="Dr.Lee">Dr.Lee</option>
+                                        <%
+                                            for (int i = 0; i < dataQueue3.size(); i++) {%>
+                                        <option value="<%=dataQueue3.get(i).get(1)%>"><%="(" + dataQueue3.get(i).get(0) + ") " + dataQueue3.get(i).get(1)%></option>
+                                        <%  }
+                                        %>
                                     </select>
                                 </label>
                             </div>
@@ -261,7 +262,7 @@
                                     <option value="2">SOCSO</option>-->
                                     <%
                                         for (int i = 0; i < dataEliCat.size(); i++) {%>
-                                    <option value="<%=dataEliCat.get(i).get(2)%>"><%=dataEliCat.get(i).get(2)%></option>
+                                    <option value="<%=dataEliCat.get(i).get(1)%>"><%=dataEliCat.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -278,7 +279,7 @@
                                     <option value="2">Staff</option>-->
                                     <%
                                         for (int i = 0; i < dataEliType.size(); i++) {%>
-                                    <option value="<%=dataEliType.get(i).get(2)%>"><%=dataEliType.get(i).get(2)%></option>
+                                    <option value="<%=dataEliType.get(i).get(1)%>"><%=dataEliType.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -295,7 +296,7 @@
                                     <option value="2">Outpatient Discipline</option>-->
                                     <%
                                         for (int i = 0; i < dataDiscip.size(); i++) {%>
-                                    <option value="<%=dataDiscip.get(i).get(2)%>"><%=dataDiscip.get(i).get(2)%></option>
+                                    <option value="<%=dataDiscip.get(i).get(1)%>"><%=dataDiscip.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
@@ -317,17 +318,19 @@
                                     <option value="1" selected="" disabled="">Select Priority Group</option>
                                     <%
                                         for (int i = 0; i < dataPrio.size(); i++) {%>
-                                    <option value="<%=dataPrio.get(i).get(2)%>"><%=dataPrio.get(i).get(2)%></option>
+                                    <option value="<%=dataPrio.get(i).get(1)%>"><%=dataPrio.get(i).get(2)%></option>
                                     <%  }
                                     %>
                                 </select>
+                                <input id="sessionHfc" name="sessionHfc" type="hidden"  class="form-control input-md" value="<%= session.getAttribute("HFC")%>">
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="text-center">
                     <button class="btn btn-primary " type="button" id="registerQueue"><i class="fa fa-floppy-o fa-lg"></i> Register</button>
-                    <button class="btn btn-default" type="button"> Appointment List</button>
+                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#appointmentModal"> Appointment List</button>
                     <button class="btn btn-default " type="button" id="btnclear" name="btnclear" > <i class="fa fa-ban fa-lg"></i>&nbsp; Clear</button>
                     <!--                    <div id="dialog" title="Basic dialog">
                                             <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
@@ -337,21 +340,40 @@
         </div>
     </div>
 </div>
+<div  id="modalSaya"><!-- Place at bottom of page --></div>
 <div class="modalLoad"><!-- Place at bottom of page --></div>
 <script>w3IncludeHTML();</script>
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script> -->
 <script src="assets/js/bootbox.min.js"></script> 
 
 <script>
-    // w3IncludeHTML();
 
-    //include header and menus
-//        $( "#header" ).load( "libraries/header.jsp" );
-//        $( "#topMenus" ).load( "libraries/topMenus.html" );
-//        $( "#sideMenus" ).load( "libraries/sideMenus.html" );
+    //load appointment modal into the registration page
+    $('#modalSaya').load('AppointmentList.jsp');
+    //set modal width to dynamic
+    $('#modalSaya').on('shown.bs.modal', function () {
+        $(this).find('.modal-dialog').css({width: 'auto',
+            height: 'auto',
+            'max-height': '100%'});
+    });
+    //validate max length of input
+    $('#idType').on('change', function () {
+        var id = $('#idType').val();
+        if (id === "pmino") {
+            $('#idInput').attr('maxlength', '13');
+        } else if (id === "icnew") {
+            $('#idInput').attr('maxlength', '12');
+        } else if (id === "icold") {
+            $('#idInput').attr('maxlength', '8');
+        } else if (id === "004") {
+            $('#idInput').attr('maxlength', '10');
+        } else if (id === "005") {
+            $('#idInput').attr('maxlength', '10');
+        }
+    });
+
 
     //when document is ready,then run this script
-
     $('#select-0').hide();
     $('#select-1').hide();
     $('select[id=select-2]').hide();
@@ -359,28 +381,31 @@
     var yyyyMMddHHmmss;
     var HHmmss;
     var yyyyMMdd;
+    var ddMMyyyy;
 
     var tahun, bulan, hari, ICbday;
     //function get birth date
-    function getBday() {
-        var option = $('#idType').find(":selected").val();
-        var newIc = $('#idInput').val();
-        if (option === "icnew") {
-            if (newIc.length === 12) {
-                tahun = newIc.substr(0, 2);
-                bulan = newIc.substr(2, 2);
-                hari = newIc.substr(4, 2);
+    
+    function getBday(x) {
+
+        
+            if (x.length === 12) {
+                tahun = x.substr(0, 2);
+                bulan = x.substr(2, 2);
+                hari = x.substr(4, 2);
 
                 if (tahun >= 00 && tahun < 50)
                 {
 
-                    ICbday = "20" + tahun + "-" + bulan + "-" + hari;
+//                    ICbday = "20" + tahun + "-" + bulan + "-" + hari;
+                    ICbday = hari + "-" + bulan + "-" + "20" + tahun;
                 } else
                 {
-                    ICbday = "19" + tahun + "-" + bulan + "-" + hari;
+//                    ICbday = "19" + tahun + "-" + bulan + "-" + hari;
+                    ICbday = hari + "-" + bulan + "-" + "19" + tahun;
                 }
             }
-        }
+        
     }
 
     //function to get date 
@@ -427,6 +452,7 @@
         yyyyMMddHHmmss = year + "-" + ZeroMonth + "-" + ZeroDay + " " + hours + ":" + ZeroMinutes + ":" + ZeroSeconds;
         HHmmss = hours + ":" + ZeroMinutes + ":" + ZeroSeconds;
         yyyyMMdd = year + "-" + ZeroMonth + "-" + ZeroDay;
+        ddMMyyyy = ZeroDay + "-" + ZeroMonth + "-" + year;
     }
 
     //event when radio button is change
@@ -446,6 +472,7 @@
                     $('select[id=select-1]').hide();
                 }
             });
+
     //seaching patient function   
     function searchPatient() {
 
@@ -453,6 +480,10 @@
         $('#myForm2')[0].reset();
         $('#formPMI')[0].reset();
         $('#kinform')[0].reset();
+        $('#empform')[0].reset();
+        $('#famForm')[0].reset();
+        $('#formMed')[0].reset();
+        $("table tbody").remove();
         if (opt === true) {
             //alert('hai');
         }
@@ -477,7 +508,7 @@
                     if ($.trim(array_data) === "N/A1") {
 
                         bootbox.confirm({
-                            message: "No Patient Found! \n\Data will retrieve from SMP",
+                            message: "This is new patient,Please press continue button to key-in patient information...",
                             buttons: {
                                 confirm: {
                                     label: 'Continue',
@@ -491,6 +522,127 @@
                             callback: function (result) {
                                 //if true go to PMI page
                                 if (result === true) {
+                                    $body.addClass("loading");
+                                    $.ajax({
+                                        async: true,
+                                        type: "POST",
+                                        url: "pmiGen.jsp",
+                                        data: {'idInput': idInput}, // Send input
+                                        timeout: 10000,
+                                        success: function (list) {
+                                            x = idInput;
+                                            getBday(x);
+                                            getDateNow();
+                                            //pmi
+                                            $('input[id=PMIpmino]').val($.trim(list));
+                                            $('#PMInic').val($.trim(idInput));
+                                            $('#PMIbday').val($.trim(ICbday));
+                                            //console.log(ICbday);
+                                            //registration
+                                            $('input[id=pmino]').val($.trim(list));
+                                            $('input[id=pnic]').val($.trim(idInput));
+                                            //employment
+                                            $('input[id=EMPpmino]').val($.trim(list));
+                                            $('#EMPcredate').val(ddMMyyyy);
+                                            console.log(ddMMyyyy);
+                                            $body.removeClass("loading");
+                                            $('.nav-tabs a[href="#tab_default_2"]').tab('show');
+                                        }
+                                    });
+                                }
+                            }
+                        });
+
+                    } else if ($.trim(array_data[0]) === "SMP") {
+                        console.log("SMP DATA");
+                        var newic = array_data[1],
+                                idnumber = array_data[2],
+                                persontype = array_data[3],
+                                name = array_data[4],
+                                gender = array_data[5],
+                                race = array_data[6],
+                                nationality = array_data[7],
+                                address1 = array_data[8],
+                                address2 = array_data[9],
+                                postcode = array_data[10],
+                                country = array_data[11],
+                                phone = array_data[12];
+                        bootbox.confirm({
+                            message: "Patient biodata is not existed, Data will retieved from the SMP/SMSM",
+                            buttons: {
+                                confirm: {
+                                    label: 'Continue',
+                                    className: 'btn-success'
+                                },
+                                cancel: {
+                                    label: 'Cancel',
+                                    className: 'btn-danger'
+                                }
+                            },
+                            callback: function (result) {
+                                //if true go to PMI page
+                                if (result === true) {
+                                    if (persontype === "1") {
+                                        $("#PMIidty").val($.trim("004"));
+                                        $('input[id=pit]').val("Matric No.");
+                                    } else if (persontype === "0") {
+                                        $("#PMIidty").val($.trim("005"));
+                                        $('input[id=pit]').val("Staff No.");
+                                    }
+
+                                    //registration page
+                                    $('#pname').val($.trim(name));
+                                    $('input[id=poic]').val("-");
+
+                                    $('input[id=pino]').val($.trim(idnumber));
+                                    //PMI page
+                                    $('#PMIpname').val($.trim(name));
+                                    $('#PMInic').prop('readonly', true);
+                                    $('#PMIoic').val($.trim(poic));
+                                    $('#PMIino').val($.trim(idnumber));
+                                    $('#PMIhadd').val($.trim(address1));
+                                    $('#PMIpadd').val($.trim(address2));
+                                    $('#PMIhandphone').val($.trim(phone));
+
+
+//                        $("#PMIsex").val($.trim(gender));
+//                        $("#PMIrace").val($.trim(race));
+//                        $("#PMInational").val($.trim(nationality));
+                                    //$("#PMIhpostcode").val($.trim(postcode));
+                                    //$("#PMIhcountry").val($.trim(country));
+                                    $body.addClass("loading");
+                                    $.ajax({
+                                        async: true,
+                                        type: "POST",
+                                        url: "pmiGen.jsp",
+                                        data: {'idInput': newic}, // Send input
+                                        timeout: 10000,
+                                        success: function (list) {
+                                            x = newic;
+                                            getBday(x);
+                                            getDateNow();
+                                            //pmi
+                                            $('input[id=PMIpmino]').val($.trim(list));
+                                            $('#PMInic').val($.trim(newic));
+                                            $('#PMIbday').val($.trim(ICbday));
+                                            console.log(ICbday);
+                                            //registration
+                                            $('input[id=pmino]').val($.trim(list));
+                                            $('input[id=pnic]').val($.trim(newic));
+                                            //employment
+                                            $('input[id=EMPpmino]').val($.trim(list));
+                                            $('#EMPcredate').val(ddMMyyyy);
+                                            // set value in next of kin page
+                                            $('input[id=KINpmino]').val($.trim(list));
+                                            // set value in family page
+                                            $('input[id=FAMpmi]').val($.trim(list));
+                                            // set value in MEDICAL page
+                                            $('input[id=MEDpmino]').val($.trim(list));
+                                            console.log(ddMMyyyy);
+                                            $body.removeClass("loading");
+                                            $('.nav-tabs a[href="#tab_default_2"]').tab('show');
+                                        }
+                                    });
                                 }
                             }
                         });
@@ -521,17 +673,28 @@
                                         data: {'idInput': idInput}, // Send input
                                         timeout: 10000,
                                         success: function (list) {
-                                            getBday();
+                                            x = idInput;
+                                            getBday(x);
+                                            getDateNow();
                                             //pmi
                                             $('input[id=PMIpmino]').val($.trim(list));
                                             $('#PMInic').val($.trim(idInput));
                                             $('#PMIbday').val($.trim(ICbday));
-                                            console.log(ICbday);
+                                            //console.log(ICbday);
                                             //registration
                                             $('input[id=pmino]').val($.trim(list));
                                             $('input[id=pnic]').val($.trim(idInput));
                                             //employment
                                             $('input[id=EMPpmino]').val($.trim(list));
+                                            $('#EMPcredate').val(ddMMyyyy);
+                                            // set value in next of kin page
+                                            $('input[id=KINpmino]').val($.trim(list));
+                                            // set value in family page
+                                            $('input[id=FAMpmi]').val($.trim(list));
+                                            // set value in MEDICAL page
+                                            $('input[id=MEDpmino]').val($.trim(list));
+                                            
+                                            console.log(ddMMyyyy);
                                             $body.removeClass("loading");
                                             $('.nav-tabs a[href="#tab_default_2"]').tab('show');
                                         }
@@ -540,6 +703,7 @@
                             }
                         });
                     } else {
+                        getDateNow();
                         var pmino = array_data[0],
                                 pminotemp = array_data[1],
                                 pname = array_data[2],
@@ -580,25 +744,35 @@
                         var daysplitted = splitBday[0];
                         var monthsplitted = splitBday[1];
                         var yearsplitted = splitBday[2];
+                        var idtype;
                         //console.log(splitBday);
                         //console.log(daysplitted);
                         //console.log(monthsplitted);
                         //console.log(yearsplitted);
+                        if (pit === "004") {
+                            idtype = "Matric No.";
+                        } else if (pit === "005") {
+                            idtype = "Staff No.";
+                        }
 
-                        var newbday = yearsplitted + "-" + monthsplitted + "-" + daysplitted;
+                        //var newbday = yearsplitted + "-" + monthsplitted + "-" + daysplitted;
+                        var newbday = daysplitted + "-" + monthsplitted + "-" + yearsplitted;
+
                         //console.log(newbday);
 
                         $('input[id=pmino]').val($.trim(pmino));
                         $('input[id=pname]').val($.trim(pname));
                         $('input[id=pnic]').val($.trim(pnic));
                         $('input[id=poic]').val($.trim(poic));
-                        $('input[id=pit]').val($.trim(pit));
+                        $('input[id=pit]').val($.trim(idtype));
                         $('input[id=pino]').val($.trim(pino));
                         // set value in PMI page
                         $('input[id=PMIpmino]').val($.trim(pmino));
+                        $('input[id=PMIpmino]').prop('readonly', true);
                         $('#PMIpminotemp').val($.trim(pminotemp));
                         $('#PMIpname').val($.trim(pname));
                         $('#PMInic').val($.trim(pnic));
+                        $('#PMInic').prop('readonly', true);
                         $('#PMIoic').val($.trim(poic));
                         $('#PMIino').val($.trim(pino));
                         $('#PMIbday').val($.trim(newbday));
@@ -634,6 +808,7 @@
                         $("#PMIpcountry").val($.trim(ppostalcountry));
                         // set value in employment page
                         $('input[id=EMPpmino]').val($.trim(pmino));
+                        $('#EMPcredate').val(ddMMyyyy);
                         var data = {'PMINO': $.trim(pmino)};
                         $.ajax({
                             async: true,
@@ -663,9 +838,9 @@
                                 console.log('error: ' + errorThrown);
                             }
                         });
-                        
-                        
-                        
+
+
+
                         // set value in family page
                         $('input[id=FAMpmi]').val($.trim(pmino));
                         $.ajax({
@@ -682,7 +857,7 @@
                                 console.log('error: ' + errorThrown);
                             }
                         });
-                        
+
                         // set value in MEDICAL page
                         $('input[id=MEDpmino]').val($.trim(pmino));
                         $.ajax({
@@ -701,18 +876,18 @@
                         });
                         $('#radios-1').prop('checked', true);
                         $('#select-1').show();
-                        $('#patCat').val('General Outpatient');
-                        $('#visTy').val('Walk-in');
+                        $('#patCat').val('001');
+                        $('#visTy').val('001');
                         $('#EmTy').val('-');
-                        $('#EliCat').val('Government');
-                        if ($('input[id=pit]').val() === "Matric No.") {
-                            $('#EliTy').val('Student');
-                        } else if ($('input[id=pit]').val() === "Staff No.") {
-                            $('#EliTy').val('Staff');
+                        $('#EliCat').val('003');
+                        if ($('input[id=pit]').val() === "004") {
+                            $('#EliTy').val('003');
+                        } else if ($('input[id=pit]').val() === "005") {
+                            $('#EliTy').val('005');
                         }
 
-                        $('#Dis').val('Outpatient Discipline');
-                        $('#prioGru').val('Normal');
+                        $('#Dis').val('001');
+                        $('#prioGru').val('003');
                         $('#select-1').val('Normal Queue');
                         //console.log(array_data);
                     }
@@ -766,23 +941,21 @@
             subDiscode = "-";
             if ($('#radios-0').is(':checked')) {
                 consultRoom = $('#select-0').find(":selected").val();
+                comTy = "FY";
             } else {
                 consultRoom = "-";
             }
 
             if ($('#radios-1').is(':checked')) {
                 comQueue = $('#select-1').find(":selected").val();
-                var x = $('#select-1').find(":selected").text();
-                var separators = ['\\\(', '\\\)'];
-                var tokens = x.split(new RegExp(separators.join('|'), 'g'));
-                //console.log(tokens);
-                comTy = tokens[1];
+                comTy = "CM";
             } else {
                 comQueue = "-";
             }
 
             if ($('#radios-2').is(':checked')) {
                 doctor = $('#select-2').find(":selected").val();
+                comTy = "PN";
             } else {
                 doctor = "-";
             }
@@ -798,7 +971,8 @@
             glExpDate = "-";
             epiTime = HHmmss;
             stat = "Waiting";
-            hfc = "Klinik UTeM Induk";
+            //hfc amik kat session
+            hfc = $('#sessionHfc').val();
             var datas = {'pmi': pmi,
                 'epiDate': epiDate,
                 'name': name,
@@ -877,9 +1051,11 @@
     //event when press ENTER after inserting the ID
     $("#idInput").on("keydown", function (e) {
         var code = e.keyCode;
+
         if (code === 13) {
-            searchPatient();
             e.preventDefault();
+            searchPatient();
+
         }
     });
     //event on click clear buton
@@ -893,10 +1069,55 @@
     });
     //event on click clear buton
     $('#clearSearch').click(function () {
-        $('#myForm')[0].reset();
+        $('#myForm2')[0].reset();
+        $('#formPMI')[0].reset();
+        $('#kinform')[0].reset();
+        $('#empform')[0].reset();
+        $('#famForm')[0].reset();
+        $('#formMed')[0].reset();
+        $("table tbody").remove();
         //console.log(patientDOM);
 
 
+    });
+
+
+    $('#modalSaya').on('click', '#appointmentModal #listAppointment #APPedit', function () {
+        console.log("u're clicking the edit button in appointment table");
+        var row = $(this).closest("tr");
+        var rowData = row.find("#appval").val();
+
+        var array_data = String(rowData).split("|");
+        var pit = array_data[7];
+        var idtype;
+        if (pit === "004") {
+            idtype = "Matric No.";
+        } else if (pit === "005") {
+            idtype = "Staff No.";
+        }
+        console.log(array_data);
+        $('input[id=pmino]').val($.trim(array_data[0]));
+        $('input[id=pname]').val($.trim(array_data[4]));
+        $('input[id=pnic]').val($.trim(array_data[5]));
+        $('input[id=poic]').val($.trim(array_data[6]));
+        $('input[id=pit]').val($.trim(idtype));
+        $('input[id=pino]').val($.trim(array_data[8]));
+
+        $('#radios-1').prop('checked', true);
+        $('#select-1').show();
+        $('#patCat').val('001');
+        $('#visTy').val('002');
+        $('#EmTy').val('-');
+        $('#EliCat').val('003');
+        if ($('input[id=pit]').val() === "004") {
+            $('#EliTy').val('003');
+        } else if ($('input[id=pit]').val() === "005") {
+            $('#EliTy').val('005');
+        }
+
+        $('#Dis').val('001');
+        $('#prioGru').val('003');
+        $('#select-1').val('Normal Queue');
     });
 
 

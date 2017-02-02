@@ -4,9 +4,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Conn conn = new Conn();
-    String relation = "select * from lookup_detail where master_ref_code = '0007' order by Description";
-    ArrayList<ArrayList<String>> dataRelation;
+    String relation = "select * from adm_lookup_detail where master_reference_code = '0007'   ";
+    String occupation = "select * from adm_lookup_detail where master_reference_code = '0050'";
+    ArrayList<ArrayList<String>> dataRelation,dataOccu;
     dataRelation = conn.getData(relation);
+    dataOccu = conn.getData(occupation);
 
 %>
 
@@ -34,7 +36,7 @@
                             <option value="-">-</option>
 
                             <%                                        for (int i = 0; i < dataRelation.size(); i++) {%>
-                            <option value="<%=dataRelation.get(i).get(2)%>"><%=dataRelation.get(i).get(2)%></option>
+                            <option value="<%=dataRelation.get(i).get(1)%>"><%=dataRelation.get(i).get(2)%></option>
                             <%  }
                             %>
                         </select>
@@ -45,7 +47,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="textinput">IC no./ID no.</label>  
                     <div class="col-md-4">
-                        <input id="FAMpmifam" name="FAMpmifam" type="text"  class="form-control input-md">
+                        <input id="FAMpmifam" name="FAMpmifam" type="text"  class="form-control input-md" maxlength="15">
 
                     </div>
                 </div>
@@ -54,7 +56,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="textinput">Name</label>  
                     <div class="col-md-4">
-                        <input id="FAMname" name="FAMname" type="text"  class="form-control input-md">
+                        <input id="FAMname" name="FAMname" type="text"  class="form-control input-md" maxlength="80">
 
                     </div>
                 </div>
@@ -63,7 +65,15 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="textinput">Occupation</label>
                     <div class="col-md-4">
-                        <input id="FAMocc" name="FAMocc" type="text"  class="form-control input-md">
+<!--                        <input id="FAMocc" name="FAMocc" type="text"  class="form-control input-md">-->
+                        <select id="FAMocc" name="FAMocc" class="form-control">
+                            <option selected="" disabled="">Please select Occupation</option>
+                            <option value="-">-</option>
+                            <% for (int i = 0; i < dataOccu.size(); i++) {%>
+                            <option value="<%=dataOccu.get(i).get(1)%>"><%=dataOccu.get(i).get(2)%></option>
+                            <%  }
+                            %>
+                        </select>
                     </div>
                 </div>
 
@@ -101,30 +111,30 @@
                 fampnimo = $('#FAMpmifam').val(),
                 name = $('#FAMname').val(),
                 occu = $('#FAMocc').val();
-                
-                if(relay===null){
-                    relay="-";
-                }
-                if(fampnimo===""){
-                    fampnimo="-";
-                }
-                if(name===""){
-                    name="-";
-                }
-                if(occu===""){
-                    occu="-";
-                }
-                
-                var datas = {
-                    pmino : pmino,
-                    seq : seq,
-                    relay : relay,
-                    fampnimo : fampnimo,
-                    name : name,
-                    occu : occu
-                };
-                
-                bootbox.confirm({
+
+        if (relay === null) {
+            relay = "-";
+        }
+        if (fampnimo === "") {
+            fampnimo = "-";
+        }
+        if (name === "") {
+            name = "-";
+        }
+        if (occu === "") {
+            occu = "-";
+        }
+
+        var datas = {
+            pmino: pmino,
+            seq: seq,
+            relay: relay,
+            fampnimo: fampnimo,
+            name: name,
+            occu: occu
+        };
+
+        bootbox.confirm({
             message: "Are you sure want to save patient's Family Information?",
             buttons: {
                 confirm: {
@@ -159,6 +169,9 @@
                                     success: function (returnhtml) {
                                         //console.log(returnhtml);
                                         $('#tableListFamily').html(returnhtml);
+                                        $('#FAMpmi').prop('readonly', false);
+
+                                        $('#FAMpmifam').prop('readonly', false);
                                     }
                                 });
                             } else {
@@ -175,19 +188,26 @@
         });
 
     });
-    
-     //function to clear the form when click clear button
+
+    //function to clear the form when click clear button
     $('#FAMclear').on('click', function (e) {
         e.preventDefault();
         var pmino = $('input[id=FAMpmi]').val();
         $('#famForm')[0].reset();
         $('input[id=FAMpmi]').val(pmino);
+        $('#FAMseq').val("");
+        $('#FAMpmi').prop('readonly', false);
+
+        $('#FAMpmifam').prop('readonly', false);
 
     });
-    
+
     //function to edit next of kin data from table
     $('#tableListFamily').on('click', '#listFamily #FAMedit', function (e) {
         e.preventDefault();
+        $('#FAMpmi').prop('readonly', true);
+
+        $('#FAMpmifam').prop('readonly', true);
         //go to the top
         $('html,body').animate({
             scrollTop: $("#maintainFam").offset().top
@@ -199,23 +219,23 @@
         var arrayData = rowData.split("|");
         //assign into seprated val
         var pmino = arrayData[0], seqno = arrayData[1], relationship = arrayData[2], fampmino = arrayData[3], name = arrayData[4], occu = arrayData[5];
-
+        //set value in input on the top
         $('#FAMpmi').val(pmino);
         $('#FAMseq').val(seqno);
         $('#FAMpmifam').val(fampmino);
         $('#FAMrelay').val(relationship);
         $('#FAMocc').val(occu);
         $('#FAMname').val(name);
-        
+
         console.log(arrayData);
     });
-    
-        //delete function when click delete on next of kin
+
+    //delete function when click delete on next of kin
     $('#tableListFamily').on('click', '#listFamily #FAMdel', function (e) {
         e.preventDefault();
         var row2 = $(this).closest("tr");
         var rowData2 = row2.find("#famval").val();
-        
+
         console.log(rowData2);
         bootbox.confirm({
             message: "Are you sure want to delete patient's Family information?",
@@ -230,14 +250,14 @@
                 }
             },
             callback: function (result) {
-                
+
                 if (result === true) {
                     //get the row value
                     row2.remove();
                     var arrayData2 = rowData2.split("|");
                     //assign into seprated val
                     var pmino = arrayData2[0], seqno = arrayData2[1];
-                    var datas = {pmino:pmino,seqno:seqno};
+                    var datas = {pmino: pmino, seqno: seqno};
                     console.log(datas);
                     $.ajax({
                         type: "post",
@@ -245,7 +265,7 @@
                         data: datas,
                         timeout: 3000,
                         success: function (data) {
-                            console.log("delete "+data);
+                            console.log("delete " + data);
 
 
                         }, error: function () {
@@ -257,5 +277,5 @@
             }
         });
     });
-    
+
 </script>

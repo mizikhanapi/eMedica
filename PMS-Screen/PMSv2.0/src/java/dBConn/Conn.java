@@ -24,29 +24,29 @@ import main.RMIConnector;
  *
  * @author user
  */
-public class Conn 
+public class Conn extends HttpServlet
 {
     public  String HOST ;
     public  int PORT;
     public final  String STR_HOST = "HOST";
     public final  String STR_PORT = "PORT";
     public final  String STR_ERROR = "ERROR";
-    Config config = new Config();
+    
     public Conn() {
         
         String host_server = getIpCall().getProperty(STR_HOST);
-        int host_port = 1099;
+        int host_port=0;
         try {
-            host_port = Integer.parseInt(getIpCall().getProperty(STR_PORT));
+           host_port = Integer.parseInt(getIpCall().getProperty(STR_PORT));
         } catch (Exception e) {
         }
         HOST = host_server;
         PORT = host_port;
     }
     
-    public  Properties getIpCall()
+    public Properties getIpCall()
     {
-        String in = config.FILE_URL + "ipcall";
+        String in = Config.FILE_URL + "ipcall";
         BufferedReader br;
         Properties prop = new Properties();
         try {
@@ -79,14 +79,14 @@ public class Conn
         RMIConnector rmic = new RMIConnector();
 
        //String host_db = Config.url_server;
-        String host_server = getIpCall().getProperty(STR_HOST);
-        int host_port = 1099;
-        try {
-            host_port = Integer.parseInt(getIpCall().getProperty(STR_PORT));
-        } catch (Exception e) {
-        }
+//        String host_server = getIpCall().getProperty(STR_HOST);
+//        int host_port = 1099;
+//        try {
+//            host_port = Integer.parseInt(getIpCall().getProperty(STR_PORT));
+//        } catch (Exception e) {
+//        }
         
-        ArrayList<ArrayList<String>> data = rmic.getQuerySQL(host_server, host_port, query);
+        ArrayList<ArrayList<String>> data = rmic.getQuerySQL(HOST, PORT, query);
         
         return data;
     }

@@ -4,18 +4,13 @@
     Author     : shay
 --%>
 <%@page import="main.RMIConnector"%>
-<%@page import="testpmi.getPmiController"%>
-<%@page import="testpmi.TestPmi"%>
 <%@page import="dBConn.Conn"%>
-<%@page import="dBConn.PMI"%>
 <%@page import="org.json.JSONArray"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    TestPmi pmi = new TestPmi();
-    getPmiController pmiw = new getPmiController();
     Conn conn = new Conn();
     RMIConnector rmic = new RMIConnector();
     String pmino;
