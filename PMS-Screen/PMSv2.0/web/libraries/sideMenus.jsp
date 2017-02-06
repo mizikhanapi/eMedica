@@ -9,11 +9,11 @@
             </a>
         </li>
 
-        <li>
+<!--        <li>
             <a href="queue.jsp">
                 <i class="fa fa-ambulance-o fa-lg"></i> List of Queue
             </a>
-        </li>
+        </li>-->
 
         <!-- // menu tanpa dropdown -->
 

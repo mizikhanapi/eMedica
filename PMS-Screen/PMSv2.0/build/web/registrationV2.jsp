@@ -330,11 +330,15 @@
                 </div>
                 <div class="text-center">
                     <button class="btn btn-primary " type="button" id="registerQueue"><i class="fa fa-floppy-o fa-lg"></i> Register</button>
-                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#appointmentModal"> Appointment List</button>
                     <button class="btn btn-default " type="button" id="btnclear" name="btnclear" > <i class="fa fa-ban fa-lg"></i>&nbsp; Clear</button>
                     <!--                    <div id="dialog" title="Basic dialog">
                                             <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
                                         </div>-->
+                </div>
+                <br/>
+                <div class="text-center">
+                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#appointmentModal" id="appointment"> Appointment List</button>
+                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#queueModal" id="queue">List Of Queue</button>
                 </div>
             </form>
         </div>
@@ -342,6 +346,7 @@
 </div>
 <div  id="modalSaya"><!-- Place at bottom of page --></div>
 <div class="modalLoad"><!-- Place at bottom of page --></div>
+<div id="modalSaya2"><!-- Place at bottom of page --></div>
 <script>w3IncludeHTML();</script>
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script> -->
 <script src="assets/js/bootbox.min.js"></script> 
@@ -349,12 +354,50 @@
 <script>
 
     //load appointment modal into the registration page
-    $('#modalSaya').load('AppointmentList.jsp');
+    $('#modalSaya').load('AppointmentModal.jsp');
+    $('#modalSaya2').load('QueueModal.jsp');
     //set modal width to dynamic
     $('#modalSaya').on('shown.bs.modal', function () {
         $(this).find('.modal-dialog').css({width: 'auto',
             height: 'auto',
             'max-height': '100%'});
+    });
+    $('#modalSaya2').on('shown.bs.modal', function () {
+        $(this).find('.modal-dialog').css({width: 'auto',
+            height: 'auto',
+            'max-height': '100%'});
+    });
+
+    $('#appointment').on('click', function () {
+        $.ajax({
+            type: "POST",
+            data: {idType: "", idInput: ""},
+            url: "listApp.jsp", // call the php file ajax/tuto-autocomplete.php
+            timeout: 10000,
+            success: function (list) {
+                $('#modalBodyAppointment').html(list);
+            },
+            error: function (xhr, status, error) {
+                var err = eval("(" + xhr.responseText + ")");
+                bootbox.alert(err.Message);
+            }
+        });
+    });
+    
+    $('#queue').on('click', function () {
+        $.ajax({
+            type: "POST",
+            data: {idType: "", idInput: ""},
+            url: "listQueue.jsp", // call the php file ajax/tuto-autocomplete.php
+            timeout: 10000,
+            success: function (list) {
+                $('#modalBodyQueue').html(list);
+            },
+            error: function (xhr, status, error) {
+                var err = eval("(" + xhr.responseText + ")");
+                bootbox.alert(err.Message);
+            }
+        });
     });
     //validate max length of input
     $('#idType').on('change', function () {
@@ -385,27 +428,27 @@
 
     var tahun, bulan, hari, ICbday;
     //function get birth date
-    
+
     function getBday(x) {
 
-        
-            if (x.length === 12) {
-                tahun = x.substr(0, 2);
-                bulan = x.substr(2, 2);
-                hari = x.substr(4, 2);
 
-                if (tahun >= 00 && tahun < 50)
-                {
+        if (x.length === 12) {
+            tahun = x.substr(0, 2);
+            bulan = x.substr(2, 2);
+            hari = x.substr(4, 2);
+
+            if (tahun >= 00 && tahun < 50)
+            {
 
 //                    ICbday = "20" + tahun + "-" + bulan + "-" + hari;
-                    ICbday = hari + "-" + bulan + "-" + "20" + tahun;
-                } else
-                {
+                ICbday = hari + "-" + bulan + "-" + "20" + tahun;
+            } else
+            {
 //                    ICbday = "19" + tahun + "-" + bulan + "-" + hari;
-                    ICbday = hari + "-" + bulan + "-" + "19" + tahun;
-                }
+                ICbday = hari + "-" + bulan + "-" + "19" + tahun;
             }
-        
+        }
+
     }
 
     //function to get date 
@@ -544,6 +587,12 @@
                                             //employment
                                             $('input[id=EMPpmino]').val($.trim(list));
                                             $('#EMPcredate').val(ddMMyyyy);
+                                            // set value in next of kin page
+                                            $('input[id=KINpmino]').val($.trim(list));
+                                            // set value in family page
+                                            $('input[id=FAMpmi]').val($.trim(list));
+                                            // set value in MEDICAL page
+                                            $('input[id=MEDpmino]').val($.trim(list));
                                             console.log(ddMMyyyy);
                                             $body.removeClass("loading");
                                             $('.nav-tabs a[href="#tab_default_2"]').tab('show');
@@ -693,7 +742,7 @@
                                             $('input[id=FAMpmi]').val($.trim(list));
                                             // set value in MEDICAL page
                                             $('input[id=MEDpmino]').val($.trim(list));
-                                            
+
                                             console.log(ddMMyyyy);
                                             $body.removeClass("loading");
                                             $('.nav-tabs a[href="#tab_default_2"]').tab('show');
@@ -1076,12 +1125,11 @@
         $('#famForm')[0].reset();
         $('#formMed')[0].reset();
         $("table tbody").remove();
-        //console.log(patientDOM);
 
 
     });
 
-
+    //appointment edit button
     $('#modalSaya').on('click', '#appointmentModal #listAppointment #APPedit', function () {
         console.log("u're clicking the edit button in appointment table");
         var row = $(this).closest("tr");
@@ -1119,7 +1167,33 @@
         $('#prioGru').val('003');
         $('#select-1').val('Normal Queue');
     });
-
+    
+    //queue delete button
+    $('#modalSaya2').on('click','#queueModal #listQueue #delQueue', function(e){
+        var item = $(this).closest("tr").find("#pmiNumber").text();
+            var epiTime = $(this).closest("tr").find("#epiTime").text();
+            var datas = {'pmino': item, 'today': epiTime};
+            console.log("button delete queue");
+            $.ajax({
+                type: "POST",
+                url: "deletePMSQueue.jsp",
+                data: datas, // Send input
+                timeout: 3000,
+                success: function (list) {
+                    console.log(list);
+                    if ($.trim(list) === "success") {
+                        bootbox.alert("Succeed deleting patient in queue.");
+                    } else if ($.trim(list) === "fail") {
+                        bootbox.alert("Failed deleting patient in queue.");
+                    }
+                }, error: function () {
+                    bootbox.alert("There is an error!");
+                }
+            });
+            //alert(item+" "+yyyyMMdd);
+            $(this).closest('tr').remove();
+       
+    });
 
 
 
