@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a8a2dd16-7c80-458b-b284-b7e3676fe0e1">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     pms_patient_biodata.`PMI_NO` AS pms_patient_biodata_PMI_NO,
+     pms_patient_biodata.`PMI_NO_TEMP` AS pms_patient_biodata_PMI_NO_TEMP,
+     pms_patient_biodata.`PATIENT_NAME` AS pms_patient_biodata_PATIENT_NAME,
+     pms_patient_biodata.`TITLE_CODE` AS pms_patient_biodata_TITLE_CODE,
+     pms_patient_biodata.`NEW_IC_NO` AS pms_patient_biodata_NEW_IC_NO,
+     pms_patient_biodata.`OLD_IC_NO` AS pms_patient_biodata_OLD_IC_NO,
+     pms_patient_biodata.`ID_TYPE` AS pms_patient_biodata_ID_TYPE,
+     pms_patient_biodata.`ID_NO` AS pms_patient_biodata_ID_NO,
+     pms_patient_biodata.`ELIGIBILITY_CATEGORY_CODE` AS pms_patient_biodata_ELIGIBILITY_CATEGORY_CODE,
+     pms_patient_biodata.`ELIGIBILITY_TYPE_CODE` AS pms_patient_biodata_ELIGIBILITY_TYPE_CODE,
+     pms_patient_biodata.`BIRTH_DATE` AS pms_patient_biodata_BIRTH_DATE,
+     pms_patient_biodata.`SEX_CODE` AS pms_patient_biodata_SEX_CODE,
+     pms_patient_biodata.`MARITAL_STATUS_CODE` AS pms_patient_biodata_MARITAL_STATUS_CODE,
+     pms_patient_biodata.`RACE_CODE` AS pms_patient_biodata_RACE_CODE,
+     pms_patient_biodata.`NATIONALITY` AS pms_patient_biodata_NATIONALITY,
+     pms_patient_biodata.`RELIGION_CODE` AS pms_patient_biodata_RELIGION_CODE,
+     pms_patient_biodata.`BLOOD_TYPE` AS pms_patient_biodata_BLOOD_TYPE,
+     pms_patient_biodata.`BLOOD_RHESUS_CODE` AS pms_patient_biodata_BLOOD_RHESUS_CODE,
+     pms_patient_biodata.`ALLERGY_IND` AS pms_patient_biodata_ALLERGY_IND,
+     pms_patient_biodata.`POSTAL_ADDRESS` AS pms_patient_biodata_POSTAL_ADDRESS,
+     pms_patient_biodata.`POSTAL_DISTRICT_CODE` AS pms_patient_biodata_POSTAL_DISTRICT_CODE,
+     pms_patient_biodata.`POSTAL_COUNTRY_CODE` AS pms_patient_biodata_POSTAL_COUNTRY_CODE,
+     adm_health_facility.`hfc_cd` AS adm_health_facility_hfc_cd,
+     adm_health_facility.`hfc_type` AS adm_health_facility_hfc_type,
+     adm_health_facility.`hfc_name` AS adm_health_facility_hfc_name,
+     adm_health_facility.`address1` AS adm_health_facility_address1,
+     adm_health_facility.`address2` AS adm_health_facility_address2,
+     adm_health_facility.`address3` AS adm_health_facility_address3,
+     adm_health_facility.`district_cd` AS adm_health_facility_district_cd,
+     adm_health_facility.`town_cd` AS adm_health_facility_town_cd,
+     adm_health_facility.`country_cd` AS adm_health_facility_country_cd,
+     adm_health_facility.`postcode` AS adm_health_facility_postcode,
+     adm_health_facility.`telephone_no` AS adm_health_facility_telephone_no,
+     adm_health_facility.`fax_no` AS adm_health_facility_fax_no,
+     adm_health_facility.`email` AS adm_health_facility_email,
+     adm_health_facility.`hfc_server` AS adm_health_facility_hfc_server,
+     adm_health_facility.`hfc_report` AS adm_health_facility_hfc_report,
+     adm_health_facility.`established_date` AS adm_health_facility_established_date,
+     adm_health_facility.`director_name` AS adm_health_facility_director_name,
+     adm_health_facility.`hfc_category_cd` AS adm_health_facility_hfc_category_cd,
+     adm_health_facility.`hfc_sub_type` AS adm_health_facility_hfc_sub_type,
+     adm_health_facility.`contact_person` AS adm_health_facility_contact_person,
+     adm_health_facility.`hfc_status` AS adm_health_facility_hfc_status,
+     adm_health_facility.`state_cd` AS adm_health_facility_state_cd,
+     adm_health_facility.`hfc_ip` AS adm_health_facility_hfc_ip,
+     adm_health_facility.`logo` AS adm_health_facility_logo
+FROM
+     `pms_patient_biodata` pms_patient_biodata,
+     `adm_health_facility` adm_health_facility]]>
+	</queryString>
+	<field name="pms_patient_biodata_PMI_NO" class="java.lang.String"/>
+	<field name="pms_patient_biodata_PMI_NO_TEMP" class="java.lang.String"/>
+	<field name="pms_patient_biodata_PATIENT_NAME" class="java.lang.String"/>
+	<field name="pms_patient_biodata_TITLE_CODE" class="java.lang.String"/>
+	<field name="pms_patient_biodata_NEW_IC_NO" class="java.lang.String"/>
+	<field name="pms_patient_biodata_OLD_IC_NO" class="java.lang.String"/>
+	<field name="pms_patient_biodata_ID_TYPE" class="java.lang.String"/>
+	<field name="pms_patient_biodata_ID_NO" class="java.lang.String"/>
+	<field name="pms_patient_biodata_ELIGIBILITY_CATEGORY_CODE" class="java.lang.String"/>
+	<field name="pms_patient_biodata_ELIGIBILITY_TYPE_CODE" class="java.lang.String"/>
+	<field name="pms_patient_biodata_BIRTH_DATE" class="java.lang.String"/>
+	<field name="pms_patient_biodata_SEX_CODE" class="java.lang.String"/>
+	<field name="pms_patient_biodata_MARITAL_STATUS_CODE" class="java.lang.String"/>
+	<field name="pms_patient_biodata_RACE_CODE" class="java.lang.String"/>
+	<field name="pms_patient_biodata_NATIONALITY" class="java.lang.String"/>
+	<field name="pms_patient_biodata_RELIGION_CODE" class="java.lang.String"/>
+	<field name="pms_patient_biodata_BLOOD_TYPE" class="java.lang.String"/>
+	<field name="pms_patient_biodata_BLOOD_RHESUS_CODE" class="java.lang.String"/>
+	<field name="pms_patient_biodata_ALLERGY_IND" class="java.lang.String"/>
+	<field name="pms_patient_biodata_POSTAL_ADDRESS" class="java.lang.String"/>
+	<field name="pms_patient_biodata_POSTAL_DISTRICT_CODE" class="java.lang.String"/>
+	<field name="pms_patient_biodata_POSTAL_COUNTRY_CODE" class="java.lang.String"/>
+	<field name="adm_health_facility_hfc_cd" class="java.lang.String"/>
+	<field name="adm_health_facility_hfc_type" class="java.lang.String"/>
+	<field name="adm_health_facility_hfc_name" class="java.lang.String"/>
+	<field name="adm_health_facility_address1" class="java.lang.String"/>
+	<field name="adm_health_facility_address2" class="java.lang.String"/>
+	<field name="adm_health_facility_address3" class="java.lang.String"/>
+	<field name="adm_health_facility_district_cd" class="java.lang.String"/>
+	<field name="adm_health_facility_town_cd" class="java.lang.String"/>
+	<field name="adm_health_facility_country_cd" class="java.lang.String"/>
+	<field name="adm_health_facility_postcode" class="java.lang.String"/>
+	<field name="adm_health_facility_telephone_no" class="java.lang.String"/>
+	<field name="adm_health_facility_fax_no" class="java.lang.String"/>
+	<field name="adm_health_facility_email" class="java.lang.String"/>
+	<field name="adm_health_facility_hfc_server" class="java.lang.String"/>
+	<field name="adm_health_facility_hfc_report" class="java.lang.String"/>
+	<field name="adm_health_facility_established_date" class="java.sql.Timestamp"/>
+	<field name="adm_health_facility_director_name" class="java.lang.String"/>
+	<field name="adm_health_facility_hfc_category_cd" class="java.lang.String"/>
+	<field name="adm_health_facility_hfc_sub_type" class="java.lang.String"/>
+	<field name="adm_health_facility_contact_person" class="java.lang.String"/>
+	<field name="adm_health_facility_hfc_status" class="java.lang.String"/>
+	<field name="adm_health_facility_state_cd" class="java.lang.String"/>
+	<field name="adm_health_facility_hfc_ip" class="java.lang.String"/>
+	<field name="adm_health_facility_logo" class="java.lang.Object"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="b88be2ab-4c5a-4dc1-b4b7-3055cf1f8c53"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="22f9375e-3ae7-4ea9-bceb-de5568ddb8a8"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TITLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="10dabf23-922d-47d9-9d2c-1bc15dfae473"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Add a description here]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="5544fd2b-56b3-4fba-becf-2eba76cc9547"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7c90ab35-9eae-4a12-ab31-89f1f624880f"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_PMI_NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="12" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="6c5189e3-4313-479a-82b5-d6fdf78e2787"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_PMI_NO_TEMP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="24" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="6fb78c41-3225-436e-9c88-bb8906f5758b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_PATIENT_NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="36" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="df20ca6d-cc79-463e-9d0a-f289819d63f8"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_TITLE_CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="48" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1f323f5e-947c-499d-b7b7-27d13cdfb272"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_NEW_IC_NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="60" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1fcce99b-1919-4bb4-83fe-bbd3f60073d2"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_OLD_IC_NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="72" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c28fdba2-e167-4d1b-ba07-e38d09f005c0"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_ID_TYPE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="84" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c444e0da-c78c-42a4-8012-0dbad366ec85"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_ID_NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="96" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="3d60375b-5867-4d1a-bef5-036371b95f77"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_ELIGIBILITY_CATEGORY_CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="108" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1f951c46-5398-493d-8f6d-a04592e7d953"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_ELIGIBILITY_TYPE_CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="120" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="af3265a9-a6f8-43a2-9c50-bb1806ee1d71"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_BIRTH_DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="132" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e931dac6-d65e-4540-a4ac-135b4c45eeb7"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_SEX_CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="144" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="4016e3c2-0374-47f7-8957-a552fe66db13"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_MARITAL_STATUS_CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="156" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="215c78d1-2c36-49fe-928b-6e491848790a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_RACE_CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="168" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9206b322-7333-4067-9acf-13b0ca975de5"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_NATIONALITY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="180" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="de72adca-9c4e-4b8d-b079-ba740f2250ef"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_RELIGION_CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="192" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="8cfe5c8f-ca48-459a-8bf2-eef75c23bf91"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_BLOOD_TYPE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="204" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c7af348b-5d78-4cc2-acab-0db68c473259"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_BLOOD_RHESUS_CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="216" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="57acfad7-3a5e-4600-811d-6009175fb3f6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_ALLERGY_IND]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="228" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="4ffc4a25-19df-4451-857c-fccd886e0287"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_POSTAL_ADDRESS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="240" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="24a833dd-bf15-4e13-b848-626a87ea9155"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_POSTAL_DISTRICT_CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="252" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="81f78491-6bb9-4136-9f94-b8db22a67552"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pms_patient_biodata_POSTAL_COUNTRY_CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="264" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="eed1a5c2-8aca-49cc-9408-62848a22f648"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_hfc_cd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="8d97f314-4156-4aed-8b15-4f01800ee3f5"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_hfc_type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="288" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="648bde39-6fb0-47c5-a883-c403fc832ce7"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_hfc_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="300" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="56d1b793-75fb-47d0-8e41-a6dde4265702"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_address1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="312" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ea723ea0-4107-472b-b0dd-61a4dffbc62a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_address2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="324" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0bd7e909-c7c9-471c-9860-6cf3a09285bf"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_address3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="336" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5a251aa0-db4b-4dfe-8e77-1cf3e420dfa3"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_district_cd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="348" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c49dbbd9-9bc3-444e-b18b-1d7bfd2bb0da"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_town_cd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="360" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="65db0188-8414-42ef-9805-df4c66820d91"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_country_cd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="372" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7f99420e-a54b-418d-a13a-082fba946983"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_postcode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="384" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="3d903d5f-1060-4969-bb32-2b01de93747e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_telephone_no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="396" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="caf0be0b-fc4f-4198-bd4b-81ff9b2435c9"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_fax_no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="408" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="6b79d555-3497-491f-b120-99ad6c66530a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="420" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="be7e49fc-7720-40a9-81eb-1b2aa7d3189a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_hfc_server]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="432" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="49a2b6b7-4099-4cf9-bc60-9877ee8cc3e3"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_hfc_report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="14969c78-9a90-4be5-8125-9f04468f6e55"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_established_date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="456" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1859cb63-4929-4a63-841e-7e9b988d6ec6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_director_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="468" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="485b4df2-fbdd-401e-b597-3db9a2ea6116"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_hfc_category_cd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="480" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="defc1d10-fda2-4ac4-8429-dbf0b54fdf58"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_hfc_sub_type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="492" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d99c3c98-7b9d-4875-824f-a5ed1ff5e2c9"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_contact_person]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="08a9d60d-9d97-45d3-9ddc-c9ceeebad3cc"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_hfc_status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="516" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="65644016-b837-4c24-ab1c-b18e81c44032"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_state_cd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="528" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="00b2282b-4bfa-494b-9959-a56cfe143c93"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_hfc_ip]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="540" y="0" width="12" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c9e128b9-dc8c-41ea-9568-c742b6f9b4e5"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[adm_health_facility_logo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="f34b1928-62d1-4a76-86bb-4cd5181a54ed"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="12" height="20" uuid="f583862b-92e6-46e3-801e-66c46a170846"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_PMI_NO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="12" y="0" width="12" height="20" uuid="bfd4fd0d-8215-4d57-8854-91bcc618a6e4"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_PMI_NO_TEMP}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="24" y="0" width="12" height="20" uuid="564edec1-dc9a-4242-8a17-76199bba31ad"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_PATIENT_NAME}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="36" y="0" width="12" height="20" uuid="03e65dc3-2432-449f-abaa-f7e242cddcf1"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_TITLE_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="48" y="0" width="12" height="20" uuid="a61ababa-0aae-46ce-be83-b22212179980"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_NEW_IC_NO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="60" y="0" width="12" height="20" uuid="33338477-46cc-41b5-aacf-9cb2085cb940"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_OLD_IC_NO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="72" y="0" width="12" height="20" uuid="e5973c64-b5df-4c86-ae3d-33550a09b045"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_ID_TYPE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="84" y="0" width="12" height="20" uuid="e51c6733-b91c-4985-b214-7c9ba0bf73d3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_ID_NO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="96" y="0" width="12" height="20" uuid="dc441554-21a2-4277-96e7-316c6781aab2"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_ELIGIBILITY_CATEGORY_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="108" y="0" width="12" height="20" uuid="1f69ab7a-9d64-4538-8920-55055c6aef56"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_ELIGIBILITY_TYPE_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="120" y="0" width="12" height="20" uuid="09929ff6-c27c-4c59-bc1b-bf30483c5148"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_BIRTH_DATE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="132" y="0" width="12" height="20" uuid="5076b9ae-5a98-444c-96f7-4ce389cdc982"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_SEX_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="144" y="0" width="12" height="20" uuid="29207e15-d4c6-41c0-a992-9c1142c4a94a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_MARITAL_STATUS_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="156" y="0" width="12" height="20" uuid="ea7e544b-8c7c-4663-b0fd-575c6aac2595"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_RACE_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="168" y="0" width="12" height="20" uuid="b6750dcd-6c6a-4d3a-aae3-5e595b8883e0"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_NATIONALITY}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="180" y="0" width="12" height="20" uuid="8a83b0db-3d9a-4e15-9cee-4d827604ac5b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_RELIGION_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="192" y="0" width="12" height="20" uuid="c098a312-3b90-43c1-bf9f-422f236a8946"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_BLOOD_TYPE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="204" y="0" width="12" height="20" uuid="357dbaa5-5e31-4859-a161-15e8957449a8"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_BLOOD_RHESUS_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="216" y="0" width="12" height="20" uuid="24947615-2e0d-495a-9427-df8c2473ed6c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_ALLERGY_IND}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="228" y="0" width="12" height="20" uuid="d7feaf1c-d649-4f77-a258-f159af058110"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_POSTAL_ADDRESS}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="240" y="0" width="12" height="20" uuid="4b4c294e-0e8a-4d71-95b5-6e94003cdcba"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_POSTAL_DISTRICT_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="252" y="0" width="12" height="20" uuid="5e5371f3-e10e-45f1-8cf8-d1624b8fbfd2"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pms_patient_biodata_POSTAL_COUNTRY_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="264" y="0" width="12" height="20" uuid="5292b34f-433a-4675-8a1d-43f08aa414d1"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_hfc_cd}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="276" y="0" width="12" height="20" uuid="24a405e1-3566-42f5-9dfa-d6d43542500c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_hfc_type}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="288" y="0" width="12" height="20" uuid="c638193b-86aa-4ff3-96a3-9822a8855d77"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_hfc_name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="300" y="0" width="12" height="20" uuid="71cbba1c-065c-4e7b-bec7-feacd5908237"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_address1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="312" y="0" width="12" height="20" uuid="b606504b-b035-461c-bbca-08402913d786"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_address2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="324" y="0" width="12" height="20" uuid="03a4bc84-e8c0-4cd0-9754-14f3a2a39190"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_address3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="336" y="0" width="12" height="20" uuid="9547ea96-4ca1-4728-91fd-5d328a59b0e0"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_district_cd}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="348" y="0" width="12" height="20" uuid="4c60a467-8ac7-4c04-bae1-4c1bdec3951d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_town_cd}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="360" y="0" width="12" height="20" uuid="b3840a1b-529c-4be2-a2f8-30f30300b28c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_country_cd}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="372" y="0" width="12" height="20" uuid="b53876b7-2fbe-4ade-bb2d-9bf255161428"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_postcode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="384" y="0" width="12" height="20" uuid="90f1ca31-a4e9-4eeb-a333-ba0191eecbe2"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_telephone_no}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="396" y="0" width="12" height="20" uuid="e3205522-2f13-4f3d-bd6b-19b1782466af"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_fax_no}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="408" y="0" width="12" height="20" uuid="d1d5b9ed-4a0f-4fdc-919b-4a641d05aea0"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_email}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="420" y="0" width="12" height="20" uuid="534668fb-c9b7-484b-992c-8d24707c4379"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_hfc_server}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="432" y="0" width="12" height="20" uuid="b7b2479f-1eb4-4ab6-ba2e-382029bb90d2"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_hfc_report}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="444" y="0" width="12" height="20" uuid="cfa81d14-9dc3-45f4-8514-2e9b6b87a20b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_established_date}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="456" y="0" width="12" height="20" uuid="914e7250-4368-41af-b45a-8fb8a0dbe0af"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_director_name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="468" y="0" width="12" height="20" uuid="1e08fe6c-0dc3-4c41-af36-290171ac34b3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_hfc_category_cd}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="480" y="0" width="12" height="20" uuid="624e2be0-527e-42be-b792-85c535b8d017"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_hfc_sub_type}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="492" y="0" width="12" height="20" uuid="cdb291aa-24ff-4b9c-b66e-a1bb609446ee"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_contact_person}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="504" y="0" width="12" height="20" uuid="9ff82379-0efe-49ca-a01a-9353a1f51426"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_hfc_status}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="516" y="0" width="12" height="20" uuid="def6b2eb-2c6f-4770-abb4-49533f009ea7"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_state_cd}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="528" y="0" width="12" height="20" uuid="4a0e852b-9f9c-4d80-a32a-702663c743d3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adm_health_facility_hfc_ip}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="540" y="0" width="12" height="20" uuid="b0928f08-8b3f-4539-ba6f-1e8084d50527"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{adm_health_facility_logo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="a9cd9f28-f3b2-4884-9fe3-5710462c8f31"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="99a20189-a9de-48e4-b0ad-68e450bbe242"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="3b45617f-8fe0-4790-9577-6b75e3db885e"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
