@@ -1,0 +1,98 @@
+			<div class="row">
+				<div class="col-md-12">
+					<div class="thumbnail">
+						<h4>
+						Ward Occupancy
+						<div class="pull-right">
+							<button id="button2id" name="button2id" class="btn btn-success"><i class="fa fa-user fa-lg"></i>&nbsp; Read MyKad Info</button>
+						</div>
+						</h4>
+						<form class="form-horizontal">
+						<!-- Select Basic -->
+								  <div class="form-group">
+									<label class="col-md-4 control-label" for="selectbasic">ID Type</label>
+									<div class="col-md-4">
+									  <select id="selectbasic" name="selectbasic" class="form-control">
+										<option value="1">Select ID Type</option>
+										<option value="2">Inactive</option>
+									  </select>
+									</div>
+								  </div>
+						
+						<!-- Text input-->
+								  <div class="form-group">
+									<label class="col-md-4 control-label" for="textinput">IC No. / ID No.</label>
+									<div class="col-md-4">
+									  <input id="textinput" name="textinput" type="text" placeholder="Search" class="form-control input-md">
+									</div>
+								  </div>
+								  
+						<!-- Select Basic -->
+								  <div class="form-group">
+									<label class="col-md-4 control-label" for="selectbasic">Ward Name</label>
+									<div class="col-md-4">
+									  <select id="selectbasic" name="selectbasic" class="form-control">
+										<option value="1">Select ID Type</option>
+										<option value="2">Inactive</option>
+									  </select>
+									</div>
+								  </div>
+								  
+								  <div class="text-center">
+									<button id="button1id" name="button1id" class="btn btn-default"><i class="fa fa-search fa-lg"></i>&nbsp; Search</button>
+									<button id="button2id" name="button2id" class="btn btn-default"><i class="fa fa-ban fa-lg"></i>&nbsp; Clear</button>
+								</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">		
+					<div class="thumbnail">
+						<h4>Ward Occupancy</h4>
+						
+						<table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; ">
+							<thead>
+								<th>Ward</th>
+								<th>Bed</th>
+								<th>Patient Name</th>
+								<th>Patient ID</th>
+								<th>Age</th>
+								<th>Sponsor</th>
+								<th>Action</th>
+							</thead>
+							<tbody>
+								<tr data-status="pagado" data-toggle="modal" data-id="1" data-target="#detail">
+									<td>CP0001</td>
+									<td>Chemical Pathology</td>
+									<td>Chemical Pathology</td>
+									<td>Chemical Pathology</td>
+									<td>Chemical Pathology</td>
+									<td>Chemical Pathology</td>
+									<td><button id="button2id" name="button2id" class="btn btn-primary">Transfer/Discharge</button></td>
+								</tr>
+								<tr data-status="pagado" data-toggle="modal" data-id="1" data-target="#detail">
+									<td>CP0001</td>
+									<td>Chemical Pathology</td>
+									<td>Chemical Pathology</td>
+									<td>Chemical Pathology</td>
+									<td>Chemical Pathology</td>
+									<td>Chemical Pathology</td>
+									<td><button id="button2id" name="button2id" class="btn btn-primary">Transfer/Discharge</button></td>
+								</tr>
+								<tr data-status="pagado" data-toggle="modal" data-id="1" data-target="#detail">
+									<td>CP0001</td>
+									<td>Chemical Pathology</td>
+									<td>Chemical Pathology</td>
+									<td>Chemical Pathology</td>
+									<td>Chemical Pathology</td>
+									<td>Chemical Pathology</td>
+									<td><button id="button2id" name="button2id" class="btn btn-primary">Transfer/Discharge</button></td>
+								</tr>
+								
+							</tbody>
+						</table>
+					
+					</div>
+				</div>
+			</div>
