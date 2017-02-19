@@ -1,0 +1,35 @@
+.table-filter {
+	background-color: #fff;
+	border-bottom: 1px solid #eee;
+}
+.table-filter tbody tr:hover {
+	cursor: pointer;
+	background-color: #eee;
+}
+
+.p-box{
+	background: #FFF;
+	padding: 15px 30px;
+}
+
+.p-label{
+	display: block;
+	font-weight: 700;
+	color: #333;
+}
+
+.p-table > tbody > tr > td {
+	padding: 8px;
+}
+
+.summary{
+	font-size: 18px;
+}
+
+.thumbnail{
+	padding: 15px 20px 20px 20px !important;
+}
+
+.thumbnail h4{
+	font-size: 20px;
+}

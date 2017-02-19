@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7003a5b4-8a1e-4112-bed9-9a36e88c31c2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     pis_order_detail.`ORDER_NO` AS pis_order_detail_ORDER_NO,
+     pis_order_detail.`DRUG_ITEM_CODE` AS pis_order_detail_DRUG_ITEM_CODE,
+     pis_order_detail.`DRUG_ITEM_DESC` AS pis_order_detail_DRUG_ITEM_DESC,
+     pis_order_detail.`DRUG_FREQUENCY` AS pis_order_detail_DRUG_FREQUENCY,
+     pis_order_detail.`DRUG_ROUTE` AS pis_order_detail_DRUG_ROUTE,
+     pis_order_detail.`DRUG_FORM` AS pis_order_detail_DRUG_FORM,
+     pis_order_detail.`DRUG_STRENGTH` AS pis_order_detail_DRUG_STRENGTH,
+     pis_order_detail.`DRUG_DOSAGE` AS pis_order_detail_DRUG_DOSAGE,
+     pis_order_detail.`DURATION` AS pis_order_detail_DURATION,
+     pis_order_detail.`DURATIONT` AS pis_order_detail_DURATIONT
+FROM
+     `pis_order_detail` pis_order_detail]]>
+	</queryString>
+	<field name="pis_order_detail_ORDER_NO" class="java.lang.String"/>
+	<field name="pis_order_detail_DRUG_ITEM_CODE" class="java.lang.String"/>
+	<field name="pis_order_detail_DRUG_ITEM_DESC" class="java.lang.String"/>
+	<field name="pis_order_detail_DRUG_FREQUENCY" class="java.lang.String"/>
+	<field name="pis_order_detail_DRUG_ROUTE" class="java.lang.String"/>
+	<field name="pis_order_detail_DRUG_FORM" class="java.lang.String"/>
+	<field name="pis_order_detail_DRUG_STRENGTH" class="java.lang.String"/>
+	<field name="pis_order_detail_DRUG_DOSAGE" class="java.lang.String"/>
+	<field name="pis_order_detail_DURATION" class="java.math.BigDecimal"/>
+	<field name="pis_order_detail_DURATIONT" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="dec491f5-af3b-4578-bf5b-7e9577a4b8ea"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="f1454f8b-3323-40df-88d8-81b92a8eb57c"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TITLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="37e97b1a-5da9-4b6f-a1f7-5684da22d0d2"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Add a description here]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="e90704d8-5c0d-4fb5-a3b9-8feb2bf1f940"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="50c7ae6c-48bd-4bbb-80bf-7a6584658519"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pis_order_detail_ORDER_NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="55" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2b20df2f-8db9-4edc-bb9b-da2441f39fac"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pis_order_detail_DRUG_ITEM_CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="110" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="01cd0fdc-4a15-4df7-989e-778ae1efb90b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pis_order_detail_DRUG_ITEM_DESC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="165" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e5f8fcdb-ffea-46c5-a645-55fb18fdedc2"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pis_order_detail_DRUG_FREQUENCY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="220" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="66425615-8621-4a68-b826-f5db94ca1776"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pis_order_detail_DRUG_ROUTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="275" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="014f01ad-4d65-4139-a9e9-d4c98fda1c75"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pis_order_detail_DRUG_FORM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="330" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c27ee23f-d00d-41c8-a854-bda684f29127"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pis_order_detail_DRUG_STRENGTH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="385" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ca730b43-0c43-4053-bb72-db7543f0177c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pis_order_detail_DRUG_DOSAGE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="440" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="fd0b5cdc-ef45-4627-8da4-359c7e1979ab"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pis_order_detail_DURATION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="495" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2cb82d50-0ccb-411d-9aaa-abd99679853e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[pis_order_detail_DURATIONT]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="9f67291b-8d51-4ec1-bea1-32878ba160c8"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="55" height="20" uuid="e724e2a7-d12e-4cb0-8264-6fe033e06a90"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pis_order_detail_ORDER_NO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="55" y="0" width="55" height="20" uuid="12aea0ab-2bbb-4e64-8462-eff57574a922"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pis_order_detail_DRUG_ITEM_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="110" y="0" width="55" height="20" uuid="c37dac6d-6556-4dfb-b0ff-139cdd49523d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pis_order_detail_DRUG_ITEM_DESC}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="165" y="0" width="55" height="20" uuid="37ce49e9-99a0-4543-8f1b-40a240ec559e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pis_order_detail_DRUG_FREQUENCY}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="220" y="0" width="55" height="20" uuid="1c668190-d6e7-4fac-a890-8bf34f65c1d4"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pis_order_detail_DRUG_ROUTE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="275" y="0" width="55" height="20" uuid="5f78c7cd-72be-406d-88cd-ec964ba1d239"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pis_order_detail_DRUG_FORM}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="330" y="0" width="55" height="20" uuid="4da95b3a-3da3-4d7c-8ea4-4f8d7e5677d4"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pis_order_detail_DRUG_STRENGTH}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="385" y="0" width="55" height="20" uuid="f9633ea9-74b4-4917-918d-2ed439bfd90f"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pis_order_detail_DRUG_DOSAGE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="440" y="0" width="55" height="20" uuid="12c49528-9d7e-4732-963e-82d189dfd4a6"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pis_order_detail_DURATION}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="495" y="0" width="55" height="20" uuid="c7149f02-7b43-4332-afe4-6d8840ec734c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pis_order_detail_DURATIONT}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="50"/>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="478">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="4da8bf98-291d-4e4c-905d-c732fa96611c"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="0010d97f-6be2-4a1f-bdaa-ec6019baa51c"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="67087019-8352-4745-a440-c0ab942b78e2"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="457" y="58" width="13" height="21" uuid="a8141572-d27d-4e72-922c-cfc4bddfaa87"/>
+				<sr:sort xmlns:sr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<sr:symbol handlerColor="#000000" handlerHorizontalAlign="Center" handlerVerticalAlign="Middle"/>
+				</sr:sort>
+			</componentElement>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,6 @@
+#hostserver:biocore-stag.utem.edu.my
+hostserver:10.73.32.200
+hostport:1098
+#development - 10.73.32.200
+#stagging - biocore-stag.utem.edu.my
+#production - ecss.utem.edu.my

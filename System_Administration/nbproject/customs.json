@@ -1,0 +1,11 @@
+{
+    "elements": {},
+    "attributes": {
+        "aria-expanded": {
+            "context": "button"
+        },
+        "w3-include-html": {
+            "context": "div"
+        }
+    }
+}
