@@ -21,6 +21,8 @@ public class Conn {
     
     public final static String HOST = "biocore-stag.utem.edu.my";
     public final static int PORT = 1099;
+//    public final static String HOST = "10.73.32.200";
+//    public final static int PORT = 1098;
     
     public static ArrayList<ArrayList<String>> getData(String query) 
     {

@@ -55,7 +55,7 @@ public class Month {
     public void determineCreditMonth(){
         
         //Check current month
-        if (null != getMonth()) {
+        if (!getMonth().equals(null)) {
             switch (getMonth()) {
                 case "01":
                     creditMonth = "cr_amt_1";
@@ -105,7 +105,7 @@ public class Month {
     public void determineDebitMonth(){
         
         //Check current month
-        if (null != getMonth()) {
+        if (!getMonth().equals(null)) {
             switch (getMonth()) {
                 case "01":
                     debitMonth = "dr_amt_1";
