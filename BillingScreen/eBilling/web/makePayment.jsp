@@ -4,6 +4,8 @@
     Author     : Mike Ho
 --%>
 
+<%@page import="java.net.HttpURLConnection"%>
+<%@page import="java.net.URL"%>
 <%@page import="dbConn.Conn"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Class.Month"%>
@@ -93,9 +95,9 @@
         Conn.setData(sql3);
 
         //Print Receipt
-        String gstAmount = "";
-        String serviceChargeAmount = "";
-        String discountAmount = "";
+        String gstAmount = "0.00";
+        String serviceChargeAmount = "0.00";
+        String discountAmount = "0.00";
         double rounding = 0;
         
         String sql4 = "SELECT cd.item_desc, cd.item_amt "
@@ -121,26 +123,9 @@
         }
     
         rounding = Double.parseDouble(grandTotal) - Double.parseDouble(subtotal);
-    
-        System.out.println("grand" + grandTotal);
-        System.out.println("sub" + subtotal);
-        System.out.println("round" + rounding);
-        
-        String url = "/eBilling/Receipt?";
-        url += receiptNo; 
-        custId 
-        billNo 
-        subtotal
-        grandTotal 
-        amount 
-        change 
-        gst 
-        serviceCharge 
-        discount
-        rounding
         
         String infoMessage = "Payment success.";
-        out.print("-|1|" + infoMessage);
-
+        out.print("-|1|" + infoMessage + "|" + subtotal + "|" + grandTotal + "|" + amount + "|" + gstAmount + "|" 
+                + serviceChargeAmount + "|" + discountAmount + "|" + rounding);
     }    
 %>

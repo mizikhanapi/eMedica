@@ -550,6 +550,7 @@
             var paymentMethod = document.getElementById('paymentMethod').innerHTML;
             var custID = document.getElementById('custID').value;
             var billNo = document.getElementById('billNo').value;
+            var change = document.getElementById('change').value;
             
             if (amtReceived == '0' || amtReceived == '.' || amtReceived == ''){
                 alert("Please insert an amount first.");
@@ -571,6 +572,22 @@
                        var d = data.split("|");
                        if (d[1] == 1){
                            alert(d[2]);
+                           
+                            var url = "/eBilling/Receipt?"
+                            url += "&custID=" + custID;
+                            url += "&billNo=" + billNo;
+                            url += "&subtotal=" + d[3];
+                            url += "&grandTotal=" + d[4];
+                            url += "&amount=" + d[5];
+                            url += "&change=" + change;
+                            url += "&gst=" + d[6];
+                            url += "&serviceCharge=" + d[7];
+                            url += "&discount=" + d[8];
+                            url += "&rounding=" + d[9];
+
+                            var win = window.open(url, '_blank');
+                            win.focus();
+                           
                            location.reload();
                        } else {
                            alert(d[2]);

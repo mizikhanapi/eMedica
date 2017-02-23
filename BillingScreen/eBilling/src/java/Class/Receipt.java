@@ -66,12 +66,11 @@ public class Receipt extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        receiptNo = request.getParameter("receiptNo");
         custId = request.getParameter("custID");
         billNo = request.getParameter("billNo");
         subtotal = request.getParameter("subtotal");
         grandTotal = request.getParameter("grandTotal");
-        amount = request.getParameter("amt");
+        amount = request.getParameter("amount");
         change = request.getParameter("change");
         gst = request.getParameter("gst");
         serviceCharge = request.getParameter("serviceCharge");
@@ -166,8 +165,9 @@ public class Receipt extends HttpServlet {
             header.setTotalWidth(document.right() - document.left());
             
             //--------------------------table header------------------------------------------>
-            Image logo = Image.getInstance("logoUTeM/LogoJawiUTeM.png");
-            logo.scaleAbsolute(115, 50);
+            String imgPath = getServletContext().getRealPath("/assets/img/LogoJawiUTeM.png");
+            Image logo = Image.getInstance(imgPath);
+            logo.scaleAbsolute(120, 60);
 
             PdfPCell cell1 = new PdfPCell(logo);
             cell1.setHorizontalAlignment(Element.ALIGN_RIGHT);
@@ -380,7 +380,7 @@ public class Receipt extends HttpServlet {
             cell81.setHorizontalAlignment(Element.ALIGN_RIGHT);
             cell81.setColspan(5);
             cell81.setBorder(Rectangle.TOP);
-            PdfPCell cell86 = new PdfPCell(new Phrase(String.valueOf(subtotal), rectemjaBold));
+            PdfPCell cell86 = new PdfPCell(new Phrase(df.format(Double.parseDouble(subtotal)), rectemjaBold));
             cell86.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell86.setBorder(Rectangle.TOP);
             total.addCell(cell81);
@@ -390,7 +390,7 @@ public class Receipt extends HttpServlet {
             cell91.setHorizontalAlignment(Element.ALIGN_RIGHT);
             cell91.setColspan(5);
             cell91.setBorder(Rectangle.NO_BORDER);
-            PdfPCell cell96 = new PdfPCell(new Phrase(String.valueOf(serviceCharge), rectemjaBold));
+            PdfPCell cell96 = new PdfPCell(new Phrase(df.format(Double.parseDouble(serviceCharge)), rectemjaBold));
             cell96.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell96.setBorder(Rectangle.NO_BORDER);
             total.addCell(cell91);
@@ -400,7 +400,7 @@ public class Receipt extends HttpServlet {
             cell101.setHorizontalAlignment(Element.ALIGN_RIGHT);
             cell101.setColspan(5);
             cell101.setBorder(Rectangle.NO_BORDER);
-            PdfPCell cell106 = new PdfPCell(new Phrase(String.valueOf(gst), rectemjaBold));
+            PdfPCell cell106 = new PdfPCell(new Phrase(df.format(Double.parseDouble(gst)), rectemjaBold));
             cell106.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell106.setBorder(Rectangle.NO_BORDER);
             total.addCell(cell101);
@@ -410,7 +410,7 @@ public class Receipt extends HttpServlet {
             cell111.setHorizontalAlignment(Element.ALIGN_RIGHT);
             cell111.setColspan(5);
             cell111.setBorder(Rectangle.NO_BORDER);
-            PdfPCell cell116 = new PdfPCell(new Phrase(String.valueOf(discount), rectemjaBold));
+            PdfPCell cell116 = new PdfPCell(new Phrase(df.format(Double.parseDouble(discount)), rectemjaBold));
             cell116.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell116.setBorder(Rectangle.NO_BORDER);
             total.addCell(cell111);
@@ -420,7 +420,7 @@ public class Receipt extends HttpServlet {
             cell121.setHorizontalAlignment(Element.ALIGN_RIGHT);
             cell121.setColspan(5);
             cell121.setBorder(Rectangle.NO_BORDER);
-            PdfPCell cell126 = new PdfPCell(new Phrase(String.valueOf(rounding), rectemjaBold));
+            PdfPCell cell126 = new PdfPCell(new Phrase(df.format(Double.parseDouble(rounding)), rectemjaBold));
             cell126.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell126.setBorder(Rectangle.NO_BORDER);
             total.addCell(cell121);
@@ -433,7 +433,7 @@ public class Receipt extends HttpServlet {
             cell131.setHorizontalAlignment(Element.ALIGN_RIGHT);
             cell131.setColspan(2);
             cell131.setBorder(Rectangle.TOP);
-            PdfPCell cell136 = new PdfPCell(new Phrase(String.valueOf(grandTotal), rectemjaBig));
+            PdfPCell cell136 = new PdfPCell(new Phrase(df.format(Double.parseDouble(grandTotal)), rectemjaBig));
             cell136.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell136.setBorder(Rectangle.TOP);
             total.addCell(cell130);
@@ -447,7 +447,7 @@ public class Receipt extends HttpServlet {
             cell141.setHorizontalAlignment(Element.ALIGN_RIGHT);
             cell141.setColspan(2);
             cell141.setBorder(Rectangle.TOP);
-            PdfPCell cell146 = new PdfPCell(new Phrase(String.valueOf(amount), rectemjaBold));
+            PdfPCell cell146 = new PdfPCell(new Phrase(df.format(Double.parseDouble(amount)), rectemjaBold));
             cell146.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell146.setBorder(Rectangle.TOP);
             total.addCell(cell140);
@@ -458,7 +458,7 @@ public class Receipt extends HttpServlet {
             cell151.setHorizontalAlignment(Element.ALIGN_RIGHT);
             cell151.setColspan(5);
             cell151.setBorder(Rectangle.NO_BORDER);
-            PdfPCell cell156 = new PdfPCell(new Phrase(String.valueOf(change), rectemjaBold));
+            PdfPCell cell156 = new PdfPCell(new Phrase(df.format(Double.parseDouble(change)), rectemjaBold));
             cell156.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell156.setBorder(Rectangle.NO_BORDER);
             total.addCell(cell151);
