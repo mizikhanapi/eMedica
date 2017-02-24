@@ -34,7 +34,7 @@
                             <div class="form-group" >
                                 <label class="col-lg-2">Patient IC No.</label>
                                 <div class="col-lg-10" style="margin-bottom: 10px">
-                                    <input id="patientIC" type="text" class="form-control" placeholder="IC No.">
+                                    <input id="ic" type="text" class="form-control" placeholder="IC No.">
                                 </div>
                                 <label class="col-lg-2">Year</label>
                                 <div class="col-lg-10" style="margin-bottom: 10px">
@@ -104,30 +104,38 @@
                       alert('Please fill in patient IC No.');
                   } else {
                       $.ajax({
-                          url: "generateReport.jsp",
+                          url: "validateRecord.jsp",
                           type: "post",
                           data: {
-                              action:'yearlyStatement',
-                              ic: ic,
-                              year:year,
-                              month:month
+                              ic: ic
                           },
                           timeout: 10000,
                           success: function(data) {
                                 var d = data.split("|");
                                 if (d[1] == '1') {
+                                    
+                                    var url = "/eBilling/PdfServlet?";
+                                    url += "&action=" + "yearlyStatement";
+                                    url += "&ic=" + ic;
+                                    url += "&year=" + year;
+                                    url += "&month=" + month;
+                                    
+                                    var win = window.open(url, '_blank');
+                                    win.focus();
+                                    
                                  } else {
-                                     alert(d[1]);
+                                     alert(d[2]);
                                  }
                           },
                           error: function(err) {
+                              alert("An error occur.\nPlease try again later.");
                           }
                       });
                     }
                 });
                 
               $('#detailsStatement').click(function(){
-                  var ic = document.getElementById('patientIC').value;
+                  var ic = document.getElementById('ic').value;
                   var year = document.getElementById('year').value;
                   var month = document.getElementById('month').value;
                   
@@ -138,43 +146,64 @@
                   if (ic === "") {
                       alert('Please fill in patient IC No.');
                   } else {
-                      
-                        var url = "/eBilling/PdfServlet?"
-                        var action = "detailsStatement";
-                        url += "action=" + action;
-                        url += "&ic=" + ic;
-                        url += "&year=" + year;
-                        url += "&month=" + month;
-                        
-                        var win = window.open(url, '_blank');
-                        win.focus();
+                      $.ajax({
+                          url: "validateRecord.jsp",
+                          type: "post",
+                          data: {
+                              ic: ic
+                          },
+                          timeout: 10000,
+                          success: function(data) {
+                                var d = data.split("|");
+                                if (d[1] == '1') {
+                                    
+                                    var url = "/eBilling/PdfServlet?";
+                                    url += "&action=" + "detailsStatement";
+                                    url += "&ic=" + ic;
+                                    url += "&year=" + year;
+                                    url += "&month=" + month;
+                                    
+                                    var win = window.open(url, '_blank');
+                                    win.focus();
+                                    
+                                 } else {
+                                     alert(d[2]);
+                                 }
+                          },
+                          error: function(err) {
+                              alert("An error occur.\nPlease try again later.");
+                          }
+                      });
                     }
                 });
                 
               $('#yearEndReport').click(function(){
                   var ic = document.getElementById('ic').value;
                   var year = document.getElementById('year').value;
-                  var month = document.getElementById('month').value;
-                    if (month.length !== 2){          
-                        month = "0" + month;;
-                    }
                     
                   if (ic === "") {
                       alert('Please fill in patient IC No.');
                   } else {
                       $.ajax({
-                          url: "generateReport.jsp",
+                          url: "validateYEP.jsp",
                           type: "post",
                           data: {
                               action:'yearEndReport'
                           },
                           timeout: 10000,
                           success: function(data) {
-//                                var d = data.split("|");
-//                                if (d[1] == '1') {
-//                                 } else {
-//                                     alert(d[1]);
-//                                 }
+                                var d = data.split("|");
+                                if (d[1] == '1') {
+                                    
+                                    var url = "/eBilling/PdfServlet?";
+                                    url += "&action=" + "yearEndReport";
+                                    
+                                    var win = window.open(url, '_blank');
+                                    win.focus();
+                                    
+                                 } else {
+                                     alert(d[2]);
+                                 }
                           },
                           error: function(err) {
                           }

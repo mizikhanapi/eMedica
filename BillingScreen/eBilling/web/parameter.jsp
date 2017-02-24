@@ -19,7 +19,7 @@
                     <div id="cssmenu">
                         <ul>
                             <li><a href="index.jsp"><span>Billing</span></a></li>
-                            <li><a href="manage.jsp"><span>Manage Bill</span></a></li>
+                            <li><a href="bill.jsp"><span>Manage Bill</span></a></li>
                             <li><a href="miscellaneous.jsp"><span>Miscellaneous</span></a></li>
                             <li class="active"><a href="parameter.jsp"><span>Bill Parameter</span></a></li>
                             <li><a href="report.jsp"><span>Report</span></a></li>
