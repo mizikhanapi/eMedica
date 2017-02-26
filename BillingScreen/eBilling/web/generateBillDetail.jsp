@@ -479,7 +479,26 @@
                            var d = data.split("|");
                            if (d[1] == 1){
                                alert(d[2]);
-                               location.reload();
+                                var row = 
+                                        '<tr>\n\
+                                            <td></td>\n\
+                                            <td>'+ itemCode +'</td>\n\
+                                            <td>'+ itemName +'</td>\n\
+                                            <td style="text-align: right;">1</td>\n\
+                                            <td style="text-align: right;">'+ unitPrice +'</td>\n\
+                                            <td style="text-align: right;">'+ unitPrice +'</td>\n\
+                                            <td></td>\n\
+                                        </tr>';
+                               $('#tableItems tr:last').after(row);
+                               
+                                var subTotal = parseFloat(document.getElementById('subtotal').value);
+                                
+                                subTotal = subTotal + (1 * unitPrice);
+                                var grandTotal = parseFloat(d[3]);
+                                
+                                $('#subtotal').val(subTotal.toFixed(2));
+                                $('#grandTotal').val(grandTotal.toFixed(2));
+                               
                            } else {
                                alert(d[2]);
                            }
@@ -497,7 +516,6 @@
         
         $('#addDrugsItem').click(function (){
             var quantity = document.getElementById('quantity').value;
-            var activeTab = $('ul#tabs').find('li.active').text();
             
             if (quantity == '' || quantity == 0){
                 alert("Please enter a quantity.");
@@ -525,7 +543,29 @@
                        var d = data.split("|");
                        if (d[1] == 1){
                            alert(d[2]);
-                           location.reload();
+                           
+                           var totalPrice = quantity * unitPrice;
+                           
+                            var row = 
+                                    '<tr>\n\
+                                        <td></td>\n\
+                                        <td>'+ itemCode +'</td>\n\
+                                        <td>'+ itemName +'</td>\n\
+                                        <td style="text-align: right;">'+ quantity +'</td>\n\
+                                        <td style="text-align: right;">'+ unitPrice +'</td>\n\
+                                        <td style="text-align: right;">'+ totalPrice.toFixed(2) +'</td>\n\
+                                        <td></td>\n\
+                                    </tr>';
+                           $('#tableItems tr:last').after(row);
+
+                            var subTotal = parseFloat(document.getElementById('subtotal').value);
+
+                            subTotal = subTotal + totalPrice;
+                            var grandTotal = parseFloat(d[3]);
+
+                            $('#subtotal').val(subTotal.toFixed(2));
+                            $('#grandTotal').val(grandTotal.toFixed(2));
+
                        } else {
                            alert(d[2]);
                        }

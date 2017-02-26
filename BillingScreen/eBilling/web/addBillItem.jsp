@@ -27,6 +27,7 @@
     String txnDate = dateFormat1.format(date);
     
     if (itemType.equalsIgnoreCase("M")) {
+        //add item price
         double totalPrice = Double.parseDouble(unitPrice);
         double priceBeforeTax = totalPrice;
 
@@ -88,7 +89,7 @@
         Conn.setData(sql6);
 
         String infoMessage = "Selected item added to bill successfully.";
-        out.print("-|1|" + infoMessage);
+        out.print("-|1|" + infoMessage + "|" + itemAmt);
 
     } else if (itemType.equalsIgnoreCase("D")) {
     
@@ -147,7 +148,7 @@
         ArrayList<ArrayList<String>> data2 = Conn.getData(sql5);
         String itemAmt = data2.get(0).get(0);
         String qty = data2.get(0).get(1);
-
+        System.out.print(itemAmt);
         itemAmt = String.valueOf(Double.parseDouble(itemAmt) + totalPrice);
         qty = String.valueOf(Integer.parseInt(qty) + quantity);
 
@@ -159,7 +160,7 @@
         Conn.setData(sql6);
 
         String infoMessage = "Selected item added to bill successfully.";
-        out.print("-|1|" + infoMessage);
+        out.print("-|1|" + infoMessage + "|" + itemAmt);
     }
 %>
 <%!

@@ -365,7 +365,7 @@
                 }
             });
         });
-<%}%>
+<%          }%>
         $('#openItemList').click(function(){
             $('#miscItem').load('tableAddMiscItem.jsp');
             $('#drugsItem').load('tableAddDrugsItem.jsp');
@@ -401,7 +401,26 @@
                            var d = data.split("|");
                            if (d[1] == 1){
                                alert(d[2]);
-                               location.reload();
+                                var row = 
+                                        '<tr>\n\
+                                            <td></td>\n\
+                                            <td>'+ itemCode +'</td>\n\
+                                            <td>'+ itemName +'</td>\n\
+                                            <td style="text-align: right;">1</td>\n\
+                                            <td style="text-align: right;">'+ unitPrice +'</td>\n\
+                                            <td style="text-align: right;">'+ unitPrice +'</td>\n\
+                                            <td></td>\n\
+                                        </tr>';
+                               $('#tableItems tr:last').after(row);
+                               
+                                var subTotal = parseFloat(document.getElementById('subtotal').value);
+                                
+                                subTotal = subTotal + (1 * unitPrice);
+                                var grandTotal = parseFloat(d[3]);
+                                
+                                $('#subtotal').val(subTotal.toFixed(2));
+                                $('#grandTotal').val(grandTotal.toFixed(2));
+                               
                            } else {
                                alert(d[2]);
                            }
@@ -419,7 +438,6 @@
         
         $('#addDrugsItem').click(function (){
             var quantity = document.getElementById('quantity').value;
-            var activeTab = $('ul#tabs').find('li.active').text();
             
             if (quantity == '' || quantity == 0){
                 alert("Please enter a quantity.");
@@ -447,7 +465,29 @@
                        var d = data.split("|");
                        if (d[1] == 1){
                            alert(d[2]);
-                           location.reload();
+                           
+                           var totalPrice = quantity * unitPrice;
+                           
+                            var row = 
+                                    '<tr>\n\
+                                        <td></td>\n\
+                                        <td>'+ itemCode +'</td>\n\
+                                        <td>'+ itemName +'</td>\n\
+                                        <td style="text-align: right;">'+ quantity +'</td>\n\
+                                        <td style="text-align: right;">'+ unitPrice +'</td>\n\
+                                        <td style="text-align: right;">'+ totalPrice.toFixed(2) +'</td>\n\
+                                        <td></td>\n\
+                                    </tr>';
+                           $('#tableItems tr:last').after(row);
+
+                            var subTotal = parseFloat(document.getElementById('subtotal').value);
+
+                            subTotal = subTotal + totalPrice;
+                            var grandTotal = parseFloat(d[3]);
+
+                            $('#subtotal').val(subTotal.toFixed(2));
+                            $('#grandTotal').val(grandTotal.toFixed(2));
+
                        } else {
                            alert(d[2]);
                        }
@@ -522,7 +562,48 @@
             }
         });
 <%} else {%>
+        
+        $('#print').click(function(){
+            var custID = document.getElementById('custID').value;
+            var billNo = document.getElementById('billNo').value;
+            
+            $.ajax({
+                url: "printPaidReceipt.jsp",
+                type: "post",
+                data: {
+                    custID: custID,
+                    billNo: billNo
+                },
+                timeout: 10000,
+                success: function(data) {
+                   var d = data.split("|");
+                   if (d[1] == 1){
 
+                        var url = "/eBilling/Receipt?"
+                        url += "&custID=" + custID;
+                        url += "&billNo=" + billNo;
+                        url += "&subtotal=" + d[3];
+                        url += "&grandTotal=" + d[4];
+                        url += "&amount=" + "0.00";
+                        url += "&change=" + "0.00";
+                        url += "&gst=" + d[6];
+                        url += "&serviceCharge=" + d[7];
+                        url += "&discount=" + d[8];
+                        url += "&rounding=" + d[9];
+                        
+                        var win = window.open(url, '_blank');
+                        win.focus();
+
+                       location.reload();
+                   } else {
+                       alert(d[2]);
+                   }
+                },
+                error: function(err) {
+                    alert('Failed to make payment.\nPlease try again.');
+                }
+            });            
+        });
 <%}%>
     });
 </script>
