@@ -51,6 +51,8 @@ public class PdfServlet extends HttpServlet {
         private String ic = "";
         private String year = "";
         private String month = "";
+        
+        private String userID = "";
             
     /**
      * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
@@ -64,6 +66,8 @@ public class PdfServlet extends HttpServlet {
             ic = request.getParameter("ic");
             year = request.getParameter("year");
             month = request.getParameter("month");
+            
+            userID = request.getSession().getAttribute("USER_ID").toString();
 
             if (action.equalsIgnoreCase("yearlyStatement")){
                 generateYearlyStatement(response);
@@ -184,17 +188,31 @@ public class PdfServlet extends HttpServlet {
                 tableHeader.setLockedWidth(true);
                 tableHeader.setTotalWidth(document.right() - document.left());
 
-                String imgPath = getServletContext().getRealPath("/assets/img/LogoJawiUTeM.png");
-                Image logo = Image.getInstance(imgPath);
-                logo.scaleAbsolute(120, 60);
+            String sql_getHFC = 
+                    "SELECT health_facility_code "
+                    + "FROM adm_user "
+                    + "WHERE user_id = '"+ userID +"'";
+            ArrayList<ArrayList<String>> userData = Conn.getData(sql_getHFC);
+            String hfc = userData.get(0).get(0);
+            
+            String sql_getHFAddr = 
+                    "SELECT hfc_name, address1, address2, address3 "
+                    + "FROM adm_health_facility "
+                    + "WHERE health_facility_code = '"+ hfc +"'";
+            ArrayList<ArrayList<String>> hfData = Conn.getData(sql_getHFAddr);
+            String hfName = hfData.get(0).get(0);
+                
+//                String imgPath = getServletContext().getRealPath("/assets/img/LogoJawiUTeM.png");
+//                Image logo = Image.getInstance(imgPath);
+//                logo.scaleAbsolute(120, 60);
+//
+//                PdfPCell cellLogo = new PdfPCell(logo);
+//                cellLogo.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cellLogo.setBorder(Rectangle.NO_BORDER);
+//                cellLogo.setColspan(4);
+//                tableHeader.addCell(cellLogo);
 
-                PdfPCell cellLogo = new PdfPCell(logo);
-                cellLogo.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellLogo.setBorder(Rectangle.NO_BORDER);
-                cellLogo.setColspan(4);
-                tableHeader.addCell(cellLogo);
-
-                PdfPCell cellLocation = new PdfPCell(new Phrase("Pusat Kesihatan UTeM", recti));
+                PdfPCell cellLocation = new PdfPCell(new Phrase(hfName, recti));
                 cellLocation.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cellLocation.setBorder(Rectangle.NO_BORDER);
                 cellLocation.setColspan(4);
@@ -578,19 +596,33 @@ public class PdfServlet extends HttpServlet {
                     tableHeader.setWidths(new float[]{3f, 4f, 3.5f, 4f});
                     tableHeader.setLockedWidth(true);
                     tableHeader.setTotalWidth(document.right() - document.left());
-
-                    String imgPath = getServletContext().getRealPath("/assets/img/LogoJawiUTeM.png");
-                    Image logo = Image.getInstance(imgPath);
-                    logo.scaleAbsolute(120, 60);
-
-                    PdfPCell cellLogo = new PdfPCell(logo);
-                    cellLogo.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cellLogo.setBorder(Rectangle.NO_BORDER);
-                    cellLogo.setColspan(4);
-                    cellLogo.setLeading(15f, 0.3f);
-                    tableHeader.addCell(cellLogo);
                     
-                    PdfPCell cellLocation = new PdfPCell(new Phrase("Pusat Kesihatan UTeM", recti));
+                    String sql_getHFC = 
+                            "SELECT health_facility_code "
+                            + "FROM adm_user "
+                            + "WHERE user_id = '"+ userID +"'";
+                    ArrayList<ArrayList<String>> userData = Conn.getData(sql_getHFC);
+                    String hfc = userData.get(0).get(0);
+
+                    String sql_getHFAddr = 
+                            "SELECT hfc_name, address1, address2, address3 "
+                            + "FROM adm_health_facility "
+                            + "WHERE health_facility_code = '"+ hfc +"'";
+                    ArrayList<ArrayList<String>> hfData = Conn.getData(sql_getHFAddr);
+                    String hfName = hfData.get(0).get(0);
+            
+//                    String imgPath = getServletContext().getRealPath("/assets/img/LogoJawiUTeM.png");
+//                    Image logo = Image.getInstance(imgPath);
+//                    logo.scaleAbsolute(120, 60);
+//
+//                    PdfPCell cellLogo = new PdfPCell(logo);
+//                    cellLogo.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                    cellLogo.setBorder(Rectangle.NO_BORDER);
+//                    cellLogo.setColspan(4);
+//                    cellLogo.setLeading(15f, 0.3f);
+//                    tableHeader.addCell(cellLogo);
+
+                    PdfPCell cellLocation = new PdfPCell(new Phrase(hfName, recti));
                     cellLocation.setHorizontalAlignment(Element.ALIGN_CENTER);
                     cellLocation.setBorder(Rectangle.NO_BORDER);
                     cellLocation.setColspan(4);
@@ -869,19 +901,33 @@ public class PdfServlet extends HttpServlet {
                         tableHeader.setWidths(new float[]{3f, 4f, 3.5f, 4f});
                         tableHeader.setLockedWidth(true);
                         tableHeader.setTotalWidth(document.right() - document.left());
+                        
+                        String sql_getHFC = 
+                                "SELECT health_facility_code "
+                                + "FROM adm_user "
+                                + "WHERE user_id = '"+ userID +"'";
+                        ArrayList<ArrayList<String>> userData = Conn.getData(sql_getHFC);
+                        String hfc = userData.get(0).get(0);
 
-                        String imgPath = getServletContext().getRealPath("/assets/img/LogoJawiUTeM.png");
-                        Image logo = Image.getInstance(imgPath);
-                        logo.scaleAbsolute(120, 60);
+                        String sql_getHFAddr = 
+                                "SELECT hfc_name, address1, address2, address3 "
+                                + "FROM adm_health_facility "
+                                + "WHERE health_facility_code = '"+ hfc +"'";
+                        ArrayList<ArrayList<String>> hfData = Conn.getData(sql_getHFAddr);
+                        String hfName = hfData.get(0).get(0);
+                        
+//                        String imgPath = getServletContext().getRealPath("/assets/img/LogoJawiUTeM.png");
+//                        Image logo = Image.getInstance(imgPath);
+//                        logo.scaleAbsolute(120, 60);
+//
+//                        PdfPCell cellLogo = new PdfPCell(logo);
+//                        cellLogo.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                        cellLogo.setBorder(Rectangle.NO_BORDER);
+//                        cellLogo.setColspan(4);
+//                        cellLogo.setLeading(15f, 0.3f);
+//                        tableHeader.addCell(cellLogo);
 
-                        PdfPCell cellLogo = new PdfPCell(logo);
-                        cellLogo.setHorizontalAlignment(Element.ALIGN_CENTER);
-                        cellLogo.setBorder(Rectangle.NO_BORDER);
-                        cellLogo.setColspan(4);
-                        cellLogo.setLeading(15f, 0.3f);
-                        tableHeader.addCell(cellLogo);
-
-                        PdfPCell cellLocation = new PdfPCell(new Phrase("Pusat Kesihatan UTeM", recti));
+                        PdfPCell cellLocation = new PdfPCell(new Phrase(hfName, recti));
                         cellLocation.setHorizontalAlignment(Element.ALIGN_CENTER);
                         cellLocation.setBorder(Rectangle.NO_BORDER);
                         cellLocation.setColspan(4);
@@ -1100,18 +1146,32 @@ public class PdfServlet extends HttpServlet {
             tableHeader.setLockedWidth(true);
             tableHeader.setTotalWidth(document.right() - document.left());
 
-            String imgPath = getServletContext().getRealPath("/assets/img/LogoJawiUTeM.png");
-            Image logo = Image.getInstance(imgPath);
-            logo.scaleAbsolute(120, 60);
+            String sql_getHFC = 
+                    "SELECT health_facility_code "
+                    + "FROM adm_user "
+                    + "WHERE user_id = '"+ userID +"'";
+            ArrayList<ArrayList<String>> userData = Conn.getData(sql_getHFC);
+            String hfc = userData.get(0).get(0);
+            
+            String sql_getHFAddr = 
+                    "SELECT hfc_name, address1, address2, address3 "
+                    + "FROM adm_health_facility "
+                    + "WHERE health_facility_code = '"+ hfc +"'";
+            ArrayList<ArrayList<String>> hfData = Conn.getData(sql_getHFAddr);
+            String hfName = hfData.get(0).get(0);            
+            
+//            String imgPath = getServletContext().getRealPath("/assets/img/LogoJawiUTeM.png");
+//            Image logo = Image.getInstance(imgPath);
+//            logo.scaleAbsolute(120, 60);
+//
+//            PdfPCell cellLogo = new PdfPCell(logo);
+//            cellLogo.setHorizontalAlignment(Element.ALIGN_CENTER);
+//            cellLogo.setBorder(Rectangle.NO_BORDER);
+//            cellLogo.setColspan(4);
+//            cellLogo.setLeading(15f, 0.3f);
+//            tableHeader.addCell(cellLogo);
 
-            PdfPCell cellLogo = new PdfPCell(logo);
-            cellLogo.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellLogo.setBorder(Rectangle.NO_BORDER);
-            cellLogo.setColspan(4);
-            cellLogo.setLeading(15f, 0.3f);
-            tableHeader.addCell(cellLogo);
-
-            PdfPCell cellLocation = new PdfPCell(new Phrase("Pusat Kesihatan UTeM", recti));
+            PdfPCell cellLocation = new PdfPCell(new Phrase(hfName, recti));
             cellLocation.setHorizontalAlignment(Element.ALIGN_CENTER);
             cellLocation.setBorder(Rectangle.NO_BORDER);
             cellLocation.setColspan(4);

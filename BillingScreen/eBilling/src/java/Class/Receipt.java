@@ -53,6 +53,8 @@ public class Receipt extends HttpServlet {
     private String discount = "0.00";
     private String rounding = "0.00";
     
+    private String userID = "";
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -76,6 +78,8 @@ public class Receipt extends HttpServlet {
         serviceCharge = request.getParameter("serviceCharge");
         discount = request.getParameter("discount");
         rounding = request.getParameter("rounding");
+        
+        userID = request.getSession().getAttribute("USER_ID").toString();
         
         printPaidBill(response);
     }
@@ -165,22 +169,39 @@ public class Receipt extends HttpServlet {
             header.setTotalWidth(document.right() - document.left());
             
             //--------------------------table header------------------------------------------>
-            String imgPath = getServletContext().getRealPath("/assets/img/LogoJawiUTeM.png");
-            Image logo = Image.getInstance(imgPath);
-            logo.scaleAbsolute(120, 60);
-
-            PdfPCell cell1 = new PdfPCell(logo);
-            cell1.setHorizontalAlignment(Element.ALIGN_RIGHT);
-            cell1.setBorder(Rectangle.NO_BORDER);
-            cell1.setColspan(2);
-            cell1.setLeading(15f, 0.3f);
-            header.addCell(cell1);
+            String sql_getHFC = 
+                    "SELECT health_facility_code "
+                    + "FROM adm_user "
+                    + "WHERE user_id = '"+ userID +"'";
+            ArrayList<ArrayList<String>> userData = Conn.getData(sql_getHFC);
+            String hfc = userData.get(0).get(0);
+            
+            String sql_getHFAddr = 
+                    "SELECT hfc_name, address1, address2, address3 "
+                    + "FROM adm_health_facility "
+                    + "WHERE health_facility_code = '"+ hfc +"'";
+            ArrayList<ArrayList<String>> hfData = Conn.getData(sql_getHFAddr);
+            String hfName = hfData.get(0).get(0);
+            String hfAddr1 = hfData.get(0).get(1);
+            String hfAddr2 = hfData.get(0).get(2);
+            String hfAddr3 = hfData.get(0).get(3); 
+            
+//            String imgPath = getServletContext().getRealPath("/assets/img/LogoJawiUTeM.png");
+//            Image logo = Image.getInstance(imgPath);
+//            logo.scaleAbsolute(120, 60);
+//
+//            PdfPCell cell1 = new PdfPCell(logo);
+//            cell1.setHorizontalAlignment(Element.ALIGN_RIGHT);
+//            cell1.setBorder(Rectangle.NO_BORDER);
+//            cell1.setColspan(2);
+//            cell1.setLeading(15f, 0.3f);
+//            header.addCell(cell1);
             
             String addr = 
-                    " Universiti Teknikal Malaysia Melaka, \n"
-                    + " Hang Tuah Jaya, \n"
-                    + " 76100 Durian Tunggal, \n"
-                    + " Melaka, Malaysia.";
+                    " "+ hfName +", \n"
+                    + " "+ hfAddr1 +" \n"
+                    + " "+ hfAddr2 +", \n"
+                    + " "+ hfAddr3;
             
             PdfPCell cellAddress = new PdfPCell(new Phrase(addr, rectemja));
             cellAddress.setHorizontalAlignment(Element.ALIGN_LEFT);
