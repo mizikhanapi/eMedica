@@ -11,60 +11,51 @@
     <body onload="yearList()">
         <div class="container-fluid">
             <%@include file = "includes/topMenu.html" %>
-            <div class="row">
-                <div class="col-lg-2">                
-                    <div id="cssmenu">
-                        <ul>
-                            <li><a href="index.jsp"><span>Billing</span></a></li>
-                            <li><a href="bill.jsp"><span>Manage Bill</span></a></li>
-                            <li><a href="miscellaneous.jsp"><span>Miscellaneous</span></a></li>
-                            <li><a href="parameter.jsp"><span>Bill Parameter</span></a></li>
-                            <li class="active"><a href="report.jsp"><span>Report</span></a></li>
-                            <li><a href="closing.jsp"><span>Closing</span></a></li>
-                        </ul>
-                    </div>   
-                </div>
-        
-                <!--body-->
-                <div class="col-lg-10">
-                    <div id="message"></div>
-                    <div id="reportDetails" class="thumbnail">
-                        <div style="margin-bottom: 250px">
-                            <h4>Report</h4>
-                            <div class="form-group" >
-                                <label class="col-lg-2">Patient IC No.</label>
-                                <div class="col-lg-10" style="margin-bottom: 10px">
-                                    <input id="ic" type="text" class="form-control" placeholder="IC No.">
+            <%@include file = "includes/sideMenu.html" %>
+            
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background: #f2f4f8;">
+                <div class="row">
+                    <!--body-->
+                    <div class="col-md-12">
+                        <div id="message"></div>
+                        <div id="reportDetails" class="thumbnail">
+                            <div style="margin-bottom: 250px">
+                                <h4>Report</h4>
+                                <div class="form-group" >
+                                    <label class="col-lg-2">Patient IC No.</label>
+                                    <div class="col-lg-10" style="margin-bottom: 10px">
+                                        <input id="ic" type="text" class="form-control" placeholder="IC No.">
+                                    </div>
+                                    <label class="col-lg-2">Year</label>
+                                    <div class="col-lg-10" style="margin-bottom: 10px">
+                                        <select id="year" class="form-control"></select>
+                                    </div>
+                                    <label class="col-lg-2">Month</label>
+                                    <div class="col-lg-10" style="margin-bottom: 10px">
+                                        <select id="month" class="form-control">
+                                            <option value="0" selected="true">All Month</option>
+                                            <option value="1">January</option>
+                                            <option value="2">February</option>
+                                            <option value="3">March</option>
+                                            <option value="4">April</option>
+                                            <option value="5">May</option>
+                                            <option value="6">June</option>
+                                            <option value="7">July</option>
+                                            <option value="8">August</option>
+                                            <option value="9">September</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
+                                        </select>
+                                    </div>
+                                    <label class="col-lg-2">Select a statement</label>
+                                    <div class="col-lg-10 pull-right" style="margin-bottom: 10px">
+                                        <button id="yearlyStatement" class="btn btn-info" style="margin-bottom: 10px">Customer Yearly Account Statement</button><br>
+                                        <button id="detailsStatement" class="btn btn-info" style="margin-bottom: 10px">Customer Details Account Statement</button><br>
+                                        <button id="yearEndReport" class="btn btn-info" style="margin-bottom: 10px">Year End Processing Report</button>
+                                    </div>
                                 </div>
-                                <label class="col-lg-2">Year</label>
-                                <div class="col-lg-10" style="margin-bottom: 10px">
-                                    <select id="year" class="form-control"></select>
-                                </div>
-                                <label class="col-lg-2">Month</label>
-                                <div class="col-lg-10" style="margin-bottom: 10px">
-                                    <select id="month" class="form-control">
-                                        <option value="0" selected="true">All Month</option>
-                                        <option value="1">January</option>
-                                        <option value="2">February</option>
-                                        <option value="3">March</option>
-                                        <option value="4">April</option>
-                                        <option value="5">May</option>
-                                        <option value="6">June</option>
-                                        <option value="7">July</option>
-                                        <option value="8">August</option>
-                                        <option value="9">September</option>
-                                        <option value="10">October</option>
-                                        <option value="11">November</option>
-                                        <option value="12">December</option>
-                                    </select>
-                                </div>
-                                <label class="col-lg-2">Select a statement</label>
-                                <div class="col-lg-10 pull-right" style="margin-bottom: 10px">
-                                    <button id="yearlyStatement" class="btn btn-info" style="margin-bottom: 10px">Customer Yearly Account Statement</button><br>
-                                    <button id="detailsStatement" class="btn btn-info" style="margin-bottom: 10px">Customer Details Account Statement</button><br>
-                                    <button id="yearEndReport" class="btn btn-info" style="margin-bottom: 10px">Year End Processing Report</button>
-                                </div>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
