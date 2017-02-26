@@ -114,6 +114,12 @@
 
             $(document).ready(function(){
                 $('#billPara').load("tableParameter.jsp");
+                
+                $('#value').keypress(function(event) {
+                    if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57) && event.which != 8) {
+                        event.preventDefault();
+                    }
+                });
 
                 $('#rbEnable a').on('click', function(){
                     var sel = $(this).data('title');

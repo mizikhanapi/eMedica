@@ -75,6 +75,12 @@
         
         <script type="text/javascript">
             $(document).ready(function(){
+                $('#ic').keypress(function(event) {
+                    if ((event.which != 46 || $(this).val().indexOf('.') != 1) && (event.which < 48 || event.which > 57) && event.which != 8) {
+                        event.preventDefault();
+                    }
+                });     
+                
                 $('#rbStatus a').on('click', function(){
                     var sel = $(this).data('title');
                     var tog = $(this).data('toggle');

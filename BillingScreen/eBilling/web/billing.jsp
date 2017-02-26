@@ -58,27 +58,33 @@
         <script src="assets/js/custom.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-              $('#searchPatient').click(function(){
-                  var ic = document.getElementById('ic').value;
-                  
-                  if (ic === "") {
-                  } else {
-                      $.ajax({
-                          url: "searchPatient.jsp",
-                          type: "post",
-                          data: {
-                              ic: ic
-                          },
-                          timeout: 10000,
-                          success: function(data) {
-                            $('#patientDetails').html(data);
-                          },
-                          error: function(err) {
-                          }
-                      });
+                $('#ic').keypress(function(event) {
+                    if ((event.which != 46 || $(this).val().indexOf('.') != 1) && (event.which < 48 || event.which > 57) && event.which != 8) {
+                        event.preventDefault();
                     }
-                });
-            });
+                });                     
+                
+                $('#searchPatient').click(function(){
+                    var ic = document.getElementById('ic').value;
+
+                    if (ic === "") {
+                    } else {
+                        $.ajax({
+                            url: "searchPatient.jsp",
+                            type: "post",
+                            data: {
+                                ic: ic
+                            },
+                            timeout: 10000,
+                            success: function(data) {
+                              $('#patientDetails').html(data);
+                            },
+                            error: function(err) {
+                            }
+                        });
+                      }
+                  });
+              });
         </script>
     </body>
 </html>
