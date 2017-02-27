@@ -114,15 +114,6 @@
                     }
                 });
             });
-            $(".use-address").click(function() {
-    var $row = $(this).closest("tr"),
-        $tds = $row.find("td:nth-child(2)");
-
-    $.each($tds, function() {
-        console.log($(this).text());
-    });
-    
-});
         </script>
     </body>
 </html>

@@ -312,7 +312,10 @@
         $('#txnDate').val('<%=dataBill.get(0).get(0)%>');
         
         $('#amtReceived').keypress(function(event) {
-            if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57) && event.which != 8) {
+            if (((event.which != 46 || $(this).val().indexOf('.') != -1) 
+                    && (event.which < 48 || event.which > 57) 
+                    || ($(this).val().length > 8)) 
+                    && event.which != 8 ) {
                 event.preventDefault();
             }
         });

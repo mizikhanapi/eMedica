@@ -391,6 +391,15 @@
             location.reload();
         });
         
+        $('#amtReceived').keypress(function(event) {
+            if (((event.which != 46 || $(this).val().indexOf('.') != -1) 
+                    && (event.which < 48 || event.which > 57) 
+                    || ($(this).val().length > 8)) 
+                    && event.which != 8 ) {
+                event.preventDefault();
+            }
+        });        
+        
         $('#confirm').click(function(){
             var orderNo = document.getElementById('orderNo').value;
             var pmiNo = document.getElementById('pmiNo').value;
