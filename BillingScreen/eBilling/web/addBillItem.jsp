@@ -89,7 +89,7 @@
         Conn.setData(sql6);
 
         String infoMessage = "Selected item added to bill successfully.";
-        out.print("-|1|" + infoMessage + "|" + itemAmt);
+        out.print("-|1|" + infoMessage + "|" + totalPrice);
 
     } else if (itemType.equalsIgnoreCase("D")) {
     
@@ -160,7 +160,7 @@
         Conn.setData(sql6);
 
         String infoMessage = "Selected item added to bill successfully.";
-        out.print("-|1|" + infoMessage + "|" + itemAmt);
+        out.print("-|1|" + infoMessage + "|" + totalPrice);
     }
 %>
 <%!

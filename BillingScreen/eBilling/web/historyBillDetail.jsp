@@ -414,10 +414,11 @@
                                $('#tableItems tr:last').after(row);
                                
                                 var subTotal = parseFloat(document.getElementById('subtotal').value);
-                                
-                                subTotal = subTotal + (1 * unitPrice);
-                                var grandTotal = parseFloat(d[3]);
-                                
+                                var grandTotal = parseFloat(document.getElementById('grandTotal').value);
+                            
+                                subTotal = subTotal + parseFloat(unitPrice);
+                                grandTotal = grandTotal + parseFloat(d[3]);
+
                                 $('#subtotal').val(subTotal.toFixed(2));
                                 $('#grandTotal').val(grandTotal.toFixed(2));
                                
@@ -481,9 +482,10 @@
                            $('#tableItems tr:last').after(row);
 
                             var subTotal = parseFloat(document.getElementById('subtotal').value);
-
+                            var grandTotal = parseFloat(document.getElementById('grandTotal').value);
+                            
                             subTotal = subTotal + totalPrice;
-                            var grandTotal = parseFloat(d[3]);
+                            grandTotal = grandTotal + parseFloat(d[3]);
 
                             $('#subtotal').val(subTotal.toFixed(2));
                             $('#grandTotal').val(grandTotal.toFixed(2));
