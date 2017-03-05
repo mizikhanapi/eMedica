@@ -179,7 +179,7 @@ public class Receipt extends HttpServlet {
             String sql_getHFAddr = 
                     "SELECT hfc_name, address1, address2, address3 "
                     + "FROM adm_health_facility "
-                    + "WHERE health_facility_code = '"+ hfc +"'";
+                    + "WHERE hfc_cd = '"+ hfc +"'";
             ArrayList<ArrayList<String>> hfData = Conn.getData(sql_getHFAddr);
             String hfName = hfData.get(0).get(0);
             String hfAddr1 = hfData.get(0).get(1);
