@@ -13,67 +13,71 @@
     <%@include file = "includes/header.html" %>
     <body>
         <div class="container-fluid">
-            <%@include file = "includes/topMenu.html" %>
+            <div class="row">      
             <%@include file = "includes/sideMenu.html" %>
-            
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background: #f2f4f8;">
-                <div class="row">
-                    <!--body-->
-                    <div class="col-md-12">
-                        <div class="thumbnail">
-                            <div style="margin-bottom: 250px">
-                                <h4><b>Miscellaneous Item</b></h4>
-                                <div class="form-group">
-                                    <div id="reload">
-                                        <div id="getID">
-                                            <%
-                                                String query1 = "SELECT MAX(item_code) FROM far_miscellaneous_item";
-                                                ArrayList<ArrayList<String>> data1 = Conn.getData(query1);
-                                                String itemCode = data1.get(0).get(0);
-                                                itemCode = itemCode.replaceAll("[^0-9]", "");
-                                                itemCode = String.valueOf(Integer.parseInt(itemCode)+1);
+                <!-- main -->		
 
-                                                String code = "RG";
-                                                for (int i = 0 ; itemCode.length() < 5 ; i++){
-                                                    itemCode = "0" + itemCode;
-                                                }
-                                                code = code + itemCode;
-                                            %>
-                                            <label class="col-lg-2">Item Code</label>
-                                            <div class="col-lg-10" style="margin-bottom: 10px">
-                                                <input type="text" class="form-control" name="itemCode" id="itemCode" value="<%=code%>" readonly="true">
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background: #f2f4f8;">
+                    
+                <%@include file = "includes/topMenu.html" %>
+                    <div class="row">
+                        <!--body-->
+                        <div class="col-md-12">
+                            <div class="thumbnail">
+                                <div style="margin-bottom: 250px">
+                                    <h4><b>Miscellaneous Item</b></h4>
+                                    <div class="form-group">
+                                        <div id="reload">
+                                            <div id="getID">
+                                                <%
+                                                    String query1 = "SELECT MAX(item_code) FROM far_miscellaneous_item";
+                                                    ArrayList<ArrayList<String>> data1 = Conn.getData(query1);
+                                                    String itemCode = data1.get(0).get(0);
+                                                    itemCode = itemCode.replaceAll("[^0-9]", "");
+                                                    itemCode = String.valueOf(Integer.parseInt(itemCode)+1);
+
+                                                    String code = "RG";
+                                                    for (int i = 0 ; itemCode.length() < 5 ; i++){
+                                                        itemCode = "0" + itemCode;
+                                                    }
+                                                    code = code + itemCode;
+                                                %>
+                                                <label class="col-lg-2">Item Code</label>
+                                                <div class="col-lg-10" style="margin-bottom: 10px">
+                                                    <input type="text" class="form-control" name="itemCode" id="itemCode" value="<%=code%>" readonly="true">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <label class="col-lg-2">Item Name</label>
-                                    <div class="col-lg-10" style="margin-bottom: 10px">
-                                      <input type="text" class="form-control" name="itemName" id="itemName">
-                                    </div>
-                                    <label class="col-lg-2">Buying Price (RM)</label>
-                                    <div class="col-lg-10" style="margin-bottom: 10px">
-                                      <input type="text" class="form-control" name="buyPrice" id="buyPrice">
-                                    </div>
-                                    <label class="col-lg-2">Selling Price (RM)</label>
-                                    <div class="col-lg-10" style="margin-bottom: 10px">
-                                      <input type="text" class="form-control" name="sellPrice" id="sellPrice">
-                                    </div>
-                                    <label class="col-lg-2"></label>
-                                    <div class="col-lg-10 pull-right" style="margin-bottom: 10px">
-                                        <button id="add" class="btn btn-success">Add</button>
-                                        <button id="update" class="btn btn-success" disabled="true">Update</button>
-                                        <button id="delete" class="btn btn-danger" disabled="true">Delete</button>
+                                        <label class="col-lg-2">Item Name</label>
+                                        <div class="col-lg-10" style="margin-bottom: 10px">
+                                          <input type="text" class="form-control" name="itemName" id="itemName">
+                                        </div>
+                                        <label class="col-lg-2">Buying Price (RM)</label>
+                                        <div class="col-lg-10" style="margin-bottom: 10px">
+                                          <input type="text" class="form-control" name="buyPrice" id="buyPrice">
+                                        </div>
+                                        <label class="col-lg-2">Selling Price (RM)</label>
+                                        <div class="col-lg-10" style="margin-bottom: 10px">
+                                          <input type="text" class="form-control" name="sellPrice" id="sellPrice">
+                                        </div>
+                                        <label class="col-lg-2"></label>
+                                        <div class="col-lg-10 pull-right" style="margin-bottom: 10px">
+                                            <button id="add" class="btn btn-success">Add</button>
+                                            <button id="update" class="btn btn-success" disabled="true">Update</button>
+                                            <button id="delete" class="btn btn-danger" disabled="true">Delete</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div id="custom-search-input">
-                                <div class="input-group ">
-                                    <input id="search" type="text" class=" search-query form-control" placeholder="Item Name" onkeyup="searchItem()"/>
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-success pull-right">Search</button>
-                                    </span>
+                                <div id="custom-search-input">
+                                    <div class="input-group ">
+                                        <input id="search" type="text" class=" search-query form-control" placeholder="Item Name" onkeyup="searchItem()"/>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-success pull-right">Search</button>
+                                        </span>
+                                    </div>
                                 </div>
+                                <div id="miscItem" ></div>
                             </div>
-                            <div id="miscItem" ></div>
                         </div>
                     </div>
                 </div>

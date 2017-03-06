@@ -10,45 +10,49 @@
     <%@include file = "includes/header.html" %>
     <body>
         <div class="container-fluid">
-            <%@include file = "includes/topMenu.html" %>
+            <div class="row">      
             <%@include file = "includes/sideMenu.html" %>
-            
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background: #f2f4f8;">
-                <div class="row">
-                    <!--body-->
-                    <div class="col-md-12">
-                        <div id="message"></div>
-                        <div id="reportDetails" class="thumbnail">
-                            <div style="margin-bottom: 250px">
-                                <h4>Year End Processing</h4>
+                <!-- main -->		
 
-                                <div class="col-lg-10" style="margin-bottom: 20px">
-                                    <div id="backup" class="progress">
-                                        <div id="backupPB" class="progress-bar">
-                                            <div id="percentBackup"></div>
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background: #f2f4f8;">
+                    
+                <%@include file = "includes/topMenu.html" %>
+                    <div class="row">
+                        <!--body-->
+                        <div class="col-md-12">
+                            <div id="message"></div>
+                            <div id="reportDetails" class="thumbnail">
+                                <div style="margin-bottom: 250px">
+                                    <h4>Year End Processing</h4>
+
+                                    <div class="col-lg-10" style="margin-bottom: 20px">
+                                        <div id="backup" class="progress">
+                                            <div id="backupPB" class="progress-bar">
+                                                <div id="percentBackup"></div>
+                                            </div>
                                         </div>
+                                        <button id="btnBackup" type="submit" class="btn btn-info" >Backup Customer Data</button><br>
                                     </div>
-                                    <button id="btnBackup" type="submit" class="btn btn-info" >Backup Customer Data</button><br>
-                                </div>
 
-                                <div class="col-lg-10" style="margin-bottom: 20px">
-                                    <div id="process" class="progress">
-                                        <div id="processPB" class="progress-bar">
-                                            <div id="percentProcess"></div>
+                                    <div class="col-lg-10" style="margin-bottom: 20px">
+                                        <div id="process" class="progress">
+                                            <div id="processPB" class="progress-bar">
+                                                <div id="percentProcess"></div>
+                                            </div>
                                         </div>
+                                        <button id="btnProcess" type="submit" class="btn btn-info" disabled="true">Start Year End Processing</button><br>
                                     </div>
-                                    <button id="btnProcess" type="submit" class="btn btn-info" disabled="true">Start Year End Processing</button><br>
-                                </div>
 
-                                <div class="col-lg-10" style="margin-bottom: 20px">
-                                    <div id="restore" class="progress">
-                                        <div id="restorePB" class="progress-bar">
-                                            <div id="percentRestore"></div>
+                                    <div class="col-lg-10" style="margin-bottom: 20px">
+                                        <div id="restore" class="progress">
+                                            <div id="restorePB" class="progress-bar">
+                                                <div id="percentRestore"></div>
+                                            </div>
                                         </div>
+                                        <button id="btnRestore" type="submit" class="btn btn-info" disabled="true">Restore Customer Data</button><br>
                                     </div>
-                                    <button id="btnRestore" type="submit" class="btn btn-info" disabled="true">Restore Customer Data</button><br>
                                 </div>
-
+                            </div>
                         </div>
                     </div>
                 </div>

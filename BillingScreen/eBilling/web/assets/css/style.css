@@ -33,12 +33,3 @@
 .thumbnail h4{
 	font-size: 20px;
 }
-
-.scrollable-modal-body {
-    max-height: calc(100vh - 210px);
-    overflow-y: auto;
-}
-
-.row_selected {
-    background-color: #B0BED9;
-}
