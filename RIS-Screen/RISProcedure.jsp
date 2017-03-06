@@ -3,8 +3,14 @@
     Created on : Jan 28, 2017, 1:59:00 PM
     Author     : Huda Athirah
 --%>
-
+<%@page import="java.util.Date"%>
+<%@page import="java.util.*"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="main.RMIConnector"%>
+<%@page import="Config.connect"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- header -->
@@ -43,7 +49,7 @@
 					
 						<!-- Text input-->
 						<div class="form-group">
-						  <label class="col-md-4 control-label" for="textinput">Body System Code</label>  
+						  <label class="col-md-4 control-label" for="textinput">RIS Procedure Code</label>  
 						  <div class="col-md-4">
 						  <input id="textinput" name="textinput" type="text" placeholder="Eg: 50000" class="form-control input-md">
 							
@@ -52,7 +58,7 @@
 
 						<!-- Text input-->
 						<div class="form-group">
-						  <label class="col-md-4 control-label" for="textinput">Body System Name</label>  
+						  <label class="col-md-4 control-label" for="textinput">RIS Procedure Name</label>  
 						  <div class="col-md-4">
 						  <input id="textinput" name="textinput" type="text" placeholder="Eg: Mobile x-ray" class="form-control input-md">
 							
@@ -61,7 +67,7 @@
 						
 						<!-- Text input-->
 						<div class="form-group">
-						  <label class="col-md-4 control-label" for="textinput">Price (RM)</label>  
+						  <label class="col-md-4 control-label" for="textinput">Buying Price (RM)</label>  
 						  <div class="col-md-2">
 						  <input id="textinput" name="textinput" type="text" placeholder="Buying Price (RM)" class="form-control input-md">
 						  </div>
@@ -86,6 +92,69 @@
 						<button id="button2id" name="button2id" class="btn btn-default"><i class="fa fa-pencil-square-o fa-lg"></i>&nbsp; Update</button>
 						<button id="button2id" name="button2id" class="btn btn-default"><i class="fa fa-ban fa-lg"></i>&nbsp; Cancel</button>
 					</div>
+                                         <script>
+                                $(document).ready(function () {
+                                   $("#viewRPDpage").load("viewRPD.jsp");
+                                   
+                                   $("#btn_add").click(function () {
+                                       var modality_cd = $("#modality_cd").val();
+                                       var ris_procedure_cd = $("#ris_procedure_cd").val();
+                                       var ris_procedure_name = $("#ris_procedure_name").val();
+                                       var selling_price = $("#selling_price").val();
+                                       var status = $("#status").val();
+                                       
+                                    if(modality_cd === ""){ 
+                                        alert("Complete The Fields"); 
+                                        return false; 
+                                    }
+                                    if(ris_procedure_cd === ""){ 
+                                        alert("Complete The Fields");  
+                                        return false; 
+                                    }
+                                    if(ris_procedure_name === ""){ 
+                                        alert("Complete The Fields");  
+                                        return false;
+                                    }
+                                    if(selling_price === ""){ 
+                                        alert("Complete The Fields");  
+                                        return false;
+                                    }
+                                    if(status === ""){ 
+                                        alert("Complete The Fields"); 
+                                        return false; 
+                                    }
+                                    
+                                    else{
+                                       
+                                       $.ajax({
+                                           url: "tDetailInsert.jsp",
+                                           type: "post",
+                                           data: {
+                                               modality_cd: modality_cd,
+                                               ris_procedure_cd: ris_procedure_cd,
+                                               ris_procedure_name: ris_procedure_name,
+                                               selling_price: selling_price,
+                                               status: status
+                                           },
+                                           timeout: 10000,
+                                           success: function(data) {
+                                                var d = data.split("|");
+                                                if (d[1] == '1') {
+                                                    $("#viewRPDpage").load("viewRPD.jsp");
+                                                    $("#ris_procedure_cd").val("");
+                                                    $("#ris_procedure_name").val("");
+                                                    $("#status").val("Active");
+                                                } else {
+                                                    alert("Save failed!");
+                                                }
+                                           },
+                                           error: function(err) {
+                                               
+                                           }
+                                       });
+                                   }});
+                                });
+                            </script>
 					</div>
 					
 					<div class="thumbnail">
@@ -94,7 +163,9 @@
 						<table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; ">
 							<thead>
 								<th>Modality Code</th>
-								<th>Modality Name</th>
+                                                                <th>RIS Procedure Code</th>
+                                                                <th>RIS Procedure Name</th>
+								<th>Buying Price (RM)</th>
 								<th>Status</th>
 							</thead>
 							<tbody>
