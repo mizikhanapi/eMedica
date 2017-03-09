@@ -66,7 +66,10 @@
             </div>
         </div>
             
+        <%@include file = "includes/message.html" %>    
         <!--js-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
         <script src="assets/js/jquery.min.js" type="text/javascript"></script>
         <script src="assets/js/custom.js" type="text/javascript"></script>
         <script type="text/javascript">
@@ -97,7 +100,9 @@
                     }
                     
                   if (ic === "") {
-                      alert('Please fill in patient IC No.');
+                    document.getElementById('messageHeader').innerHTML = "Warning!";
+                    document.getElementById('messageContent').innerHTML = "Please fill in patient IC No.";
+                    $("#alertMessage").modal();
                   } else {
                       $.ajax({
                           url: "validateRecord.jsp",
@@ -120,11 +125,15 @@
                                     win.focus();
                                     
                                  } else {
-                                     alert(d[2]);
+                                    document.getElementById('messageHeader').innerHTML = "Failed!";
+                                    document.getElementById('messageContent').innerHTML = d[2];
+                                    $("#alertMessage").modal();
                                  }
                           },
                           error: function(err) {
-                              alert("An error occur.\nPlease try again later.");
+                            document.getElementById('messageHeader').innerHTML = "Error!";
+                            document.getElementById('messageContent').innerHTML = "An error occur.\nPlease try again later.";
+                            $("#alertMessage").modal();
                           }
                       });
                     }
@@ -140,7 +149,9 @@
                   }
                     
                   if (ic === "") {
-                      alert('Please fill in patient IC No.');
+                    document.getElementById('messageHeader').innerHTML = "Warning!";
+                    document.getElementById('messageContent').innerHTML = "Please fill in patient IC No.";
+                    $("#alertMessage").modal();
                   } else {
                       $.ajax({
                           url: "validateRecord.jsp",
@@ -163,48 +174,51 @@
                                     win.focus();
                                     
                                  } else {
-                                     alert(d[2]);
+                                    document.getElementById('messageHeader').innerHTML = "Failed!";
+                                    document.getElementById('messageContent').innerHTML = d[2];
+                                    $("#alertMessage").modal();
                                  }
                           },
                           error: function(err) {
-                              alert("An error occur.\nPlease try again later.");
+                            document.getElementById('messageHeader').innerHTML = "Error!";
+                            document.getElementById('messageContent').innerHTML = "An error occur.\nPlease try again later.";
+                            $("#alertMessage").modal();
                           }
                       });
                     }
                 });
                 
               $('#yearEndReport').click(function(){
-                  var ic = document.getElementById('ic').value;
                   var year = document.getElementById('year').value;
-                    
-                  if (ic === "") {
-                      alert('Please fill in patient IC No.');
-                  } else {
-                      $.ajax({
-                          url: "validateYEP.jsp",
-                          type: "post",
-                          data: {
-                              action:'yearEndReport'
-                          },
-                          timeout: 10000,
-                          success: function(data) {
-                                var d = data.split("|");
-                                if (d[1] == '1') {
-                                    
-                                    var url = "/eBilling/PdfServlet?";
-                                    url += "&action=" + "yearEndReport";
-                                    
-                                    var win = window.open(url, '_blank');
-                                    win.focus();
-                                    
-                                 } else {
-                                     alert(d[2]);
-                                 }
-                          },
-                          error: function(err) {
-                          }
-                      });
-                    }
+                  
+                    $.ajax({
+                        url: "validateYEP.jsp",
+                        type: "post",
+                        data: {
+                            action:'yearEndReport'
+                        },
+                        timeout: 10000,
+                        success: function(data) {
+                              var d = data.split("|");
+                              if (d[1] == '1') {
+
+                                  var url = "/eBilling/PdfServlet?";
+                                  url += "&action=" + "yearEndReport";
+
+                                  var win = window.open(url, '_blank');
+                                  win.focus();
+
+                               } else {
+                                  document.getElementById('messageHeader').innerHTML = "Failed!";
+                                  document.getElementById('messageContent').innerHTML = "Failed to create report";
+                                  $("#alertMessage").modal();
+                               }
+                        },
+                        error: function(err) {
+                          document.getElementById('messageHeader').innerHTML = "Error!";
+                          document.getElementById('messageContent').innerHTML = "An error occur.\nPlease try again later.";
+                          $("#alertMessage").modal();
+                        }
                 });
             });
         </script>

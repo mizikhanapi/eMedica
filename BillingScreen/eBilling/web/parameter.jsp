@@ -90,7 +90,10 @@
             </div>
         </div>
 
+        <%@include file = "includes/message.html" %>    
         <!--js-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
         <script src="assets/js/jquery.min.js" type="text/javascript"></script>
         <script src="assets/js/custom.js" type="text/javascript"></script>
 
@@ -144,7 +147,9 @@
                     enable = String(enable).toLowerCase();
 
                         if (paraName === "" || value === "") {
-                            alert("Please fill in empty fields.");
+                            document.getElementById('messageHeader').innerHTML = "Warning!";
+                            document.getElementById('messageContent').innerHTML = "Please fill in empty fields.";
+                            $("#alertMessage").modal();
                         } else {
                             $.ajax({
                                 url: "manageParameter.jsp",
@@ -167,8 +172,14 @@
                                         $('#enable').prop('value', 'Y');
                                         $('a[data-toggle="enable"]').not('[data-title="Y"]').removeClass('active').addClass('notActive');
                                         $('a[data-toggle="enable"][data-title="Y"]').removeClass('notActive').addClass('active');
+                                        
+                                        document.getElementById('messageHeader').innerHTML = "Success!";
+                                        document.getElementById('messageContent').innerHTML = "Data added successfully.";
+                                        $("#alertMessage").modal();
                                      } else {
-                                         alert(data);
+                                        document.getElementById('messageHeader').innerHTML = "Failed!";
+                                        document.getElementById('messageContent').innerHTML = "Failed to add data.";
+                                        $("#alertMessage").modal();
                                      }
                                 },
                                 error: function(err) {
@@ -184,7 +195,9 @@
                     enable = String(enable).toLowerCase();
 
                         if (paraName === "" || value === "") {
-                            alert("Please fill in empty fields.");
+                            document.getElementById('messageHeader').innerHTML = "Warning!";
+                            document.getElementById('messageContent').innerHTML = "Please fill in empty fields.";
+                            $("#alertMessage").modal();
                         } else {
                             $.ajax({
                                 url: "manageParameter.jsp",
@@ -207,8 +220,15 @@
                                         $('#enable').prop('value', 'Y');
                                         $('a[data-toggle="enable"]').not('[data-title="Y"]').removeClass('active').addClass('notActive');
                                         $('a[data-toggle="enable"][data-title="Y"]').removeClass('notActive').addClass('active');
+                                        
+                                        document.getElementById('messageHeader').innerHTML = "Success!";
+                                        document.getElementById('messageContent').innerHTML = "Data updated successfully.";
+                                        $("#alertMessage").modal();
+                                        
                                      } else {
-                                         alert(data);
+                                        document.getElementById('messageHeader').innerHTML = "Failed!";
+                                        document.getElementById('messageContent').innerHTML = "Failed to update data.";
+                                        $("#alertMessage").modal();
                                      }
                                 },
                                 error: function(err) {
@@ -230,8 +250,14 @@
                                 var d = data.split("|");
                                 if (d[1] == '1') {
                                     $('#billPara').load("tableParameter.jsp");
+                                    
+                                    document.getElementById('messageHeader').innerHTML = "Success!";
+                                    document.getElementById('messageContent').innerHTML = "Data deleted successfully.";
+                                    $("#alertMessage").modal();
                                  } else {
-                                     alert(d[1]);
+                                    document.getElementById('messageHeader').innerHTML = "Failed!";
+                                    document.getElementById('messageContent').innerHTML = d[2];
+                                    $("#alertMessage").modal();
                                  }
                                 $('#reload').load(location.href + " #getID");
                                 $('#paraName').val('');

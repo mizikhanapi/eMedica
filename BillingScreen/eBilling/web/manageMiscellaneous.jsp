@@ -33,14 +33,14 @@
             out.print("-|1");
             return;
         } else {
-            out.print("-|-1");
+            out.print("-|-1|Failed to update data.");
             return;
         }
              
     } else if (action.equalsIgnoreCase("delete")){
         
         if (itemCode.equals("RG00001") || itemCode.equals("RG00002") || itemCode.equals("RG00003")){
-            out.print("-|Failed.\nDefault item cannot be delete.");
+            out.print("-|-1|Failed.\nDefault item cannot be delete.");
             return;
         } else {
             String query = "DELETE FROM far_miscellaneous_item "
@@ -50,7 +50,7 @@
                 out.print("-|1");
                 return;
             } else {
-                out.print("-|-1");
+                out.print("-|-1|Failed to delete data.");
                 return;
             }
         }

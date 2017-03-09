@@ -35,13 +35,13 @@
             out.print("-|1");
             return;
         } else {
-            out.print("-|-1");
+            out.print("-|-1|Failed to update data.");
             return;
         }
         
    } else if (action.equalsIgnoreCase("delete")){
         if(paraCode.equals("BP001") || paraCode.equals("BP002") || paraCode.equals("BP003")){
-            out.print("-|Failed.\nDefault item cannot be delete.");
+            out.print("-|-1|Failed.\nDefault item cannot be delete.");
             return;
         } else {
             String query = "DELETE FROM far_billing_parameter "
@@ -51,7 +51,7 @@
                 out.print("-|1");
                 return;
             } else {
-                out.print("-|-1");
+                out.print("-|-1|Failed to delete data.");
                 return;
             }
         }

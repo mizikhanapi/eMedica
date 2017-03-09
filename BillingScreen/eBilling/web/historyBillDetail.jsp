@@ -262,9 +262,10 @@
         </div>
     </div>
 </div>
-                
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+               
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 <script type="text/javascript">
     function searchDrugsItem() {
         // Declare variables
@@ -360,11 +361,15 @@
                 },
                 timeout: 10000,
                 success: function(data) {
-                    alert('Success delete data');
-                     $tr.remove();
+                    document.getElementById('messageHeader').innerHTML = "Success!";
+                    document.getElementById('messageContent').innerHTML = "Success delete item.";
+                    $tr.remove();
+                    $("#alertMessage").modal();
                 },
                 error: function(err) {
-                    alert('Failed to delete the item.');
+                    document.getElementById('messageHeader').innerHTML = "Error!";
+                    document.getElementById('messageContent').innerHTML = "Failed to delete the item.";
+                    $("#alertMessage").modal();
                 }
             });
         });
@@ -403,7 +408,10 @@
                         success: function(data) {
                            var d = data.split("|");
                            if (d[1] == 1){
-                               alert(d[2]);
+                                document.getElementById('messageHeader').innerHTML = "Success!";
+                                document.getElementById('messageContent').innerHTML = d[2];
+                                $("#alertMessage").modal();
+                               
                                 var row = 
                                         '<tr>\n\
                                             <td></td>\n\
@@ -426,11 +434,15 @@
                                 $('#grandTotal').val(grandTotal.toFixed(2));
                                
                            } else {
-                               alert(d[2]);
+                                document.getElementById('messageHeader').innerHTML = "Failed!";
+                                document.getElementById('messageContent').innerHTML = d[2];
+                                $("#alertMessage").modal();
                            }
                         },
                         error: function(err) {
-                            alert('Failed to make payment.\nPlease try again.');
+                            document.getElementById('messageHeader').innerHTML = "Error!";
+                            document.getElementById('messageContent').innerHTML = "Failed to make payment.\nPlease try again.";
+                            $("#alertMessage").modal();
                         }
                     });
                     
@@ -468,7 +480,9 @@
                     success: function(data) {
                        var d = data.split("|");
                        if (d[1] == 1){
-                           alert(d[2]);
+                            document.getElementById('messageHeader').innerHTML = "Success!";
+                            document.getElementById('messageContent').innerHTML = d[2];
+                            $("#alertMessage").modal();
                            
                            var totalPrice = quantity * unitPrice;
                            
@@ -494,11 +508,15 @@
                             $('#grandTotal').val(grandTotal.toFixed(2));
 
                        } else {
-                           alert(d[2]);
+                            document.getElementById('messageHeader').innerHTML = "Failed!";
+                            document.getElementById('messageContent').innerHTML = d[2];
+                            $("#alertMessage").modal();
                        }
                     },
                     error: function(err) {
-                        alert('Failed to add item.\nPlease try again.');
+                        document.getElementById('messageHeader').innerHTML = "Error!";
+                        document.getElementById('messageContent').innerHTML = "Failed to add item.\nPlease try again.";
+                        $("#alertMessage").modal();
                     }
                 });
             }
@@ -538,7 +556,9 @@
                     success: function(data) {
                        var d = data.split("|");
                        if (d[1] == 1){
-                           alert(d[2]);
+                            document.getElementById('messageHeader').innerHTML = "Success!";
+                            document.getElementById('messageContent').innerHTML = d[2];
+                            $("#alertMessage").modal();
                            
                             var url = "/eBilling/Receipt?"
                             url += "&custID=" + custID;
@@ -557,11 +577,15 @@
                            
                            location.reload();
                        } else {
-                           alert(d[2]);
+                            document.getElementById('messageHeader').innerHTML = "Failed!";
+                            document.getElementById('messageContent').innerHTML = d[2];
+                            $("#alertMessage").modal();
                        }
                     },
                     error: function(err) {
-                        alert('Failed to make payment.\nPlease try again.');
+                        document.getElementById('messageHeader').innerHTML = "Error!";
+                        document.getElementById('messageContent').innerHTML = "Failed to make payment.\nPlease try again.";
+                        $("#alertMessage").modal();
                     }
                 });
             }
@@ -601,11 +625,15 @@
 
                        location.reload();
                    } else {
-                       alert(d[2]);
+                        document.getElementById('messageHeader').innerHTML = "Failed!";
+                        document.getElementById('messageContent').innerHTML = d[2];
+                        $("#alertMessage").modal();
                    }
                 },
                 error: function(err) {
-                    alert('Failed to make payment.\nPlease try again.');
+                    document.getElementById('messageHeader').innerHTML = "Error!";
+                    document.getElementById('messageContent').innerHTML = "Failed to print.\nPlease try again.";
+                    $("#alertMessage").modal();
                 }
             });            
         });

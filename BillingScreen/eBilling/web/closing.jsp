@@ -59,7 +59,10 @@
             </div>
         </div>
             
+        <%@include file = "includes/message.html" %>    
         <!--js-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
         <script src="assets/js/jquery.min.js" type="text/javascript"></script>
         <script src="assets/js/custom.js" type="text/javascript"></script>
         <script type="text/javascript">
@@ -90,7 +93,11 @@
                                 function frame() {
                                     if (width >= status) {
                                         clearInterval(id);
-                                        alert(d[2]);
+                                        
+                                        document.getElementById('messageHeader').innerHTML = "Success!";
+                                        document.getElementById('messageContent').innerHTML = d[2];
+                                        $("#alertMessage").modal();
+                                        
                                         if(month == "11" || month == "12" || month == "01"){
                                             $('#btnProcess').prop('disabled', false);
                                         }
@@ -101,10 +108,15 @@
                                     }
                                 }
                              } else {
-                                 alert(d[2]);
+                                document.getElementById('messageHeader').innerHTML = "Failed!";
+                                document.getElementById('messageContent').innerHTML = d[2];
+                                $("#alertMessage").modal();
                              }
                         },
                         error: function(err) {
+                            document.getElementById('messageHeader').innerHTML = "Error!";
+                            document.getElementById('messageContent').innerHTML = "Failed to backup customer data.\nPlease try again.";
+                            $("#alertMessage").modal();
                         }
                     });
                 });
@@ -131,7 +143,11 @@
                                 function frame() {
                                     if (width >= status) {
                                         clearInterval(id);
-                                        alert(d[2]);
+                                        
+                                        document.getElementById('messageHeader').innerHTML = "Success!";
+                                        document.getElementById('messageContent').innerHTML = d[2];
+                                        $("#alertMessage").modal();
+                                        
                                     } else {
                                         width++; 
                                         elem.style.width = width + '%'; 
@@ -139,11 +155,16 @@
                                     }
                                 }
                              } else {
-                                 alert(d[2]);
-                                 $('#btnRestore').prop('disabled', false);
+                                document.getElementById('messageHeader').innerHTML = "Failed!";
+                                document.getElementById('messageContent').innerHTML = d[2];
+                                $("#alertMessage").modal();
+                                $('#btnRestore').prop('disabled', false);
                              }
                         },
                         error: function(err) {
+                            document.getElementById('messageHeader').innerHTML = "Error!";
+                            document.getElementById('messageContent').innerHTML = "Processing failed.";
+                            $("#alertMessage").modal();
                         }
                     });
                 });      
@@ -167,7 +188,11 @@
                                 function frame() {
                                     if (width >= status) {
                                         clearInterval(id);
-                                        alert(d[2]);
+                                        
+                                        document.getElementById('messageHeader').innerHTML = "Success!";
+                                        document.getElementById('messageContent').innerHTML = d[2];
+                                        $("#alertMessage").modal();
+                                        
                                         $('#btnProcess').prop('disabled', false);
                                     } else {
                                         width++; 
@@ -176,10 +201,15 @@
                                     }
                                 }
                              } else {
-                                 alert(d[2]);
+                                document.getElementById('messageHeader').innerHTML = "Failed!";
+                                document.getElementById('messageContent').innerHTML = d[2];
+                                $("#alertMessage").modal();
                              }
                         },
                         error: function(err) {
+                            document.getElementById('messageHeader').innerHTML = "Error!";
+                            document.getElementById('messageContent').innerHTML = "Restore failed.\nPlease try again.";
+                            $("#alertMessage").modal();
                         }
                     });
                 });
