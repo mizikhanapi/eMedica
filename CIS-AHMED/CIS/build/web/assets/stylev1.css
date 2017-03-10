@@ -1,0 +1,173 @@
+    .panel panel-default-small{
+        width:250px;
+    }
+    .panel-title{
+        font-size:14px;}
+    .list-group-item{
+        width:200px;
+    }
+    .fa-chevron-right{
+        color:#0088cc;}
+    .list-group-item{
+        display:block;
+        margin-left:40px;
+    }
+    .list-group-item librePanelListGroupItem{
+        padding-left:30px;
+    }
+    
+ul{
+    list-style-type: none;
+}
+subUl{
+    padding: 10%;
+}
+#Objective{
+    padding-left: 10%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+#Subjective{
+    padding-left: 10%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+#Assesment{
+    padding-left: 10%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+#Plan{
+    padding-left: 10%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+
+#VitalSign{
+    padding-left: 0;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+#VitalSign li{
+    padding-left: 0;
+
+}
+
+
+li :hover{
+    background-color: #1484DE;
+     text-decoration: none;
+}
+li:selected{
+    text-decoration: none;
+}
+
+#VitalSign li :hover{
+    text-decoration: none;
+    background-color: #0A76CC;
+}
+.flaticon{
+    margin-left: 0px;
+}
+
+thead{
+    font-weight: bold;
+}
+
+.lineSeperator {
+    border-bottom: 1px solid #ccc;
+}
+
+  #custom-handle {
+    width: 3em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+  }
+  
+  .slider{
+      margin-top: 5%;
+  }
+ .list-group{
+      background-color: white;
+  }
+ .list-group-item{
+      width: auto;
+  }
+  
+  .sub-menu li{
+      margin: 5%;
+  }
+
+  body{
+      overflow: scroll;
+  }
+  
+   .panel panel-default-small{
+        width:250px;
+    }
+    .panel-title{
+        font-size:14px;}
+    .list-group-item{
+        width:200px;
+    }
+    .fa-chevron-right{
+        color:#0088cc;}
+    .list-group-item{
+        display:block;
+        margin-left:40px;
+    }
+    .list-group-item librePanelListGroupItem{
+        padding-left:30px;
+    }
+
+
+    .panel panel-default-small{
+        width:250px;
+    }
+    .panel-title{
+        font-size:14px;}
+    .list-group-item{
+        width:200px;
+    }
+    .fa-chevron-right{
+        color:#0088cc;}
+    .list-group-item{
+        display:block;
+        margin-left:40px;
+    }
+    .list-group-item librePanelListGroupItem{
+        padding-left:30px;
+    }
+
+    #matchList{float:left;list-style:none;margin:0;padding:0;width:400px;}
+    #matchList li{padding: 10px; background:#FAFAFA;border-bottom:#F0F0F0 1px solid;}
+
+    .collapsibleList li{
+        list-style-image:url('button.png');
+        cursor:auto;
+    }
+
+    li.collapsibleListOpen{
+        list-style-image:url('button-open.png');
+        cursor:pointer;
+    }
+
+    li.collapsibleListClosed{
+        list-style-image:url('button-closed.png');
+        cursor:pointer;
+    }
+    
+select option:first-child{
+  color: #c5c5c5;
+}
+
+.modalTextLabel{
+    margin: 10px;
+}
