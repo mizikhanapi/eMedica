@@ -24,18 +24,21 @@
                         <div class="col-md-12">
                             <div class="thumbnail">
                                 <div id="generateBill">
-                                    <h4><b>Patient Information</b></h4>
-                                    <div id="custom-search-input">
-                                        <div class="input-group ">
-                                            <input id="ic" type="text" class="  search-query form-control" placeholder="IC No." />
-                                            <span class="input-group-btn">
-                                                <button id="searchPatient" class="btn btn-success pull-right" type="button">Search</button>
-                                            </span>
+                                    <h4><b>View Bill</b></h4>
+                                    <form class="form-horizontal" name="myForm" id="myForm">
+                                        <div id="custom-search-input">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">IC No.</label>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control input-md" id="ic" placeholder="IC No.">
+                                                </div>
+                                                <button class="btn btn-primary" type="button" id="searchPatient" name="searchPatient"><i class="fa fa-search fa-lg"></i>&nbsp; Search</button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
 
                                     <div id="patientDetails">
-                                        <table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; border-top: none;">
+                                        <table class="table table-filter table-striped table-bordered">
                                             <thead>
                                                 <th>Episode Date</th>
                                                 <th>Order No.</th>

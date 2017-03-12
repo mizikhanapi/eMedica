@@ -21,7 +21,7 @@
         + "AND pb.pmi_no = ch.customer_id "
         + "AND pb.new_ic_no = '"+ ic +"'";
     ArrayList<ArrayList<String>> data = Conn.getData(query);%>
-<table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; border-top: none;">
+<table class="table table-filter table-striped table-bordered">
     <thead>
         <th>Transaction Date</th>
         <th>Bill No.</th>
@@ -48,9 +48,12 @@
         <td><%=data.get(i).get(4)%></td>
         <td><%=data.get(i).get(6)%></td>
         <td><%=data.get(i).get(8)%></td>
-        <td><button id="select<%=i%>" class="btn btn-success pull-right" type="button">Select</button></td>
+        <td><button id="select<%=i%>" class="btn btn-success pull-right" type="button">View Detail</button></td>
     </tr>
-    <%}}%>
+    <%}}
+else {
+    out.print("|-1|There are no records found.");
+}%>
     </tbody>
 </table>
     <script type="text/javascript">

@@ -6,9 +6,6 @@
 package dbConn;
 
 import Config.Config;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
 import main.RMIConnector;
@@ -19,10 +16,11 @@ import main.RMIConnector;
  */
 public class Conn {
     
-    public final static String HOST = "biocore-stag.utem.edu.my";
-    public final static int PORT = 1099;
-//    public final static String HOST = "10.73.32.200";
-//    public final static int PORT = 1098;
+//    public final static String HOST = "biocore-stag.utem.edu.my";
+//    public final static int PORT = 1099;
+    
+    public final static String HOST = "10.73.32.200";
+    public final static int PORT = 1098;
     
     public static ArrayList<ArrayList<String>> getData(String query) 
     {

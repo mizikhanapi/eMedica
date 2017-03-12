@@ -39,7 +39,7 @@
                 + "GROUP BY pom.order_no";
     ArrayList<ArrayList<String>> data = Conn.getData(sql);
 %>
-<table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; border-top: none;">
+<table class="table table-filter table-striped table-bordered">
     <thead>
         <th>Episode Date</th>
         <th>Order No</th>
@@ -67,7 +67,10 @@
             <td><%=data.get(i).get(7)%></td>
             <td><button id="generate<%=i%>" class="btn btn-success pull-right">Generate Bill</button></td>
         </tr>
-        <%}}%>
+        <%}}
+else {
+    out.print("|-1|There are no records found.");
+}%>
     </tbody>
 </table>
     <script type="text/javascript">
