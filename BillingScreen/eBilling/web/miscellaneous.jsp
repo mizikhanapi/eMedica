@@ -100,13 +100,12 @@
                                                 
         <%@include file = "includes/message.html" %>    
         
-        <!--js-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <!--js--> 
         <script src="assets/js/dateformat.js" type="text/javascript"></script>
         <script src="assets/js/jquery.min.js" type="text/javascript"></script>
         <script src="assets/js/custom.js" type="text/javascript"></script>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript">
             function searchItem() {
                 // Declare variables
@@ -222,7 +221,7 @@
                                     if (d[1] == '1') {
                                         $('#miscItem').load("tableMiscellaneous.jsp");
                                         $('#reload').load(location.href + " #getID");
-                                        $('#temName').val('');
+                                        $('#itemName').val('');
                                         $('#buyPrice').val('');
                                         $('#sellPrice').val('');
                                         

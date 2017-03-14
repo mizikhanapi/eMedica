@@ -60,12 +60,13 @@
             </div>
         </div>
 
+        <%@include file = "includes/message.html" %>    
+        
         <!--js-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-        <script src="http://www.w3schools.com/lib/w3data.js"></script> 
         <script src="assets/js/jquery.min.js" type="text/javascript"></script>
         <script src="assets/js/custom.js" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
         <script type="text/javascript">
             $(document).ready(function(){
                 $('#ic').keypress(function(event) {
@@ -87,7 +88,13 @@
                             },
                             timeout: 10000,
                             success: function(data) {
-                              $('#patientDetails').html(data);
+                                var d = data.split("|");
+                                $('#patientDetails').html(d[0]);
+                                if (d[1] == '-1') {
+                                    document.getElementById('messageHeader').innerHTML = "No record!";
+                                    document.getElementById('messageContent').innerHTML = d[2];
+                                    $("#alertMessage").modal();
+                                }
                             },
                             error: function(err) {
                             }

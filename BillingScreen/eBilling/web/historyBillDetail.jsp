@@ -59,7 +59,7 @@
 </div>
 <div>
     <div id="listOfItems">
-        <table id="tableItems" class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; border-top: none;">
+        <table id="tableItems" class="table table-filter table-striped table-bordered">
             <thead>
                 <th>Transaction Date</th>
                 <th>Item Code</th>
@@ -67,7 +67,11 @@
                 <th style="text-align: right;">Item Quantity</th>
                 <th style="text-align: right;">Unit Price (RM)</th>
                 <th style="text-align: right;">Total Amount (RM)</th>
-                <th><th>
+<%
+            if (status.equalsIgnoreCase("unpaid")){
+%>
+                <th></th>
+<%}%>
             </thead>
             <tbody>
 <%
@@ -95,7 +99,7 @@
                     <button id="delete<%=i%>" class="btn btn-danger pull-right" type="button">Delete</button>
                 </td>
 <%} else {%>
-                <td></td>
+<!--                <td></td>-->
 <%}%>
             </tr>
 <%}}%>
@@ -209,23 +213,24 @@
                             <div id="tabMiscItem" class="tab-pane active">
                                 <!-- Misc Item -->
                                 <div id="custom-search-input" style="margin-top: 10px;">
-                                    <div class="input-group ">
-                                        <input id="searchMiscItem" type="text" class=" search-query form-control" placeholder="Item Name" onkeyup="searchMiscItem()"/>
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-success pull-right">Search</button>
-                                        </span>
+                                    <div class="form-group ">
+                                        <label class="col-md-4 control-label" for="textinput">Enter Item Name to Filter</label>
+                                        <div class="col-md-4">
+                                            <input id="searchMiscItem" type="text" class=" search-query form-control" placeholder="Item Name" onkeyup="searchMiscItem()"/>
+                                        </div>
                                     </div>
                                 </div>
                                 <div id="miscItem" ></div>
                             </div>
+
                             <div id="tabDrugsItem" class="tab-pane">
                                 <!-- Drugs Item -->
                                 <div id="custom-search-input" style="margin-top: 10px;">
-                                    <div class="input-group ">
-                                        <input id="searchDrugsItem" type="text" class=" search-query form-control" placeholder="Item Name" onkeyup="searchDrugsItem()"/>
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-success pull-right">Search</button>
-                                        </span>
+                                    <div class="form-group ">
+                                        <label class="col-md-4 control-label" for="textinput">Enter Item Name to Filter</label>
+                                        <div class="col-md-4">
+                                            <input id="searchDrugsItem" type="text" class=" search-query form-control" placeholder="Item Name" onkeyup="searchDrugsItem()"/>
+                                        </div>
                                     </div>
                                 </div>
                                 <div id="drugsItem" ></div>

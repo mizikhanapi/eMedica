@@ -224,3 +224,7 @@ and open the template in the editor.
     max-height: 400px;
     padding: 15px;
 }
+
+.selectedtr {
+   background-color:yellow;
+}

@@ -188,19 +188,19 @@ public class PdfServlet extends HttpServlet {
                 tableHeader.setLockedWidth(true);
                 tableHeader.setTotalWidth(document.right() - document.left());
 
-            String sql_getHFC = 
-                    "SELECT health_facility_code "
-                    + "FROM adm_user "
-                    + "WHERE user_id = '"+ userID +"'";
-            ArrayList<ArrayList<String>> userData = Conn.getData(sql_getHFC);
-            String hfc = userData.get(0).get(0);
-            
-            String sql_getHFAddr = 
-                    "SELECT hfc_name, address1, address2, address3 "
-                    + "FROM adm_health_facility "
-                    + "WHERE hfc_cd = '"+ hfc +"'";
-            ArrayList<ArrayList<String>> hfData = Conn.getData(sql_getHFAddr);
-            String hfName = hfData.get(0).get(0);
+                String sql_getHFC = 
+                        "SELECT health_facility_code "
+                        + "FROM adm_user "
+                        + "WHERE user_id = '"+ userID +"'";
+                ArrayList<ArrayList<String>> userData = Conn.getData(sql_getHFC);
+                String hfc = userData.get(0).get(0);
+
+                String sql_getHFAddr = 
+                        "SELECT hfc_name, address1, address2, address3 "
+                        + "FROM adm_health_facility "
+                        + "WHERE hfc_cd = '"+ hfc +"'";
+                ArrayList<ArrayList<String>> hfData = Conn.getData(sql_getHFAddr);
+                String hfName = hfData.get(0).get(0);
                 
 //                String imgPath = getServletContext().getRealPath("/assets/img/LogoJawiUTeM.png");
 //                Image logo = Image.getInstance(imgPath);
@@ -549,6 +549,7 @@ public class PdfServlet extends HttpServlet {
          
         if (!month.equals("00")){
             String period = year + "-" + month + "-";
+            String fullLetterMonth = Month.getFullLetterMonth(month);
             
             String sql1 = "SELECT "
                     + "pb.pmi_no, pb.patient_name, pb.id_no, pb.home_address, pb.mobile_phone, pb.email_address "
@@ -629,7 +630,7 @@ public class PdfServlet extends HttpServlet {
                     tableHeader.addCell(cellLocation);
                     
                     PdfPCell cellAnnual1 = new PdfPCell(new Phrase("\nCustomer Details Account Statement\n"
-                            + "for "+ month +" of "+ year +"\n\n", recti));
+                            + "for "+ fullLetterMonth +" of "+ year +"\n\n", recti));
                     cellAnnual1.setHorizontalAlignment(Element.ALIGN_CENTER);
                     cellAnnual1.setBorder(Rectangle.NO_BORDER);
                     cellAnnual1.setColspan(4);
@@ -761,13 +762,13 @@ public class PdfServlet extends HttpServlet {
                     tableSummary.setLockedWidth(true);
                     tableSummary.setTotalWidth(document.right() - document.left());
                     
-                    PdfPCell cell41 = new PdfPCell(new Phrase("\nTotal Debit of "+ month +" (RM)", rectem));
+                    PdfPCell cell41 = new PdfPCell(new Phrase("\nTotal Debit of "+ fullLetterMonth +" (RM)", rectem));
                     cell41.setHorizontalAlignment(Element.ALIGN_LEFT);
                     cell41.setBorder(Rectangle.NO_BORDER);
                     PdfPCell cell42 = new PdfPCell(new Phrase("\n" + df.format(debit), rectemja));
                     cell42.setHorizontalAlignment(Element.ALIGN_RIGHT);
                     cell42.setBorder(Rectangle.NO_BORDER);
-                    PdfPCell cell51 = new PdfPCell(new Phrase("Total Credit of "+ month +" (RM)", rectem));
+                    PdfPCell cell51 = new PdfPCell(new Phrase("Total Credit of "+ fullLetterMonth +" (RM)", rectem));
                     cell51.setHorizontalAlignment(Element.ALIGN_LEFT);
                     cell51.setBorder(Rectangle.NO_BORDER);
                     PdfPCell cell52 = new PdfPCell(new Phrase(df.format(credit), rectemja));
@@ -838,7 +839,7 @@ public class PdfServlet extends HttpServlet {
 
                 for(int k = 0; k < monthList.length; k++){
                     String period = year + Month.selectedMonth(monthList[k]);
-
+                    
                     String sql1 = "SELECT "
                             + "pb.pmi_no, pb.patient_name, pb.id_no, pb.home_address, pb.mobile_phone, pb.email_address "
                             + "FROM pms_patient_biodata pb, far_customer_ledger cl "

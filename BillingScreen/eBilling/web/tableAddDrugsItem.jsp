@@ -9,7 +9,7 @@
 <%@page import="java.text.DecimalFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<table id="tableDrugsItem" class="table table-filter" style="background: #fff; border: 1px solid #ccc; border-top: none;">
+<table id="tableDrugsItem" class="table table-filter table-bordered">
     <thead>
         <th>Item Code</th>
         <th>Name</th>
@@ -37,8 +37,8 @@
 <script type="text/javascript">    
     $(document).ready(function(){
         $("#tableDrugsItem tbody tr").click(function(){
-            $('tr.row_selected').removeClass('row_selected');
-            $(this).addClass('row_selected');
+            $('tr.row_selected').removeClass('row_selected selectedtr');
+            $(this).addClass('row_selected selectedtr');
         });
     });
 </script>

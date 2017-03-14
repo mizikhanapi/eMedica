@@ -136,7 +136,7 @@
         
 <div>
     <div id="listOfItems">
-        <table id="tableItems" class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; border-top: none;">
+        <table id="tableItems" class="table table-filter table-striped table-bordered">
             <thead>
                 <th>Item Code</th>
                 <th>Item Description</th>
@@ -443,9 +443,14 @@
                         $('#addItem').prop('disabled', false);
                         $('#payment').prop('disabled', false);
                         $('#back').prop('disabled', false);
-                        alert(d[2]);
+                        
+                        document.getElementById('messageHeader').innerHTML = "Success!";
+                        document.getElementById('messageContent').innerHTML = "Bill created.";
+                        $("#alertMessage").modal();
                     } else {
-                        alert(d[2]);
+                        document.getElementById('messageHeader').innerHTML = "Error!";
+                        document.getElementById('messageContent').innerHTML = d[2];
+                        $("#alertMessage").modal();
                     }
                 },
                 error: function(err) {
@@ -463,7 +468,9 @@
             var activeTab = $('ul#tabs').find('li.active').text();
             
             if (selected == ''){
-                alert("Please select an item.");
+                document.getElementById('messageHeader').innerHTML = "Warning!";
+                document.getElementById('messageContent').innerHTML = "Please select an item.";
+                $("#alertMessage").modal();
             } else {
                 var itemCode = $('#tableMisc').find(".row_selected td:nth-child(1)").text();
                 var itemName = $('#tableMisc').find(".row_selected td:nth-child(2)").text();
@@ -487,7 +494,6 @@
                         success: function(data) {
                            var d = data.split("|");
                            if (d[1] == 1){
-                               alert(d[2]);
                                 var row = 
                                         '<tr>\n\
                                             <td></td>\n\
@@ -509,12 +515,19 @@
                                 $('#subtotal').val(subTotal.toFixed(2));
                                 $('#grandTotal').val(grandTotal.toFixed(2));
                                
+                                document.getElementById('messageHeader').innerHTML = "Success!";
+                                document.getElementById('messageContent').innerHTML = d[2];
+                                $("#alertMessage").modal();
                            } else {
-                               alert(d[2]);
+                                document.getElementById('messageHeader').innerHTML = "Error!";
+                                document.getElementById('messageContent').innerHTML = d[2];
+                                $("#alertMessage").modal();
                            }
                         },
                         error: function(err) {
-                            alert('Failed to make payment.\nPlease try again.');
+                            document.getElementById('messageHeader').innerHTML = "Error!";
+                            document.getElementById('messageContent').innerHTML = "Failed to add item.";
+                            $("#alertMessage").modal();
                         }
                     });
                     
@@ -528,7 +541,9 @@
             var quantity = document.getElementById('quantity').value;
             
             if (quantity == '' || quantity == 0){
-                alert("Please enter a quantity.");
+                document.getElementById('messageHeader').innerHTML = "Warning!";
+                document.getElementById('messageContent').innerHTML = "Please enter a quantity.";
+                $("#alertMessage").modal();
             } else {
                 var itemCode = $('#tableDrugsItem').find(".row_selected td:nth-child(1)").text();
                 var itemName = $('#tableDrugsItem').find(".row_selected td:nth-child(2)").text();
@@ -552,7 +567,6 @@
                     success: function(data) {
                        var d = data.split("|");
                        if (d[1] == 1){
-                           alert(d[2]);
                            
                            var totalPrice = quantity * unitPrice;
                            
@@ -577,12 +591,19 @@
                             $('#subtotal').val(subTotal.toFixed(2));
                             $('#grandTotal').val(grandTotal.toFixed(2));
 
+                            document.getElementById('messageHeader').innerHTML = "Success!";
+                            document.getElementById('messageContent').innerHTML = d[2];
+                            $("#alertMessage").modal();
                        } else {
-                           alert(d[2]);
+                            document.getElementById('messageHeader').innerHTML = "Error!";
+                            document.getElementById('messageContent').innerHTML = d[2];
+                            $("#alertMessage").modal();
                        }
                     },
                     error: function(err) {
-                        alert('Failed to add item.\nPlease try again.');
+                        document.getElementById('messageHeader').innerHTML = "Error!";
+                        document.getElementById('messageContent').innerHTML = "Failed to add item.";
+                        $("#alertMessage").modal();
                     }
                 });
             }
@@ -604,7 +625,9 @@
             var change = document.getElementById('change').value;
             
             if (amtReceived == '0' || amtReceived == '.' || amtReceived == ''){
-                alert("Please insert an amount first.");
+                document.getElementById('messageHeader').innerHTML = "Warning!";
+                document.getElementById('messageContent').innerHTML = "Please enter an amount first.";
+                $("#alertMessage").modal();
             } else {
                 
                 $.ajax({
@@ -622,8 +645,6 @@
                     success: function(data) {
                        var d = data.split("|");
                        if (d[1] == 1){
-                           alert(d[2]);
-                           
                             var url = "/eBilling/Receipt?"
                             url += "&custID=" + custID;
                             url += "&billNo=" + billNo;
@@ -640,12 +661,20 @@
                             win.focus();
                            
                            location.reload();
+                           
+                            document.getElementById('messageHeader').innerHTML = "Success!";
+                            document.getElementById('messageContent').innerHTML = d[2];
+                            $("#alertMessage").modal();
                        } else {
-                           alert(d[2]);
+                            document.getElementById('messageHeader').innerHTML = "Error!";
+                            document.getElementById('messageContent').innerHTML = d[2];
+                            $("#alertMessage").modal();
                        }
                     },
                     error: function(err) {
-                        alert('Failed to make payment.\nPlease try again.');
+                        document.getElementById('messageHeader').innerHTML = "Error!";
+                        document.getElementById('messageContent').innerHTML = "Failed to make payment.";
+                        $("#alertMessage").modal();
                     }
                 });
             }
