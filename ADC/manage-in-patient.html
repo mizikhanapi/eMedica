@@ -1,0 +1,547 @@
+<style>
+*,*:before,*:after {
+  box-sizing: border-box;
+}
+html {
+  font-size: 16px;
+}
+
+.plane {
+  margin: 20px auto;
+  max-width: 300px;
+}
+
+.cockpit {
+  height: 250px; 
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  border-bottom: 5px solid #d8d8d8;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 500px;
+    width: 100%;
+    border-radius: 50%;
+    border-right: 5px solid #d8d8d8;
+    border-left: 5px solid #d8d8d8;
+  }
+  h1 {
+    width: 60%;
+    margin: 100px auto 35px auto;
+  }
+}
+
+.exit {
+  position: relative;
+  height: 50px;
+  &:before,
+  &:after {
+    content: "EXIT";
+    font-size: 14px;
+    line-height: 18px;
+    padding: 0px 2px;
+    font-family: "Arial Narrow", Arial, sans-serif;
+    display: block;
+    position: absolute;
+    background: green;
+    color: white;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+  &:before {
+    left: 0;
+  }
+  &:after {
+    right: 0;
+  }
+}
+
+.fuselage {
+  border-right: 5px solid #d8d8d8;
+  border-left: 5px solid #d8d8d8;
+}
+
+ol {
+  list-style :none;
+  padding: 0;
+  margin: 0;
+}
+
+.row {
+  
+}
+
+.seats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;  
+}
+
+.seat {
+  display: flex;
+  flex: 0 0 14.28571428571429%;
+  padding: 5px;
+  position: relative;  
+  &:nth-child(3) {
+    margin-right: 14.28571428571429%;
+  }
+  input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+  }
+  input[type=checkbox]:checked {
+    + label {
+      background: #bada55;      
+      -webkit-animation-name: rubberBand;
+          animation-name: rubberBand;
+      animation-duration: 300ms;
+      animation-fill-mode: both;
+    }
+  }
+  input[type=checkbox]:disabled {
+    + label {
+      background: #dddddd;
+      text-indent: -9999px;
+      overflow: hidden;
+      &:after {
+        content: "X";
+        text-indent: 0;
+        position: absolute;
+        top: 4px;
+        left: 50%;
+        transform: translate(-50%, 0%);
+      }
+      &:hover {
+        box-shadow: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+  label {    
+    display: block;
+    position: relative;    
+    width: 100%;    
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.5rem;
+    padding: 4px 0;
+    background: #F42536;
+    border-radius: 5px;
+    animation-duration: 300ms;
+    animation-fill-mode: both;
+    
+    &:before {
+      content: "";
+      position: absolute;
+      width: 75%;
+      height: 75%;
+      top: 1px;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      background: rgba(255,255,255,.4);
+      border-radius: 3px;
+    }
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 0 0px 2px #5C6AFF;
+    }
+    
+  }
+}
+
+@-webkit-keyframes rubberBand {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+            transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+            transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+            transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    -webkit-transform: scale3d(.95, 1.05, 1);
+            transform: scale3d(.95, 1.05, 1);
+  }
+
+  75% {
+    -webkit-transform: scale3d(1.05, .95, 1);
+            transform: scale3d(1.05, .95, 1);
+  }
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes rubberBand {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+            transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+            transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+            transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    -webkit-transform: scale3d(.95, 1.05, 1);
+            transform: scale3d(.95, 1.05, 1);
+  }
+
+  75% {
+    -webkit-transform: scale3d(1.05, .95, 1);
+            transform: scale3d(1.05, .95, 1);
+  }
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+}
+
+.rubberBand {
+  -webkit-animation-name: rubberBand;
+          animation-name: rubberBand;
+}
+</style>
+
+
+<div class="row">
+	<div class="col-md-12">
+	<div class="thumbnail">
+            <h4>
+			Search Patient
+			<div class="pull-right">
+				<button id="button2id" name="button2id" class="btn btn-success"><i class="fa fa-user fa-lg"></i>&nbsp; Read MyKad Info</button>
+				<button id="button2id" name="button2id" class="btn btn-default"><i class="fa fa-camera fa-lg"></i>&nbsp; Take Picture</button>
+			</div>
+			</h4>
+            <form class="form-horizontal">
+			<!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="selectbasic">ID Type</label>
+                        <div class="col-md-4">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Select ID Type</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+			
+			<!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">IC No. / ID No.</label>
+                        <div class="col-md-4">
+                          <input id="textinput" name="textinput" type="text" placeholder="Search" class="form-control input-md">
+                        </div>
+                      </div>
+					  <div class="text-center">
+						<button id="button1id" name="button1id" class="btn btn-default"><i class="fa fa-search fa-lg"></i>&nbsp; Search</button>
+						<button id="button2id" name="button2id" class="btn btn-default"><i class="fa fa-ban fa-lg"></i>&nbsp; Clear</button>
+					</div>
+            </form>
+          </div>
+				  
+				  <div class="thumbnail">
+                    <h4>In-Patient Info</h4>
+					<hr/>
+                    <form class="form-horizontal">
+                    <div class="row">
+					  <div class="col-md-2">
+					  <div class="text-center">
+						<img src="../assets/profile.jpg" class="avatar img-circle img-thumbnail" alt="avatar">
+						<h6>Upload a different photo...</h6>
+						<input type="file" class="">
+					  </div>
+					</div>
+					
+					  <div class="col-md-5">
+					  <!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">PMI No.</label>
+                        <div class="col-md-6">
+                          <input id="textinput" name="textinput" type="text" placeholder="Eg: Mobile x-ray" class="form-control input-md">
+                        </div>
+                      </div>
+                      
+                      <!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Name</label>
+                        <div class="col-md-6">
+                          <input id="textinput" name="textinput" type="text" placeholder="Eg: Mobile x-ray" class="form-control input-md">
+                        </div>
+                      </div>
+                      
+                      <!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">New IC No.</label>
+                        <div class="col-md-6">
+                          <input id="textinput" name="textinput" type="text" placeholder="Eg: Mobile x-ray" class="form-control input-md">
+                        </div>
+                      </div>
+					  
+					  <!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">MRN Number</label>
+                        <div class="col-md-6">
+                          <input id="textinput" name="textinput" type="text" placeholder="MRN Number" class="form-control input-md">
+                        </div>
+                      </div>
+					  
+                    </div>
+					<div class="col-md-5">
+                      <!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Old IC No.</label>
+                        <div class="col-md-6">
+                          <input id="textinput" name="textinput" type="text" placeholder="Eg: Mobile x-ray" class="form-control input-md">
+                        </div>
+                      </div>
+                      
+                      <!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="selectbasic">ID Type</label>
+                        <div class="col-md-6">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Select ID Type</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+                      
+                      <!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Identification No.</label>
+                        <div class="col-md-6">
+                          <input id="textinput" name="textinput" type="text" placeholder="Eg: Mobile x-ray" class="form-control input-md">
+                        </div>
+                      </div>
+					  
+					</div>
+				</div>
+				<br/>
+				
+				
+					<h4>Registration Info</h4>
+					<hr/>
+                    
+				<div class="row">
+					<div class="col-md-6">
+					
+                      <!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="selectbasic">Eligibility Source</label>
+                        <div class="col-md-6">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Select ID Type</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+					  
+					  <!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="selectbasic">Admission Type</label>
+                        <div class="col-md-6">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Select ID Type</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+					  
+					  <!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="selectbasic">Referring from</label>
+                        <div class="col-md-6">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Select ID Type</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+					  
+					  <!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="selectbasic">Document Type</label>
+                        <div class="col-md-6">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Select ID Type</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+					
+					<!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">GL Expiry Date</label>
+                        <div class="col-md-6">
+                          <input id="textinput" name="textinput" type="text" placeholder="GL Expiry Date" class="form-control input-md">
+                        </div>
+                      </div>
+					  
+					</div>
+					
+					
+					
+					<div class="col-md-6">
+					  <!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="selectbasic">Eligibility Type</label>
+                        <div class="col-md-6">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Select ID Type</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+					  
+					  <!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Admission Reason</label>
+                        <div class="col-md-6">
+                          <input id="textinput" name="textinput" type="text" placeholder="GL Expiry Date" class="form-control input-md">
+                        </div>
+                      </div>
+					  
+					  <!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Police Case</label>
+                        <div class="col-md-6">
+                          <input id="textinput" name="textinput" type="text" placeholder="GL Expiry Date" class="form-control input-md">
+                        </div>
+                      </div>
+					  
+					  <!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Document No.</label>
+                        <div class="col-md-6">
+                          <input id="textinput" name="textinput" type="text" placeholder="GL Expiry Date" class="form-control input-md">
+                        </div>
+                      </div>
+					  
+					  <!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Payer Group</label>
+                        <div class="col-md-6">
+                          <input id="textinput" name="textinput" type="text" placeholder="GL Expiry Date" class="form-control input-md">
+                        </div>
+                      </div>
+					
+					</div>
+				</div>
+				<br/>
+				  
+					<h4>Assign Ward</h4>
+					<hr/>
+					<div class="row">
+					<div class="col-md-6">
+					<!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="selectbasic">Discipline</label>
+                        <div class="col-md-6">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Normal</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+					  
+					  <!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="selectbasic">Ward Name</label>
+                        <div class="col-md-6">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Normal</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+					  
+					  <!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Deposit (RM)</label>
+                        <div class="col-md-6">
+                          <input id="textinput" name="textinput" type="text" placeholder="GL Expiry Date" class="form-control input-md">
+                        </div>
+                      </div>
+					  
+					  </div>
+					  
+					  <div class="col-md-6">
+					<!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="selectbasic">Ward Type</label>
+                        <div class="col-md-6">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Normal</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+					  
+					  <!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="selectbasic">Bed ID</label>
+                        <div class="col-md-4">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Normal</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+						<div class="col-md-2">
+                          <button class="btn btn-primary" type="button">List Bed</button>
+                        </div>
+                      </div>
+					  
+					  </div>
+					  
+					  
+					</div>
+					<br/>
+					<div class="panel panel-default">
+					  <div class="panel-body">
+						<h3>List Bed</h3>
+					  </div>
+					</div>
+				<br/>
+				
+					  <div class="text-center">
+						  <button class="btn btn-primary" type="button"> Register</button>
+						  <button class="btn btn-default" type="button"> Appointment List</button>
+						  <button class="btn btn-default" type="button"> Clear</button>
+					  </div>
+					</form>
+				  </div>
+	</div>
+</div>

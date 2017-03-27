@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- header -->
+<div w3-include-html="libraries/header.html"></div>
+<!-- header -->
+</head>
+
+  <body>
+<!-- menu top -->
+<div w3-include-html="libraries/topMenus.html"></div>
+<!-- menu top -->
+
+    <div class="container-fluid">
+      <div class="row">       
+<!-- menu side -->		
+<div w3-include-html="libraries/sideMenus.html"></div>
+<!-- menu side -->	
+		
+<!-- main -->		
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background: #f2f4f8;">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="thumbnail">
+						<h4>Search ATC</h4>
+						<form>
+						<div id="custom-search-input">
+                            <div class="input-group ">
+                                <input type="text" class="  search-query form-control" placeholder="ATC Code" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class=" fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+						</form>
+						
+						<table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; border-top: none;">
+							<thead>
+								<th>ATC Code</th>
+							</thead>
+							<tbody>
+								<tr data-status="pagado">
+									<td>yyyy/mm/dd</td>
+								</tr>
+								<tr data-status="pagado">
+									<td>yyyy/mm/dd</td>
+								</tr>
+								<tr data-status="pagado">
+									<td>yyyy/mm/dd</td>
+								</tr>
+							</tbody>
+						</table>
+						
+
+					</div>
+			</div>
+		</div>
+		
+			<div class="row">
+				<div class="col-md-12">
+					<div class="thumbnail">
+					<h4>
+						Drug's ATC Details
+					</h4>
+				<div class="row">
+				<div class="col-md-6">
+					<form class="form-horizontal">
+					
+					<!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-2 control-label" for="textinput">ATC Code</label>
+                        <div class="col-md-10">
+                          <input id="textinput" name="textinput" type="text" placeholder="ATC Code" class="form-control input-md">
+                        </div>
+                      </div>
+					  
+					<!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-2 control-label" for="textinput">ATC Description</label>
+                        <div class="col-md-10">
+                          <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                      </div>
+					  
+					<!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-2 control-label" for="textinput">Category Code</label>
+                        <div class="col-md-10">
+                          <input id="textinput" name="textinput" type="text" placeholder="Category Code" class="form-control input-md">
+                        </div>
+                      </div>
+					
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="textinput">Status</label>
+						<div class="col-md-10">
+							<label class="radio-inline">
+								<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+								Active 
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+								Inactive
+							</label>
+						</div>
+					</div>
+					
+					  
+					</form>
+				</div>
+				
+				<div class="col-md-6">
+					<table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc;">
+					<thead>
+						<th>UD ATC Code</th>
+						<th>UD ATC Description</th>
+						<th>Category Code</th>
+						<th>Status</th>
+					</thead>
+					<tbody>
+						<tr data-status="pagado">
+							<td>yyyy/mm/dd</td>
+							<td>ABC!@#</td>
+							<td>Description goes here...</td>
+							<td>50</td>
+						</tr>
+						
+						<tr data-status="pagado">
+							<td>yyyy/mm/dd</td>
+							<td>ABC!@#</td>
+							<td>Description goes here...</td>
+							<td>50</td>
+						</tr>
+						<tr data-status="pagado">
+							<td>yyyy/mm/dd</td>
+							<td>ABC!@#</td>
+							<td>Description goes here...</td>
+							<td>50</td>
+						</tr>
+					</tbody>
+					</table>
+				</div>
+				</div>
+				
+			<div class="row">
+			<div class="col-md-12">
+				<div class="text-center">
+					<button id="button1id" name="button1id" class="btn btn-default"><i class="fa fa-plus fa-lg"></i>&nbsp; Add</button>
+					<button id="button1id" name="button1id" class="btn btn-default"><i class="fa fa-pencil-square-o fa-lg"></i>&nbsp; Update</button>
+					<button id="button1id" name="button1id" class="btn btn-default"><i class="fa fa-times fa-lg"></i>&nbsp; Delete</button>
+					<button id="button2id" name="button2id" class="btn btn-default"><i class="fa fa-ban fa-lg"></i>&nbsp; Cancel</button>
+				</div>
+			</div>
+			</div>
+			
+			</div>
+				</div>
+					
+			</div>
+        </div>
+<!-- main -->		
+		
+      </div>
+    </div>
+	
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script src="http://www.w3schools.com/lib/w3data.js"></script> 
+	<script>
+	w3IncludeHTML();
+	</script>
+
+  
+</body></html>

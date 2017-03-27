@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- header -->
+<div w3-include-html="libraries/header.html"></div>
+<!-- header -->
+</head>
+
+  <body>
+<!-- menu top -->
+<div w3-include-html="libraries/topMenus.html"></div>
+<!-- menu top -->
+
+    <div class="container-fluid">
+      <div class="row">       
+<!-- menu side -->		
+<div w3-include-html="libraries/sideMenus.html"></div>
+<!-- menu side -->	
+		
+<!-- main -->		
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background: #f2f4f8;">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="thumbnail">
+						<h4>Search Drug</h4>
+						<form>
+						<div id="custom-search-input">
+                            <div class="input-group ">
+                                <input type="text" class="  search-query form-control" placeholder="Product Name" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class=" fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+						</form>
+						
+						<table class="table table-filter table-striped" style="background: #fff; border: 1px solid #ccc; border-top: none;">
+							<thead>
+								<th>Product Name</th>
+							</thead>
+							<tbody>
+								<tr data-status="pagado">
+									<td>yyyy/mm/dd</td>
+								</tr>
+								<tr data-status="pagado">
+									<td>yyyy/mm/dd</td>
+								</tr>
+								<tr data-status="pagado">
+									<td>yyyy/mm/dd</td>
+								</tr>
+							</tbody>
+						</table>
+						
+
+					</div>
+			</div>
+		</div>
+		
+			<div class="row">
+				<div class="col-md-12">
+					<div class="thumbnail">
+					<h4>
+						Drug Details
+						<div class="pull-right">
+							<button id="button1id" name="button1id" class="btn btn-success"><i class="fa fa-file-excel-o fa-lg"></i>&nbsp; Export to Excel</button>
+						</div>
+					</h4>
+				<div class="row">
+				<div class="col-md-12">
+					<form class="form-horizontal">
+					<h4>Drug Information</h4>
+					<hr/>
+					
+					<!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-2 control-label" for="textinput">Drug Code</label>
+                        <div class="col-md-8">
+                          <input id="textinput" name="textinput" type="text" placeholder="Drug Code" class="form-control input-md">
+                        </div>
+                      </div>
+					
+					<!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-2 control-label" for="textinput">Product Name</label>
+                        <div class="col-md-8">
+                          <input id="textinput" name="textinput" type="text" placeholder="Product Name" class="form-control input-md">
+                        </div>
+                      </div>
+					  
+					<!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-2 control-label" for="textinput">Generic Name</label>
+                        <div class="col-md-8">
+                          <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                      </div>
+					  
+					<!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-2 control-label" for="selectbasic">Drug Route</label>
+                        <div class="col-md-4">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Oral</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+					  
+					<!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-2 control-label" for="selectbasic">Dosage Form</label>
+                        <div class="col-md-8">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Aerosol</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+					  
+					<h4>Purchase</h4>
+					<hr/>
+					<!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-2 control-label" for="textinput">Packaging</label>
+                        <div class="col-md-2">
+                          <input id="textinput" name="textinput" type="text" placeholder="Product Name" class="form-control input-md">
+                        </div>
+                      </div>
+					  
+					<!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-2 control-label" for="textinput">Price per Pack</label>
+                        <div class="col-md-8">
+                          <input id="textinput" name="textinput" type="text" placeholder="Product Name" class="form-control input-md">
+                        </div>
+                      </div>
+					  
+					<!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-2 control-label" for="textinput">Purchase Price</label>
+                        <div class="col-md-8">
+                          <input id="textinput" name="textinput" type="text" placeholder="Product Name" class="form-control input-md">
+                        </div>
+                      </div>
+					  
+					<!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-2 control-label" for="textinput">Sell Price</label>
+                        <div class="col-md-8">
+                          <input id="textinput" name="textinput" type="text" placeholder="Product Name" class="form-control input-md">
+                        </div>
+                      </div>
+					  
+					<h4>Label Information</h4>
+					<hr/>
+					<!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-2 control-label" for="selectbasic">Dose</label>
+						<div class="col-md-4">
+                          <input id="textinput" name="textinput" type="text" placeholder="Product Name" class="form-control input-md">
+                        </div>
+                        <div class="col-md-4">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">mg</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+					
+					<!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-2 control-label" for="selectbasic">Frequency</label>
+                        <div class="col-md-4">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Once</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+					  
+					<!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-2 control-label" for="selectbasic">Duration</label>
+						<div class="col-md-1">
+                          <input id="textinput" name="textinput" type="number" placeholder="" class="form-control input-md">
+                        </div>
+                        <div class="col-md-7">
+                          <select id="selectbasic" name="selectbasic" class="form-control">
+                            <option value="1">Day</option>
+                            <option value="2">Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+					</form>
+				</div>
+				</div>
+				
+			<div class="row">
+			<div class="col-md-12">
+				<div class="text-center" style="margin-top: 20px;">
+					<button id="button1id" name="button1id" class="btn btn-default"><i class="fa fa-plus fa-lg"></i>&nbsp; Add</button>
+					<button id="button1id" name="button1id" class="btn btn-default"><i class="fa fa-pencil-square-o fa-lg"></i>&nbsp; Update</button>
+					<button id="button1id" name="button1id" class="btn btn-default"><i class="fa fa-times fa-lg"></i>&nbsp; Delete</button>
+					<button id="button2id" name="button2id" class="btn btn-default"><i class="fa fa-ban fa-lg"></i>&nbsp; Cancel</button>
+				</div>
+			</div>
+			</div>
+			
+			</div>
+				</div>
+					
+			</div>
+        </div>
+<!-- main -->		
+		
+      </div>
+    </div>
+	
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script src="http://www.w3schools.com/lib/w3data.js"></script> 
+	<script>
+	w3IncludeHTML();
+	</script>
+
+  
+</body></html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- header -->
+<div w3-include-html="libraries/header.html"></div>
+<!-- header -->
+<style>
+
+.file-preview-input {
+    position: relative;
+    overflow: hidden;
+    margin: 0px;    
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;    
+}
+.file-preview-input input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.file-preview-input-title {
+    margin-left:2px;
+}
+
+</style>
+
+</head>
+
+  <body>
+<!-- menu top -->
+<div w3-include-html="libraries/topMenus.html"></div>
+<!-- menu top -->
+
+    <div class="container-fluid">
+      <div class="row">       
+<!-- menu side -->		
+<div w3-include-html="libraries/sideMenus.html"></div>
+<!-- menu side -->	
+		
+<!-- main -->		
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background: #f2f4f8;">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="thumbnail">
+					<h4>Browse File Import ATC</h4>
+					
+					<div class="input-group file-preview">
+						<input placeholder="" type="text" class="form-control file-preview-filename" disabled="disabled">
+						<!-- don't give a name === doesn't send on POST/GET --> 
+						<span class="input-group-btn"> 
+						<!-- file-preview-clear button -->
+						<button type="button" class="btn btn-default file-preview-clear" style="display:none;"> <span class="glyphicon glyphicon-remove"></span> Clear </button>
+						<!-- file-preview-input -->
+						<div class="btn btn-default file-preview-input"> <i class="fa fa-folder-open fa-lg"></i> <span class="file-preview-input-title">Browse</span>
+							<input type="file" accept="text/cfg" name="input-file-preview"/>
+							<!-- rename it --> 
+						</div>
+						<button type="button" class="btn btn-labeled btn-primary"> <span class="btn-label"><i class="fa fa-upload fa-lg"></i> </span>Import Drug ATC</button>
+						</span> 
+					</div>
+					<br/>
+					<div class="panel panel-default">
+					<div class="row clearfix">
+						<div class="col-md-12 column">
+							<table class="table table-bordered table-hover" id="tab_logic">
+								<thead>
+									<tr >
+									<th class="text-center">
+										File Name
+									</th>
+								</thead>
+								<tbody>
+									<tr>
+									</tr>
+									<tr id='addr1'>
+									<td>File goes here</td>
+									</tr>
+									<tr id='addr1'>
+									<td>File goes here</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>
+					
+					<br />
+					<!-- Progress Bar -->
+					<div class="progress">
+						<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"> <span class="sr-only">60% Complete</span> </div>
+					</div>
+					<br />
+					
+			
+					</div>
+			</div>
+		</div>
+		
+		<div class="row">
+				<div class="col-md-12">
+					<div class="thumbnail">
+					<h4>Browse File Import MDC</h4>
+					
+					<div class="input-group file-preview">
+						<input placeholder="" type="text" class="form-control file-preview-filename" disabled="disabled">
+						<!-- don't give a name === doesn't send on POST/GET --> 
+						<span class="input-group-btn"> 
+						<!-- file-preview-clear button -->
+						<button type="button" class="btn btn-default file-preview-clear" style="display:none;"> <span class="glyphicon glyphicon-remove"></span> Clear </button>
+						<!-- file-preview-input -->
+						<div class="btn btn-default file-preview-input"> <i class="fa fa-folder-open fa-lg"></i> <span class="file-preview-input-title">Browse</span>
+							<input type="file" accept="text/cfg" name="input-file-preview"/>
+							<!-- rename it --> 
+						</div>
+						<button type="button" class="btn btn-labeled btn-primary"> <span class="btn-label"><i class="fa fa-upload fa-lg"></i> </span>Import Drug MDC</button>
+						</span> 
+					</div>
+					<br/>
+					<div class="panel panel-default">
+					<div class="row clearfix">
+						<div class="col-md-12 column">
+							<table class="table table-bordered table-hover" id="tab_logic">
+								<thead>
+									<tr >
+									<th class="text-center">
+										File Name
+									</th>
+								</thead>
+								<tbody>
+									<tr>
+									</tr>
+									<tr id='addr1'>
+									<td>File goes here</td>
+									</tr>
+									<tr id='addr1'>
+									<td>File goes here</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>
+					
+					<br />
+					<!-- Progress Bar -->
+					<div class="progress">
+						<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"> <span class="sr-only">60% Complete</span> </div>
+					</div>
+					<br />
+					
+			
+					</div>
+			</div>
+		</div>
+			
+        </div>
+<!-- main -->		
+		
+      </div>
+    </div>
+	
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script src="http://www.w3schools.com/lib/w3data.js"></script> 
+	<script>
+	w3IncludeHTML();
+	</script>
+	
+	<script>
+	$(document).ready(function(){
+      var i=1;
+     $("#add_row").click(function(){
+      $('#addr'+i).html("</td><td><input name='input-file-preview"+i+"' type='file' class='form-control input-md'/></td>");
+
+      $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+      i++; 
+  });
+     $("#delete_row").click(function(){
+    	 if(i>1){
+		 $("#addr"+(i-1)).html('');
+		 i--;
+		 }
+	 });
+
+});
+	</script>
+
+  
+</body></html>
